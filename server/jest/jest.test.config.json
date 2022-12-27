@@ -1,0 +1,25 @@
+{
+  "type": "module",
+  "runner": "jest-runner",
+  "displayName": "test:unit",
+  "rootDir": "../",
+  "verbose": false,
+  //"notify": true,
+  "bail": false,
+  "collectCoverage": false,
+  "collectCoverageFrom": ["<rootDir>/**/*.mjs"],
+  "coveragePathIgnorePatterns": [],
+  "modulePaths": [
+    "<rootDir>/source",
+    "<rootDir>/node_modules"
+  ],
+  "moduleFileExtensions": [
+    "js",
+    "mjs",
+    "json"
+  ],
+  "globalSetup": "<rootDir>/jest/scripts/globalSetup.mjs",
+  "globalTeardown": "<rootDir>/jest/scripts/globalTeardown.mjs",
+  "setupFiles": ["<rootDir>/jest/scripts/setupFiles.mjs"]
+  //"testUrl": "http://www.test.com"
+}

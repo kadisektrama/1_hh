@@ -1,0 +1,10 @@
+{
+  "type": "module",
+  "rootDir": "../",
+  "projects": [
+    "<rootDir>/jest/jest.test.config.json"
+  ],
+  "transformIgnorePatterns": [
+    "node_modules/(?!@ngrx|(?!deck.gl)|ng-dynamic)"
+  ]
+}
