@@ -1,6 +1,6 @@
 FROM node:12-alpine
-WORKDIR /app
-COPY package.json /app/package.json
+WORKDIR /client
+COPY package.json /client/package.json
 RUN npm install
-COPY . /app
-CMD ["npm", "start"]
+COPY . /client
+#CMD ["npm", "start"]
