@@ -13,7 +13,6 @@ const layout = () => {
         <Layout>
             <Header />
             <Content className='layout'>
-                <div>zxc</div>
                 <Outlet />
             </Content>
             <Footer />

@@ -16,14 +16,15 @@ import { logger, errorLogger, notFoundLogger, validationLogger } from "./utils/i
 export const app = express();
 
 
-app.use(helmet.frameguard());
-app.use(helmet.hidePoweredBy());
-app.use(bodyParser.json({ limit: '10kb' }));
+app.use(helmet.frameguard())
+app.use(helmet.hidePoweredBy())
+app.use(bodyParser.json({ limit: '10kb' }))
 
-app.use('/auth', routes.auth);
-app.use('/users', [authorization], routes.users);
-app.use('/classes', [authorization], routes.classes);
-app.use('/lessons', [authorization], routes.lessons);
+app.use('/auth', routes.auth)
+app.use('/books', routes.books)
+app.use('/users', [authorization], routes.users)
+app.use('/classes', [authorization], routes.classes)
+app.use('/lessons', [authorization], routes.lessons)
 app.get('/test', (req, res) => {
     res.status(200).json({ data: [] })
 })

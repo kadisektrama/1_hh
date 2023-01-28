@@ -26,12 +26,10 @@ const InternetShopReactExpess = compose<FC>(
 
 const InternetShopReactExpessContainer: FC = () => {
     return (
-        <BrowserRouter>
-            <Provider store={store}>
-                <InternetShopReactExpess />
-            </Provider>
-        </BrowserRouter>
+        <Provider store={store}>
+            <InternetShopReactExpess />
+        </Provider>
     )
 }
 
-export default App
+export default InternetShopReactExpessContainer
