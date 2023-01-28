@@ -1,3 +1,5 @@
+import { Books } from '../../controllers/index.mjs'
+
 export const get = (req, res) => {
     try {
         return res.status(200).json({ data: [] })
@@ -5,9 +7,14 @@ export const get = (req, res) => {
         return res.status(400).json(message)
     }
 }
-export const post = (req, res) => {
+export const post = async (req, res) => {
     try {
-        return res.sendStatus(201)
+        console.log(1)
+        const book = new Books(req.body)
+        console.log(2)
+        const data = await book.create()
+        console.log(data)
+        return res.status(201).json({ data: data })
     } catch ({ message }) {
         res.status(400).json({message})
     }

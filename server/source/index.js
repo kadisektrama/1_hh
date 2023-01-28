@@ -1,8 +1,10 @@
-//Instruments
+// Tools
 import { app } from './server.js';
+import dg from 'debug';
 
+const debug = dg('express:server:main');
 const port = process.env.port || 8080;
 
 app.listen(port, () => {
-    console.log(`Application was launched on port ${port}`)
+    debug(`Application was launched on port ${port}`);
 })

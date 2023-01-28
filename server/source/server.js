@@ -1,14 +1,14 @@
-import express from "express";
-import bodyParser from "body-parser";
-import helmet from "helmet";
+import express from "express"
+import bodyParser from "body-parser"
+import helmet from "helmet"
 import * as dotenv from 'dotenv' // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
 dotenv.config()
 
 //Routes
-import * as routes from "./routes/index.mjs";
+import * as routes from "./routes/index.mjs"
 
 //Middlewares
-import { authorization } from "./utils/index.mjs";
+import { authorization } from "./utils/index.mjs"
 
 //Logger
 import { logger, errorLogger, notFoundLogger, validationLogger } from "./utils/index.mjs";

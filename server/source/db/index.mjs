@@ -1,4 +1,7 @@
 import mongoose from 'mongoose'
+import dg from 'debug'
+
+const debug = dg('express:db')
 
 const mongooseOptions = {
     promiseLibrary: global.Promise,
@@ -17,4 +20,11 @@ const connection = mongoose.connect(
     mongooseOptions
 )
 
+connection
+    .then(() => {
+        debug(`DB test has been connecting`)
+    })
+    .catch((error) => {
+        debug(`DB test has failed wit error ${error}`)
+    })
 export { connection as mongoose }
