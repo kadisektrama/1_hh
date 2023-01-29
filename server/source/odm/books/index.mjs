@@ -9,6 +9,6 @@ const bookSchema = mongoose.Schema({
     rating: Number,
 })
 
-const books = mongoose.model('books', bookSchema)
+const books = mongoose.model('book', bookSchema)
 
 export { books }

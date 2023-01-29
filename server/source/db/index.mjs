@@ -1,18 +1,20 @@
 import mongoose from 'mongoose'
 import dg from 'debug'
 
+mongoose.set('strictQuery', false);
+//mongoose.set('bufferCommands', false);
 const debug = dg('express:db')
 
 const mongooseOptions = {
     promiseLibrary: global.Promise,
-    poolSize: 50,
-    keepalive: 30000,
+    //poolSize: 50,
+    keepAlive: true,
     connectTimeoutMS: 5000,
-    reconnectTries: Number.MAX_SAFE_INTEGER,
-    reconnectInterval: 5000,
+    //reconnectTries: Number.MAX_SAFE_INTEGER,
+    //reconnectInterval: 5000,
     useNewUrlParser: true,
-    useFindAndModify: false,
-    useCreateIndex: true,
+    //useFindAndModify: false,
+    //useCreateIndex: true,
 }
 
 const connection = mongoose.connect(
@@ -22,9 +24,10 @@ const connection = mongoose.connect(
 
 connection
     .then(() => {
+        console.log('zxc')
         debug(`DB test has been connecting`)
     })
     .catch((error) => {
+        console.log(123)
         debug(`DB test has failed wit error ${error}`)
     })
-export { connection as mongoose }
