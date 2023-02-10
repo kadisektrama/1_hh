@@ -12,7 +12,7 @@ const appReducer = (state = initialState, action: ActionsType): InitialStateType
         case 'APP/SET_INITIALIZED':
             return {
                 ...state,
-                initialized: action.payload
+                initialized: action.payload,
             }
         default:
             return state
@@ -20,7 +20,7 @@ const appReducer = (state = initialState, action: ActionsType): InitialStateType
 }
 
 export const actions = {
-    setInitialize: (isInitialized: boolean) => ({type: 'APP/SET_INITIALIZED', payload: isInitialized} as const)
+    setInitialize: (isInitialized: boolean) => ({ type: 'APP/SET_INITIALIZED', payload: isInitialized } as const)
 }
 
 export const setInitialize = (isInitialize: boolean) => (dispatch: any) => {

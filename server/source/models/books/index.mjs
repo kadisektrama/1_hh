@@ -10,4 +10,16 @@ export class Books {
 
         return data
     }
+
+    async getAll() {
+        const data = await books.find(this.data)
+
+        return data
+    }
+
+    async getByHash() {
+        const data = await books.findOne(this.data)
+
+        return data
+    }
 }

@@ -12,6 +12,18 @@ class Books {
 
         return data
     }
+
+    async getAll() {
+        const data = await this.models.books.getAll()
+
+        return data
+    }
+
+    async getByHash() {
+        const data = await this.models.books.getByHash()
+
+        return data
+    }
 }
 
 export { Books }

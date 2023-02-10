@@ -24,10 +24,8 @@ const connection = mongoose.connect(
 
 connection
     .then(() => {
-        console.log('zxc')
         debug(`DB test has been connecting`)
     })
     .catch((error) => {
-        console.log(123)
         debug(`DB test has failed wit error ${error}`)
     })

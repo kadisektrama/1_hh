@@ -1,5 +1,6 @@
-function def() {
+import axios from "axios";
 
-}
-
-export default def;
+export const instance = axios.create({
+    withCredentials: true,
+    baseURL: 'http://localhost:8080/',
+})
