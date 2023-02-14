@@ -8,6 +8,6 @@ export const bookApi = {
         return instance.get(`books`)
     },
     create(body: Object) {
-        return instance.post(`books`, {})
+        return instance.post(`books`, body)
     },
 }
