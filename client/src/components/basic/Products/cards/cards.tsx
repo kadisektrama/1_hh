@@ -1,16 +1,16 @@
 import React from 'react'
 
-import { product } from '../products'
+import { TBookData } from '../../../../types/types'
 import Card from './card/card'
 
 type PropsType = {
-    products: product[],
+    products: TBookData,
 }
 
 const cards: React.FC<PropsType> = (props) => {
     return (
         <>
-            {props.products.map(product => <Card key={product.id} {...product} />)}
+            {props.products.data.map(product => <Card key={product._id} {...product} />)}
         </>
     )
 }

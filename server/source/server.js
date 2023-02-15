@@ -20,6 +20,12 @@ app.use(helmet.frameguard())
 app.use(helmet.hidePoweredBy())
 app.use(bodyParser.json({ limit: '10kb' }))
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 app.use('/auth', routes.auth)
 app.use('/books', routes.books)
 app.use('/users', routes.users)

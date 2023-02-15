@@ -14,7 +14,7 @@ class Books {
     }
 
     async getAll() {
-        const data = await this.models.books.getAll()
+        const data = await this.models.books.get()
 
         return data
     }

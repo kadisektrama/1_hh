@@ -1,21 +1,15 @@
 import React from 'react'
 
 import Cards from './cards/cards'
+import { TBookData } from '../../../types/types'
 
-export type product = {
-  id: number,
-  title: string,
-  description: string,
-}
-
-type PropsType = {
-    products: product[],
+type MapPropsType = {
+    isLoaded: boolean,
+    products: TBookData,
     product: string | null,
 }
 
-const Products: React.FC<PropsType> = (props) => {
-    console.log(props, process.env)
-
+const Products: React.FC<MapPropsType> = (props) => {
     return (
         <div>
             <Cards {...props} />

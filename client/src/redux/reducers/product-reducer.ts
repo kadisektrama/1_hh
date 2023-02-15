@@ -1,31 +1,25 @@
-import { InferActionsTypes } from '../redux-store'
+import { InferActionsTypes, BaseThunkType } from '../redux-store'
+import { TBook, TBookData } from '../../types/types'
+import { bookApi } from '../../api/book-api'
 
 const initialState = {
     initialized: false,
-    products: [
-        {
-            id: 1,
-            title: 'The sorrows of Satan',
-            description: 'interesting',
-        },
-        {
-            id: 2,
-            title: 'WARHAMMER 40K',
-            description: 'war',
-        }
-    ],
+    products: {
+        data: [] as TBook[]
+    },
     product: null,
 }
 
 export type InitialStateType = typeof initialState
 type ActionsType = InferActionsTypes<typeof actions>
+type ThunkType = BaseThunkType<ActionsType>
 
 const productReducer = (state = initialState, action: ActionsType): InitialStateType => {
     switch (action.type) {
-        case 'PRODUCT/SET_INITIALIZED':
+        case 'PRODUCT/GET_PRODUCTS':
             return {
                 ...state,
-                initialized: true
+                products: action.payload
             }
         default:
             return state
@@ -33,7 +27,12 @@ const productReducer = (state = initialState, action: ActionsType): InitialState
 }
 
 export const actions = {
-    initializedSuccess: () => ({type: 'PRODUCT/SET_INITIALIZED'} as const)
+    getProducts: (products: TBookData) => ({ type: 'PRODUCT/GET_PRODUCTS', payload: products } as const)
+}
+
+export const getProducts = (): ThunkType => async (dispatch) => {
+    const products = await bookApi.get()
+    dispatch(actions.getProducts(products))
 }
 
 export default productReducer

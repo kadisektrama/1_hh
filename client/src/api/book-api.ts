@@ -1,13 +1,14 @@
-import { instance } from "./api";
+import { instance } from './api'
+import { TBook, TBookData } from '../types/types'
 
 export const bookApi = {
-    getByHash(bookId: number) {
+    getById(bookId: number) {
         return instance.get(`books/${bookId}`)
     },
-    getAll() {
-        return instance.get(`books`)
+    get() {
+        return instance.get<TBookData>('books').then(res => res.data)
     },
-    create(body: Object) {
-        return instance.post(`books`, body)
+    create(body: TBook) {
+        return instance.post('books', body)
     },
 }

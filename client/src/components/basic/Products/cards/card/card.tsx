@@ -2,11 +2,11 @@ import React from 'react'
 
 import { Card } from 'antd'
 
-import { product } from '../../products'
+import { TBook } from '../../../../../types/types'
 
 const { Meta } = Card
 
-const card: React.FC<product> = (props) => {
+const card: React.FC<TBook> = (props) => {
     return (
         <Card
             hoverable
