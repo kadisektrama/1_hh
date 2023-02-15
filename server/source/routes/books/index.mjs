@@ -2,8 +2,7 @@
 import express from 'express'
 
 // Tools
-import { get, post } from './handlers.mjs'
-import { getByBookId } from './hash/index.mjs'
+import { get, post, getByBookId } from './handlers.mjs'
 
 const routes = express.Router()
 

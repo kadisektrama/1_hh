@@ -19,8 +19,8 @@ class Books {
         return data
     }
 
-    async getByHash() {
-        const data = await this.models.books.getByHash()
+    async getById() {
+        const data = await this.models.books.getById()
 
         return data
     }

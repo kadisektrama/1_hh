@@ -11,14 +11,14 @@ export class Books {
         return data
     }
 
-    async getAll() {
-        const data = await books.find(this.data)
+    async get() {
+        const data = await books.find()
 
         return data
     }
 
-    async getByHash() {
-        const data = await books.findOne(this.data)
+    async getById() {
+        const data = await books.findById(this.data)
 
         return data
     }

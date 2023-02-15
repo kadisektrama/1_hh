@@ -22,7 +22,7 @@ app.use(bodyParser.json({ limit: '10kb' }))
 
 app.use('/auth', routes.auth)
 app.use('/books', routes.books)
-app.use('/users', [authorization], routes.users)
+app.use('/users', routes.users)
 app.use('/classes', [authorization], routes.classes)
 app.use('/lessons', [authorization], routes.lessons)
 app.get('/test', (req, res) => {

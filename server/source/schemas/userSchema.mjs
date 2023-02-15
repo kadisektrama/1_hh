@@ -1,15 +1,16 @@
 export const createUser = {
     'type': 'object',
     'properties': {
-        'name': {
+        'first_name': {
             'type': 'string',
-            'minLength': 3
+            'minLength': 3,
         },
-        'email': {
+        'last_name': {
             //'format': 'email',
             'type': 'string',
-        }
+            'minLength': 3,
+        },
     },
-    'required': ['name', 'email'],
-    'additionalProperties': false
+    'required': ['first_name', 'last_name'],
+    'additionalProperties': false,
 }

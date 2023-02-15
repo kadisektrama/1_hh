@@ -1,11 +1,14 @@
 import mongoose from 'mongoose'
 
 const bookSchema = mongoose.Schema({
-    name: String,
+    title: String,
+    description: String,
     price: Number,
-    currency: { type: 'string', enum: ['origin', 'best-seller'] },
-    short_description: String,
-    reviewsCount: Number,
+    currency: {
+        type: Number,
+        max: 1,
+    },
+    reviews_count: Number,
     rating: Number,
 })
 

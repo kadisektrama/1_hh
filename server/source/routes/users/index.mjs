@@ -1,7 +1,6 @@
 import express from 'express';
 
-import { get, post } from './handlers.mjs';
-import { getByUserId } from "./hash/index.mjs";
+import { get, post, getByUserId } from './handlers.mjs';
 
 //Utils
 import { limiter, validator } from "../../utils/index.mjs"
