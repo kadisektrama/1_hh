@@ -1,13 +1,14 @@
 import { instance } from './api'
+import { TUserData } from '../types/types'
 
 export const userApi = {
     getById(userId: number): Promise<any> {
         return instance.get(`books/${userId}`)
     },
-    get(): Promise<any> {
-        return instance.get(`users`)
+    get() {
+        return instance.get<TUserData>(`users`).then(res => res.data)
     },
-    create(body: Object): Promise<any> {
+    create(body: TUserData): Promise<any> {
         return instance.post(`users`, body)
     }
 }

@@ -3,35 +3,35 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 
 import { AppStateType } from '../../../redux/redux-store'
-import Products from './products'
-import { getProducts } from '../../../redux/reducers/product-reducer'
+import Users from './users'
+import { getUsers } from '../../../redux/reducers/users-reducer'
 
-type TMapProps = ReturnType<typeof mapStateToProps>
+type MapPropsType = ReturnType<typeof mapStateToProps>
 
 export type TDispatchProps = {
-    getProducts: () => void
+    getUsers: () => void
 }
 
-const ProductsContainer: React.FC<TMapProps & TDispatchProps> = (props) => {
+const ProductsContainer: React.FC<MapPropsType & TDispatchProps> = (props) => {
     const [isLoaded, setIsLoaded] = useState<boolean>(false)
 
     useEffect(() => {
-        Promise.all([props.getProducts()])
+        Promise.all([props.getUsers()])
             .then(() => setIsLoaded(true))
     }, [])
 
-    return <Products
+    return <Users
         isLoaded={isLoaded}
-        products={props.products}
+        users={props.users}
     />
 }
 
 const mapStateToProps = (state: AppStateType) => {
     return ({
-        products: state.product.products,
+        users: state.user.users,
     })
 }
 
 export default compose<React.ComponentType>(
-    connect(mapStateToProps, {getProducts})
+    connect(mapStateToProps, {getUsers})
 )(ProductsContainer)

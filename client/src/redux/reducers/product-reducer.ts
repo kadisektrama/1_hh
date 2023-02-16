@@ -3,7 +3,6 @@ import { TBook, TBookData } from '../../types/types'
 import { bookApi } from '../../api/book-api'
 
 const initialState = {
-    initialized: false,
     products: {
         data: [] as TBook[]
     },

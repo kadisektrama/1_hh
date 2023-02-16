@@ -13,6 +13,7 @@
     "antd": "^5.1.6",
     "axios": "^1.2.3",
     "lodash": "^4.17.21",
+    "node-sass": "^7.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.42.1",
@@ -22,6 +23,7 @@
     "redux-form": "^8.3.9",
     "redux-thunk": "^2.4.2",
     "reselect": "^4.1.7",
+    "sass": "^1.58.1",
     "typescript": "^4.9.4",
     "web-vitals": "^2.1.4"
   },

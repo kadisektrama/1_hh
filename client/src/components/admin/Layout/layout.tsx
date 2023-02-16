@@ -15,7 +15,7 @@ const layout = () => {
         <Layout>
             <Header />
             <Content>
-                <div className='content'>
+                <div>
                     <Outlet />
                 </div>
             </Content>

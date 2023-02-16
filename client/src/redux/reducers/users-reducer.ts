@@ -1,18 +1,24 @@
-import { InferActionsTypes } from '../redux-store'
+import { BaseThunkType, InferActionsTypes } from '../redux-store'
+import { TUser, TUserData } from '../../types/types'
+import { userApi } from '../../api/user-api'
 
 const initialState = {
-    initialized: false
+    users: {
+        data: [] as TUser[]
+    },
+    user: null,
 }
 
 export type InitialStateType = typeof initialState
 type ActionsType = InferActionsTypes<typeof actions>
+type ThunkType = BaseThunkType<ActionsType>
 
 const userReducer = (state = initialState, action: ActionsType): InitialStateType => {
     switch (action.type) {
-        case 'APP/SET_INITIALIZED':
+        case 'APP/GET_USERS':
             return {
                 ...state,
-                initialized: true
+                users: action.payload
             }
         default:
             return state
@@ -20,7 +26,14 @@ const userReducer = (state = initialState, action: ActionsType): InitialStateTyp
 }
 
 export const actions = {
-    initializedSuccess: () => ({type: 'APP/SET_INITIALIZED'} as const)
+    getUsers: (users: TUserData) => ({ type: 'APP/GET_USERS', payload: users } as const)
 }
+
+export const getUsers = (): ThunkType => async (dispatch) => {
+    const users = await userApi.get()
+    dispatch(actions.getUsers(users))
+    console.log('get_users')
+}
+
 
 export default userReducer
