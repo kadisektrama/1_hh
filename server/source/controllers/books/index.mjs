@@ -7,13 +7,7 @@ class Books {
         }
     }
 
-    async create() {
-        const data = await this.models.books.create()
-
-        return data
-    }
-
-    async getAll() {
+    async get() {
         const data = await this.models.books.get()
 
         return data
@@ -21,6 +15,12 @@ class Books {
 
     async getById() {
         const data = await this.models.books.getById()
+
+        return data
+    }
+
+    async create() {
+        const data = await this.models.books.create()
 
         return data
     }

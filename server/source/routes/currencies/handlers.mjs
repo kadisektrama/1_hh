@@ -1,9 +1,9 @@
-import { Books } from '../../controllers/index.mjs'
+import { Currencies } from '../../controllers/index.mjs'
 
 export const get = async (req, res) => {
     try {
-        const book = new Books(req.body)
-        const data = await book.get()
+        const currency = new Currencies(req.body)
+        const data = await currency.get()
 
         return res.status(200).json({ data })
     } catch ({ message }) {
@@ -13,8 +13,8 @@ export const get = async (req, res) => {
 
 export const post = async (req, res) => {
     try {
-        const book = new Books(req.body)
-        const data = await book.create()
+        const currency = new Currencies(req.body)
+        const data = await currency.create()
 
         return res.status(201).json({ data: data })
     } catch ({ message }) {
@@ -22,10 +22,10 @@ export const post = async (req, res) => {
     }
 }
 
-export const getByBookId = async (req, res) => {
+export const getByCurrencyId = async (req, res) => {
     try {
-        const book = new Books(req.params.bookId)
-        const data = await book.getById()
+        const currency = new Currencies(req.params.currencyId)
+        const data = await currency.getById()
 
         return res.status(200).json({ data: data })
     } catch ({ message }) {

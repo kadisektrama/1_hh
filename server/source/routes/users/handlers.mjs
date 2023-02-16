@@ -1,4 +1,4 @@
-import { Users } from "../../controllers/users/index.mjs"
+import { Users } from "../../controllers/index.mjs"
 
 export const get = async (req, res) => {
     try {

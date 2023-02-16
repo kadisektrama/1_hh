@@ -1,8 +1,6 @@
 import express from "express";
 import { authentication } from "../../utils/index.mjs";
 
-
-
 const routes = express.Router()
 
 routes.get('/login', [authentication], (req, res) => {

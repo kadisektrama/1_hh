@@ -29,9 +29,10 @@ app.use(function(req, res, next) {
 app.use('/auth', routes.auth)
 app.use('/books', routes.books)
 app.use('/users', routes.users)
-app.use('/classes', [authorization], routes.classes)
-app.use('/lessons', [authorization], routes.lessons)
-app.get('/test', (req, res) => {
+app.use('/categories', routes.categories)
+app.use('/currencies', routes.currencies)
+//app.use('/lessons', [authorization], routes.lessons)
+app.get('/test', [authorization], (req, res) => {
     res.status(200).json({ data: [] })
 })
 

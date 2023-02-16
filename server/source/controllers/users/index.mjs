@@ -7,12 +7,6 @@ export class Users {
         }
     }
 
-    async create() {
-        const data = this.models.users.create()
-
-        return data
-    }
-
     async get() {
         const data = this.models.users.get()
 
@@ -21,6 +15,12 @@ export class Users {
 
     async getById() {
         const data = this.models.users.getById()
+
+        return data
+    }
+
+    async create() {
+        const data = this.models.users.create()
 
         return data
     }

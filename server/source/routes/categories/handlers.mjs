@@ -1,9 +1,9 @@
-import { Books } from '../../controllers/index.mjs'
+import { Categories } from '../../controllers/index.mjs'
 
 export const get = async (req, res) => {
     try {
-        const book = new Books(req.body)
-        const data = await book.get()
+        const categories = new Categories(req.body)
+        const data = await categories.get()
 
         return res.status(200).json({ data })
     } catch ({ message }) {
@@ -13,8 +13,8 @@ export const get = async (req, res) => {
 
 export const post = async (req, res) => {
     try {
-        const book = new Books(req.body)
-        const data = await book.create()
+        const categories = new Categories(req.body)
+        const data = await categories.create()
 
         return res.status(201).json({ data: data })
     } catch ({ message }) {
@@ -22,10 +22,10 @@ export const post = async (req, res) => {
     }
 }
 
-export const getByBookId = async (req, res) => {
+export const getByCategoryId = async (req, res) => {
     try {
-        const book = new Books(req.params.bookId)
-        const data = await book.getById()
+        const categories = new Categories(req.params.currencyId)
+        const data = await categories.getById()
 
         return res.status(200).json({ data: data })
     } catch ({ message }) {
