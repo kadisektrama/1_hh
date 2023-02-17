@@ -1,4 +1,6 @@
 import React from 'react'
+
+import SimpleLoader from '../../common/loader'
 import { TUserData } from '../../../types/types'
 import Cards from './cards/cards'
 
@@ -9,7 +11,9 @@ type TMapProps = {
 
 const Users: React.FC<TMapProps> = (props) => {
     return (
-        <Cards users={props.users} />
+        <div>
+            {props.isLoaded ? <Cards users={props.users} /> : <SimpleLoader />}
+        </div>
     )
 }
 

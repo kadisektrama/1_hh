@@ -21,3 +21,14 @@ export type TUser = {
 export type TUserData = {
     data: TUser[]
 }
+
+export type TCategory = {
+    _id: string,
+    title: string,
+    description: string,
+    db_name: string,
+}
+
+export type TCategoryData = {
+    data: TCategory[]
+}

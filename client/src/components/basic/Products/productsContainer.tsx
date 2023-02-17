@@ -33,5 +33,5 @@ const mapStateToProps = (state: AppStateType) => {
 }
 
 export default compose<React.ComponentType>(
-    connect(mapStateToProps, {getProducts})
+    connect(mapStateToProps, { getProducts })
 )(ProductsContainer)

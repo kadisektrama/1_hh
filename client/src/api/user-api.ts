@@ -1,5 +1,5 @@
 import { instance } from './api'
-import { TUserData } from '../types/types'
+import { TUserData, TUser } from '../types/types'
 
 export const userApi = {
     getById(userId: number): Promise<any> {
@@ -8,7 +8,7 @@ export const userApi = {
     get() {
         return instance.get<TUserData>(`users`).then(res => res.data)
     },
-    create(body: TUserData): Promise<any> {
+    create(body: TUser): Promise<any> {
         return instance.post(`users`, body)
     }
 }

@@ -9,7 +9,7 @@ const header = () => {
     const navbarItems = [
         {
             key: 'catalog',
-            label: <Link to={'/catalog'}>catalog</Link>,
+            label: <Link to={'/categories'}>catalog</Link>,
         },
         {
             key: 'search',

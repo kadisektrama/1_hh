@@ -13,7 +13,6 @@ const Products: React.FC<MapPropsType> = (props) => {
     return (
         <div>
             {props.isLoaded ? <Cards {...props} /> : <SimpleLoader />}
-            <Cards {...props} />
         </div>
     )
 }

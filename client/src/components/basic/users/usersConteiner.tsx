@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 import { AppStateType } from '../../../redux/redux-store'
 import Users from './users'
-import { getUsers } from '../../../redux/reducers/users-reducer'
+import { getUsers } from '../../../redux/reducers/user-reducer'
 
 type MapPropsType = ReturnType<typeof mapStateToProps>
 
@@ -33,5 +33,5 @@ const mapStateToProps = (state: AppStateType) => {
 }
 
 export default compose<React.ComponentType>(
-    connect(mapStateToProps, {getUsers})
+    connect(mapStateToProps, { getUsers })
 )(ProductsContainer)

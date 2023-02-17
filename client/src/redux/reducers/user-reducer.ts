@@ -32,7 +32,6 @@ export const actions = {
 export const getUsers = (): ThunkType => async (dispatch) => {
     const users = await userApi.get()
     dispatch(actions.getUsers(users))
-    console.log('get_users')
 }
 
 

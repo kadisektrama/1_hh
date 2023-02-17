@@ -2,13 +2,15 @@ import { Action, applyMiddleware, combineReducers, compose, createStore } from '
 import thunkMiddleware, { ThunkAction } from 'redux-thunk'
 
 import appReducer from './reducers/app-reducer'
-import userReducer from './reducers/users-reducer'
+import userReducer from './reducers/user-reducer'
 import productReducer from './reducers/product-reducer'
+import categoryReducer from './reducers/category-reducer'
 
 const rootReducer = combineReducers({
     app: appReducer,
     user: userReducer,
     product: productReducer,
+    category: categoryReducer,
 })
 
 type RootReducerType = typeof rootReducer; // (globalstate: AppStateType) => AppStateType
