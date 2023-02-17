@@ -1,27 +1,53 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Outlet } from 'react-router-dom'
 
-import { Layout } from 'antd'
+import {
+    MenuFoldOutlined,
+    MenuUnfoldOutlined,
+} from '@ant-design/icons'
+import { Layout, theme } from 'antd'
 
-// Tools
-import Header from './header/header'
-import Footer from './footer/footer'
+import Menu from './menu/menu'
 import './layout.scss'
 
-const { Content } = Layout
+const { Header, Sider, Content } = Layout
 
-const layout = () => {
+const App: React.FC = () => {
+    const [collapsed, setCollapsed] = useState(false)
+    const {
+        token: { colorBgContainer },
+    } = theme.useToken()
+
     return (
         <Layout>
-            <Header />
-            <Content>
-                <div>
+            <Sider trigger={null} collapsible collapsed={collapsed}>
+                <Menu />
+            </Sider>
+            <Layout className="site-layout">
+                <Header style={{ padding: 0, background: colorBgContainer }}>
+                    {collapsed ? (
+                        <MenuUnfoldOutlined className='trigger' onClick={() => setCollapsed(!collapsed)} />
+                    ) : (
+                        <MenuFoldOutlined className='trigger' onClick={() => setCollapsed(!collapsed)} />
+                    )}
+                    {/*{React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
+                        className: 'trigger',
+                        onClick: () => setCollapsed(!collapsed),
+                    })}*/}
+                </Header>
+                <Content
+                    style={{
+                        margin: '24px 16px',
+                        padding: 24,
+                        minHeight: 280,
+                        background: colorBgContainer,
+                    }}
+                >
                     <Outlet />
-                </div>
-            </Content>
-            <Footer />
+                </Content>
+            </Layout>
         </Layout>
     )
 }
 
-export default layout
+export default App
