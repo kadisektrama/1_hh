@@ -5,12 +5,14 @@ import appReducer from './reducers/app-reducer'
 import userReducer from './reducers/user-reducer'
 import productReducer from './reducers/product-reducer'
 import categoryReducer from './reducers/category-reducer'
+import bookReducer from './reducers/book-reducer'
 
 const rootReducer = combineReducers({
     app: appReducer,
     user: userReducer,
     product: productReducer,
     category: categoryReducer,
+    book: bookReducer,
 })
 
 type RootReducerType = typeof rootReducer; // (globalstate: AppStateType) => AppStateType

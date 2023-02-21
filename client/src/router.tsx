@@ -16,7 +16,8 @@ import Users from './components/basic/users/usersConteiner'
 import Categories from './components/basic/categories/categoriesContainer'
 
 // Admin
-import AdminProducts from './components/admin/products/productsContainer'
+import AdminBooks from './components/admin/books/booksContainer'
+import AdminCreateBook from './components/admin/books/create/createBookContainer'
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -34,7 +35,8 @@ const router = createBrowserRouter(
             <Route path='/admin' element={<AdminLayout />}>
                 <Route path='categories' element={<div>categories</div>} />
                 <Route path='users' element={<div>users</div>} />
-                <Route path='products' element={<AdminProducts />} />
+                <Route path='books' element={<AdminBooks />} />
+                <Route path='books/create' element={<AdminCreateBook />} />
             </Route>
 
         </Route>

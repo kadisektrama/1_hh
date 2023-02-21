@@ -26,9 +26,9 @@ const App: React.FC = () => {
                         label: <Link to={'/admin/users'}>Пользователи</Link>,
                     },
                     {
-                        key: 'products',
+                        key: 'books',
                         icon: <VideoCameraOutlined />,
-                        label: <Link to={'/admin/products'}>Продукты</Link>,
+                        label: <Link to={'/admin/books'}>Книги</Link>,
                     },
                 ]}
             />
