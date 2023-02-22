@@ -11,4 +11,10 @@ export const bookApi = {
     create(body: TBook) {
         return instance.post('books', body)
     },
+    update(bookId: string, body: TBook) {
+        return instance.put(`books/${bookId}`, body)
+    },
+    delete(bookId: string) {
+        return instance.delete(`books/${bookId}`)
+    },
 }

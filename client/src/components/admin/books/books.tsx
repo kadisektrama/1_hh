@@ -40,7 +40,10 @@ const columns: ColumnsType<TBook> = [
         title: 'Actions',
         dataIndex: '',
         key: 'x',
-        render: () => <a>Delete</a>,
+        render: (data) => <>
+            <Link style={{ marginRight: 8 }} to={`/admin/books/${data.id}/update`}>Update</Link>
+            <Link to={`/admin/books/${data.id}/delete`}>Delete</Link>
+        </>,
     },
 ]
 

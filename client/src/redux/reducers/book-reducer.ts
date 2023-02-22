@@ -6,7 +6,9 @@ const initialState = {
     books: {
         data: [] as TBook[]
     },
-    book: null,
+    book: {
+        data: [] as TBook[]
+    },
 }
 
 export type InitialStateType = typeof initialState
@@ -15,10 +17,15 @@ type ThunkType = BaseThunkType<ActionsType>
 
 const bookReducer = (state = initialState, action: ActionsType): InitialStateType => {
     switch (action.type) {
-        case 'PRODUCT/GET_BOOKS':
+        case 'BOOK/GET_BOOKS':
             return {
                 ...state,
                 books: action.payload
+            }
+        case 'BOOK/GET_BOOK':
+            return {
+                ...state,
+                book: action.payload
             }
         default:
             return state
@@ -26,12 +33,30 @@ const bookReducer = (state = initialState, action: ActionsType): InitialStateTyp
 }
 
 export const actions = {
-    getProducts: (books: TBookData) => ({ type: 'PRODUCT/GET_BOOKS', payload: books } as const)
+    getBooks: (books: TBookData) => ({ type: 'BOOK/GET_BOOKS', payload: books } as const),
+    getBook: (book: TBookData) => ({ type: 'BOOK/GET_BOOK', payload: book } as const)
 }
 
 export const getBooks = (): ThunkType => async (dispatch) => {
-    const products = await bookApi.get()
-    dispatch(actions.getProducts(products))
+    const books = await bookApi.get()
+    dispatch(actions.getBooks(books))
+}
+
+export const getBook = (): ThunkType => async (dispatch) => {
+    const book = await bookApi.get()
+    dispatch(actions.getBook(book))
+}
+
+export const createBook = (body: TBook): ThunkType => async () => {
+    await bookApi.create(body)
+}
+
+export const updateBook = (bookId: string, body: TBook): ThunkType => async () => {
+    await bookApi.update(bookId, body)
+}
+
+export const deleteBook = (bookId: string): ThunkType => async () => {
+    await bookApi.delete(bookId)
 }
 
 export default bookReducer

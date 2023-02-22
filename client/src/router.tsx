@@ -18,6 +18,7 @@ import Categories from './components/basic/categories/categoriesContainer'
 // Admin
 import AdminBooks from './components/admin/books/booksContainer'
 import AdminCreateBook from './components/admin/books/create/createBookContainer'
+import AdminUpdateBook from './components/admin/books/update/updateBookContainer'
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -37,6 +38,8 @@ const router = createBrowserRouter(
                 <Route path='users' element={<div>users</div>} />
                 <Route path='books' element={<AdminBooks />} />
                 <Route path='books/create' element={<AdminCreateBook />} />
+                <Route path='books/:bookId/update' element={<AdminUpdateBook />} />
+                <Route path='books/:bookId/view' element={<div>bookView</div>} />
             </Route>
 
         </Route>
