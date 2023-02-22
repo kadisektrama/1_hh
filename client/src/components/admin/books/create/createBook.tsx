@@ -5,24 +5,24 @@ import {
     Form,
     Input,
     Button,
-    Radio,
     Select,
-    Cascader,
-    DatePicker,
     InputNumber,
-    TreeSelect,
-    Switch,
-    Checkbox,
-    Upload,
 } from 'antd'
 
-const { RangePicker } = DatePicker
+import { TBook } from '../../../../types/types'
+
 const { TextArea } = Input
 
-const CreateBook: React.FC = () => {
-    const { register, handleSubmit, control, formState: { errors } } = useForm()
+type TDispatchProps = {
+    createBook: (body: TBook) => void
+}
 
-    const onSubmit = handleSubmit(data => console.log(data))
+const CreateBook: React.FC<TDispatchProps> = (props) => {
+    const { handleSubmit, control, formState: { errors } } = useForm<TBook>()
+
+    const onSubmit = handleSubmit(data => {
+        props.createBook(data)
+    })
 
     return (
         <>
@@ -34,49 +34,68 @@ const CreateBook: React.FC = () => {
                 style={{ maxWidth: 600 }}
             >
                 <Form.Item label='Title'>
-                    <Input {...register('title', { required: true })} />
-                    {errors.title ? <p>title is required</p> : null}
+                    <Controller
+                        name="title"
+                        control={control}
+                        rules={{ required: true, minLength: 6, maxLength: 16 }}
+                        render={({ field }) => <Input {...field} />}
+                    />
+                    {errors.title && <p className="error">title is required</p>}
                 </Form.Item>
 
                 <Form.Item label="description">
-                    <TextArea rows={4} {...register("description", { required: true })} />
-                    {errors.description ? <p>description is required</p> : null}
+                    <Controller
+                        name="description"
+                        control={control}
+                        rules={{ required: true, minLength: 10, maxLength: 200 }}
+                        render={({ field }) => <TextArea rows={4} {...field} />}
+                    />
+                    {errors.description ? <p className="error">description is required</p> : null}
                 </Form.Item>
 
                 <Form.Item label="rating">
                     <Controller
                         name="rating"
                         control={control}
-                        rules={{ required: true }}
+                        rules={{ required: true, min: 0, max: 5 }}
                         render={({ field }) => <InputNumber {...field} />}
                     />
-                    {errors.rating ? <p>rating is required</p> : null}
+                    {errors.rating ? <p className="error">rating is required</p> : null}
                 </Form.Item>
 
                 <Form.Item label="reviews_count">
                     <Controller
                         name="reviews_count"
                         control={control}
-                        rules={{ required: true }}
+                        rules={{ required: true, min: 0 }}
                         render={({ field }) => <InputNumber {...field} />}
                     />
-                    {errors.reviews_count ? <p>reviews_count is required</p> : null}
+                    {errors.reviews_count ? <p className="error">reviews_count is required</p> : null}
                 </Form.Item>
 
                 <Form.Item label="price">
                     <Controller
                         name="price"
                         control={control}
-                        rules={{ required: true }}
+                        rules={{ required: true, min: 0 }}
                         render={({ field }) => <InputNumber {...field} />}
                     />
-                    {errors.price ? <p>price is required</p> : null}
+                    {errors.price ? <p className="error">price is required</p> : null}
                 </Form.Item>
 
                 <Form.Item label='currency'>
-                    <Select>
-                        <Select.Option value='1'>BYN</Select.Option>
-                    </Select>
+                    <Controller
+                        name="currency"
+                        control={control}
+                        rules={{ required: true }}
+                        render={({ field }) =>
+                            <Select {...field}>
+                                <Select.Option value={1}>BYN</Select.Option>
+                            </Select>
+                        }
+                    />
+
+                    {errors.price ? <p className="error">currency is required</p> : null}
                 </Form.Item>
 
                 <Button type="primary" htmlType="submit">

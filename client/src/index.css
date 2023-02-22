@@ -24,3 +24,11 @@ html {
 #root {
   height: 100%;
 }
+
+.error {
+  color: red
+}
+
+.warning {
+  color: yellow
+}

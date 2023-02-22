@@ -30,7 +30,7 @@
             "windows"
         ],
         "quotes": [
-            "warning",
+            1,
             "single",
             "backtick"
         ],
