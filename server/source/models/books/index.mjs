@@ -5,6 +5,19 @@ export class Books {
         this.data = data
     }
 
+    async update() {
+        const { id, ...rest } = this.data
+        const data = await books.findByIdAndUpdate(id, rest)
+
+        return data
+    }
+
+    async delete() {
+        const data = await books.findByIdAndDelete(this.data)
+
+        return data
+    }
+
     async create() {
         const data = await books.create(this.data)
 

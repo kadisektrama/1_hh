@@ -7,6 +7,18 @@ class Books {
         }
     }
 
+    async update() {
+        const data = this.models.books.update()
+
+        return data
+    }
+
+    async delete() {
+        const data = this.models.books.delete()
+
+        return data
+    }
+
     async get() {
         const data = await this.models.books.get()
 

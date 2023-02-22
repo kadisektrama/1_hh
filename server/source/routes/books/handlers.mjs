@@ -11,7 +11,7 @@ export const get = async (req, res) => {
     }
 }
 
-export const post = async (req, res) => {
+export const create = async (req, res) => {
     try {
         const book = new Books(req.body)
         const data = await book.create()
@@ -28,6 +28,28 @@ export const getByBookId = async (req, res) => {
         const data = await book.getById()
 
         return res.status(200).json({ data: data })
+    } catch ({ message }) {
+        return res.status(400).json({ message })
+    }
+}
+
+export const updateByBookId = async (req, res) => {
+    try {
+        const book = new Books({ ...{id: req.params.bookId}, ...req.body })
+        await book.update()
+
+        return res.sendStatus(201)
+    } catch ({ message }) {
+        return res.status(400).json({ message })
+    }
+}
+
+export const deleteByBookId = async (req, res) => {
+    try {
+        const book = new Books(req.params.bookId)
+        await book.delete()
+
+        return res.sendStatus(202)
     } catch ({ message }) {
         return res.status(400).json({ message })
     }
