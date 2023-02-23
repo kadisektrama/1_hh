@@ -2,8 +2,8 @@ import { instance } from './api'
 import { TBook, TBookData } from '../types/types'
 
 export const bookApi = {
-    getById(bookId: number) {
-        return instance.get(`books/${bookId}`)
+    getById(bookId: string) {
+        return instance.get(`books/${bookId}`).then(res => res.data)
     },
     get() {
         return instance.get<TBookData>('books').then(res => res.data)

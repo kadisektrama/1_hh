@@ -2,17 +2,18 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 
-import Products from './books'
+import Books from './books'
 import { AppStateType } from '../../../redux/redux-store'
 import { TBookData } from '../../../types/types'
-import { getBooks } from '../../../redux/reducers/book-reducer'
+import { getBooks, deleteBook } from '../../../redux/reducers/book-reducer'
 
 type TMapProps = {
     books: TBookData
 }
 
 export type TDispatchProps = {
-    getBooks: () => void
+    getBooks: () => void,
+    deleteBook: (bookId: string) => void,
 }
 
 const BooksContainer: React.FC<TMapProps & TDispatchProps> = (props) => {
@@ -23,9 +24,10 @@ const BooksContainer: React.FC<TMapProps & TDispatchProps> = (props) => {
             .then(() => setIsLoaded(true))
     }, [])
 
-    return <Products
+    return <Books
         isLoaded={isLoaded}
         books={props.books}
+        deleteBook={props.deleteBook}
     />
 }
 
@@ -36,6 +38,6 @@ const mapStateToProps = (state: AppStateType) => {
 }
 
 export default compose<React.ComponentType> (
-    connect(mapStateToProps , {getBooks})
+    connect(mapStateToProps , { getBooks, deleteBook })
 )(BooksContainer)
 

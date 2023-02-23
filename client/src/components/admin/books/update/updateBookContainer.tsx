@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import UpdateBook from './updateBook'
-import { TBook, TBookData } from '../../../../types/types'
+import { TBook, TBookDataSingle } from '../../../../types/types'
 import { AppStateType } from '../../../../redux/redux-store'
 import { updateBook, getBook } from '../../../../redux/reducers/book-reducer'
 
@@ -15,13 +15,17 @@ type TDispatchProps = {
 
 type TMapProps = {
     isLoaded: boolean,
-    book: TBookData
+    book: TBookDataSingle
+}
+
+type TUseParams = {
+    bookId: string
 }
 
 const CreateBookContainer: React.FC<TMapProps & TDispatchProps> = (props) => {
     const [isLoaded, setIsLoaded] = useState<boolean>(false)
     const navigate = useNavigate()
-    const { bookId } = useParams()
+    const { bookId } = useParams<TUseParams>()
 
     const updateBook = async (bookId: string, body: TBook) => {
         await props.updateBook(bookId, body)
@@ -33,13 +37,17 @@ const CreateBookContainer: React.FC<TMapProps & TDispatchProps> = (props) => {
             .then(() => setIsLoaded(true))
     }, [])
 
-
     return (
-        <UpdateBook
-            updateBook={(bookId: string, body: TBook) => updateBook(bookId, body)}
-            isLoaded={isLoaded}
-            book={props.book}
-        />
+        <>
+            {isLoaded && (
+                <UpdateBook
+                    bookId={bookId!}
+                    updateBook={(bookId: string, body: TBook) => updateBook(bookId, body)}
+                    isLoaded={isLoaded}
+                    book={props.book}
+                />
+            )}
+        </>
     )
 }
 

@@ -12,6 +12,10 @@ export type TBookData = {
     data: TBook[]
 }
 
+export type TBookDataSingle = {
+    data: TBook
+}
+
 export type TUser = {
     _id: string,
     first_name: string,

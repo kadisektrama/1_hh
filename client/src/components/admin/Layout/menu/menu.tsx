@@ -18,17 +18,17 @@ const App: React.FC = () => {
                     {
                         key: 'categories',
                         icon: <UploadOutlined />,
-                        label: <Link to={'/admin/categories'}>Категории</Link>,
+                        label: <Link to={'/admin/categories'}>Categories</Link>,
                     },
                     {
                         key: 'users',
                         icon: <UserOutlined />,
-                        label: <Link to={'/admin/users'}>Пользователи</Link>,
+                        label: <Link to={'/admin/users'}>Users</Link>,
                     },
                     {
                         key: 'books',
                         icon: <VideoCameraOutlined />,
-                        label: <Link to={'/admin/books'}>Книги</Link>,
+                        label: <Link to={'/admin/books'}>Books</Link>,
                     },
                 ]}
             />

@@ -42,8 +42,8 @@ export const getBooks = (): ThunkType => async (dispatch) => {
     dispatch(actions.getBooks(books))
 }
 
-export const getBook = (): ThunkType => async (dispatch) => {
-    const book = await bookApi.get()
+export const getBook = (bookId: string): ThunkType => async (dispatch) => {
+    const book = await bookApi.getById(bookId)
     dispatch(actions.getBook(book))
 }
 
@@ -55,8 +55,10 @@ export const updateBook = (bookId: string, body: TBook): ThunkType => async () =
     await bookApi.update(bookId, body)
 }
 
-export const deleteBook = (bookId: string): ThunkType => async () => {
+export const deleteBook = (bookId: string): ThunkType => async (dispatch) => {
     await bookApi.delete(bookId)
+    const books = await bookApi.get()
+    dispatch(actions.getBooks(books))
 }
 
 export default bookReducer
