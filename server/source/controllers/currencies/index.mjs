@@ -1,4 +1,4 @@
-import { Currencies as CurrenciesModel } from '../../models/currencies/index.mjs'
+import { Currencies as CurrenciesModel } from '../../models/index.mjs'
 
 export class Currencies {
     constructor(data) {

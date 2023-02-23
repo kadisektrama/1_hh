@@ -27,10 +27,12 @@ app.use(function(req, res, next) {
 });
 
 app.use('/auth', routes.auth)
+app.use('/products', routes.products)
 app.use('/books', routes.books)
 app.use('/users', routes.users)
 app.use('/categories', routes.categories)
 app.use('/currencies', routes.currencies)
+app.use('/bicycles', routes.bicycles)
 //app.use('/lessons', [authorization], routes.lessons)
 app.get('/test', [authorization], (req, res) => {
     res.status(200).json({ data: [] })

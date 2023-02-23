@@ -1,4 +1,4 @@
-import { Categories as CategoriesModel } from '../../models/categories/index.mjs'
+import { Categories as CategoriesModel } from '../../models/index.mjs'
 
 export class Categories {
     constructor(data) {
