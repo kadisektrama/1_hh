@@ -1,10 +1,10 @@
 import { InferActionsTypes, BaseThunkType } from '../redux-store'
-import { TBook, TBookData } from '../../types/types'
-import { bookApi } from '../../api/book-api'
+import { TProductData, TProduct } from '../../types/types'
+import { productApi } from '../../api/product-api'
 
 const initialState = {
     products: {
-        data: [] as TBook[]
+        data: [] as TProduct[]
     },
     product: null,
 }
@@ -26,11 +26,11 @@ const productReducer = (state = initialState, action: ActionsType): InitialState
 }
 
 export const actions = {
-    getProducts: (products: TBookData) => ({ type: 'PRODUCT/GET_PRODUCTS', payload: products } as const)
+    getProducts: (products: TProductData) => ({ type: 'PRODUCT/GET_PRODUCTS', payload: products } as const)
 }
 
 export const getProducts = (): ThunkType => async (dispatch) => {
-    const products = await bookApi.get()
+    const products = await productApi.get()
     dispatch(actions.getProducts(products))
 }
 

@@ -1,19 +1,26 @@
 import React from 'react'
 
 import { Card } from 'antd'
+import { Typography } from 'antd'
 
-import { TBook } from '../../../../../types/types'
+import { TProduct } from '../../../../../types/types'
 
-const { Meta } = Card
+const { Title, Paragraph } = Typography
 
-const card: React.FC<TBook> = (props) => {
+const card: React.FC<TProduct> = (props) => {
     return (
         <Card
-            hoverable
-            style={{ width: 240 }}
-            cover={<img alt='example' src='https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png' />}
+            style={{ width: '250px' }}
+            className='card_cell'
+            cover={
+                <img
+                    alt="example"
+                    src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                />
+            }
         >
-            <Meta title={props.title} description={props.description} />
+            <Title className='text-inline' level={4}>{props.title}</Title>
+            <Paragraph>{props.description}</Paragraph>
         </Card>
     )
 }

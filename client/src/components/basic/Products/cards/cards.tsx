@@ -1,10 +1,10 @@
 import React from 'react'
 
-import { TBookData } from '../../../../types/types'
+import { TProductData } from '../../../../types/types'
 import Card from './card/card'
 
 type PropsType = {
-    products: TBookData,
+    products: TProductData,
 }
 
 const cards: React.FC<PropsType> = (props) => {

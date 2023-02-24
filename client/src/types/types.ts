@@ -36,3 +36,9 @@ export type TCategory = {
 export type TCategoryData = {
     data: TCategory[]
 }
+
+export type TProduct = TBook
+
+export type TProductData = {
+    data: TProduct[]
+}

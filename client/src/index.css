@@ -32,3 +32,18 @@ html {
 .warning {
   color: yellow
 }
+
+.recommendation_container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card_cell {
+  margin: 16px;
+}
+
+.text-inline {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

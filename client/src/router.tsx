@@ -25,6 +25,7 @@ const router = createBrowserRouter(
         <Route>
             <Route path="/" element={<BasicLayout />}>
                 <Route path="/" element={<Products />} />
+                <Route path="/products" element={<Products />} />
                 <Route path="/users" element={<Users />} />
                 <Route path="/users/:userId" element={<Users />} /> TODO
                 <Route path="/categories" element={<Categories />} />

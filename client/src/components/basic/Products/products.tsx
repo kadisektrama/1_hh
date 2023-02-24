@@ -1,17 +1,17 @@
 import React from 'react'
 
 import Cards from './cards/cards'
-import { TBookData } from '../../../types/types'
+import { TProductData} from '../../../types/types'
 import SimpleLoader from '../../common/loader'
 
 type MapPropsType = {
     isLoaded: boolean,
-    products: TBookData,
+    products: TProductData,
 }
 
 const Products: React.FC<MapPropsType> = (props) => {
     return (
-        <div>
+        <div className='recommendation_container'>
             {props.isLoaded ? <Cards {...props} /> : <SimpleLoader />}
         </div>
     )
