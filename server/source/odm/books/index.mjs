@@ -1,17 +1,9 @@
 import mongoose from 'mongoose'
+import { products } from '../products/index.mjs'
 
-const bookSchema = mongoose.Schema({
-    title: String,
-    description: String,
-    price: Number,
-    currency: {
-        type: Number,
-        max: 1,
-    },
-    reviews_count: Number,
-    rating: Number,
-})
-
-const books = mongoose.model('book', bookSchema)
+const books = products.discriminator(
+    'books',
+    new mongoose.Schema({ author: String })
+)
 
 export { books }
