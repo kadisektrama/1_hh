@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom'
 import { AppStateType } from '../../../../redux/redux-store'
 import { getBook } from '../../../../redux/reducers/book-reducer'
 import { TBookDataSingle } from '../../../../types/types'
-import ViewBook from './viewBook'
+import ViewBook from './view'
 
 type TMapStateToProps = {
     book: TBookDataSingle
@@ -20,7 +20,7 @@ type TUseParams = {
     bookId: string
 }
 
-const ViewBookContainer: React.FC<TMapStateToProps & TMapDispatchToProps> = (props) => {
+const ViewContainer: React.FC<TMapStateToProps & TMapDispatchToProps> = (props) => {
     const [isLoaded, setIsLoaded] = useState<boolean>(false)
     const { bookId } = useParams<TUseParams>()
 
@@ -45,4 +45,4 @@ const mapStateToProps = (state: AppStateType) => {
 
 export default compose<React.ComponentType>(
     connect(mapStateToProps, { getBook })
-)(ViewBookContainer)
+)(ViewContainer)

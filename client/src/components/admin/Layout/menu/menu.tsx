@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
 import { Menu } from 'antd'
-import { UnorderedListOutlined, UserOutlined, BookOutlined, HeartOutlined, PoundCircleOutlined } from '@ant-design/icons'
+import { UnorderedListOutlined, UserOutlined, BookOutlined, HeartOutlined, PoundCircleOutlined, DatabaseOutlined } from '@ant-design/icons'
 
 const App: React.FC = () => {
     const location = useLocation()
@@ -24,6 +24,11 @@ const App: React.FC = () => {
                         key: 'categories',
                         icon: <UnorderedListOutlined />,
                         label: <Link to={'/admin/categories'}>Categories</Link>,
+                    },
+                    {
+                        key: 'products',
+                        icon: <DatabaseOutlined />,
+                        label: <Link to={'/admin/products'}>Products</Link>,
                     },
                     {
                         key: 'books',

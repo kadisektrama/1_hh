@@ -3,7 +3,7 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-import CreateBook from './createBook'
+import Create from './create'
 import { TBook } from '../../../../types/types'
 import { createBook } from '../../../../redux/reducers/book-reducer'
 
@@ -11,7 +11,7 @@ type TDispatchProps = {
     createBook: (body: TBook) => void
 }
 
-const CreateBookContainer: React.FC<TDispatchProps> = (props) => {
+const CreateContainer: React.FC<TDispatchProps> = (props) => {
     const navigate = useNavigate()
     const createBook = async (body: TBook) => {
         Promise.all([props.createBook(body)])
@@ -19,7 +19,7 @@ const CreateBookContainer: React.FC<TDispatchProps> = (props) => {
     }
 
     return (
-        <CreateBook
+        <Create
             createBook={(body: TBook) => createBook(body)}
         />
     )
@@ -27,5 +27,5 @@ const CreateBookContainer: React.FC<TDispatchProps> = (props) => {
 
 export default compose(
     connect(null, {createBook})
-)(CreateBookContainer)
+)(CreateContainer)
 

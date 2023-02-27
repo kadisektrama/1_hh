@@ -12,7 +12,7 @@ type TMapStateToProps = {
 }
 
 type TMapDispatchToProps = {
-    deleteUser: (userid: string) => void
+    deleteUser: (userId: string) => void
 }
 
 const users: React.FC<TMapStateToProps & TMapDispatchToProps> = (props) => {
@@ -22,7 +22,7 @@ const users: React.FC<TMapStateToProps & TMapDispatchToProps> = (props) => {
             dataIndex: '',
             key: 'first_name',
             render: (data) => <>
-                <Link to={`/admin/books/${data._id}/view`}>
+                <Link to={`/admin/users/${data._id}/view`}>
                     {data.first_name}
                 </Link>
             </>,

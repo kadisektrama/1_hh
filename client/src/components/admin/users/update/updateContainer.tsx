@@ -3,48 +3,48 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 
-import UpdateBook from './updateBook'
-import { TBook, TBookDataSingle } from '../../../../types/types'
+import Update from './update'
+import { TUser, TUserDataSingle } from '../../../../types/types'
 import { AppStateType } from '../../../../redux/redux-store'
-import { updateBook, getBook } from '../../../../redux/reducers/book-reducer'
+import { updateUser, getUser } from '../../../../redux/reducers/user-reducer'
 
 type TDispatchProps = {
-    getBook: (bookId: string) => void,
-    updateBook: (bookId: string, body: TBook) => void
+    getUser: (userId: string) => void,
+    updateUser: (userId: string, body: TUser) => void
 }
 
 type TMapProps = {
     isLoaded: boolean,
-    book: TBookDataSingle
+    user: TUserDataSingle
 }
 
 type TUseParams = {
-    bookId: string
+    userId: string
 }
 
 const CreateBookContainer: React.FC<TMapProps & TDispatchProps> = (props) => {
     const [isLoaded, setIsLoaded] = useState<boolean>(false)
     const navigate = useNavigate()
-    const { bookId } = useParams<TUseParams>()
+    const { userId } = useParams<TUseParams>()
 
-    const updateBook = async (bookId: string, body: TBook) => {
-        await props.updateBook(bookId, body)
-        navigate('/admin/books')
+    const updateUser = async (userId: string, body: TUser) => {
+        await props.updateUser(userId, body)
+        navigate('/admin/users')
     }
 
     useEffect(() => {
-        Promise.all([props.getBook(bookId!)])
+        Promise.all([props.getUser(userId!)])
             .then(() => setIsLoaded(true))
     }, [])
 
     return (
         <>
             {isLoaded && (
-                <UpdateBook
-                    bookId={bookId!}
-                    updateBook={(bookId: string, body: TBook) => updateBook(bookId, body)}
+                <Update
+                    userId={userId!}
+                    updateUser={(userId: string, body: TUser) => updateUser(userId, body)}
                     isLoaded={isLoaded}
-                    book={props.book}
+                    user={props.user}
                 />
             )}
         </>
@@ -53,11 +53,11 @@ const CreateBookContainer: React.FC<TMapProps & TDispatchProps> = (props) => {
 
 const mapStateToProps = (state: AppStateType) => {
     return ({
-        book: state.book.book,
+        user: state.user.user,
     })
 }
 
 export default compose<ComponentType>(
-    connect(mapStateToProps, {getBook, updateBook})
+    connect(mapStateToProps, { getUser, updateUser })
 )(CreateBookContainer)
 

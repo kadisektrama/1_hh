@@ -18,14 +18,18 @@ import Bicycle from './components/basic/bicycle/bicycleContainer'
 import Book from './components/basic/book/bookContainer'
 
 // Admin
+import AdminCategories from './components/admin/categories/categoriesContainer'
+
 import AdminBooks from './components/admin/books/booksContainer'
-import AdminCreateBook from './components/admin/books/create/createBookContainer'
-import AdminUpdateBook from './components/admin/books/update/updateBookContainer'
-import AdminViewBook from './components/admin/books/view/viewBookContainer'
+import AdminCreateBook from './components/admin/books/create/createContainer'
+import AdminUpdateBook from './components/admin/books/update/updateContainer'
+import AdminViewBook from './components/admin/books/view/viewContainer'
+
+import AdminProducts from './components/admin/products/productsContainer'
 
 import AdminUsers from './components/admin/users/usersContainer'
 import AdminCreateUser from './components/admin/users/create/createContainer'
-import AdminUpdateUser from './components/admin/users/update/udateContainer'
+import AdminUpdateUser from './components/admin/users/update/updateContainer'
 import AdminViewUser from './components/admin/users/view/viewContainer'
 
 const router = createBrowserRouter(
@@ -34,8 +38,8 @@ const router = createBrowserRouter(
             <Route path="/" element={<BasicLayout />}>
                 <Route path="/" element={<Products />} />
                 <Route path="/products" element={<Products />} />
-                <Route path="/books/:bookId" element={<Book />} /> TODO
-                <Route path="/bicycles/:bicycleId" element={<Bicycle />} /> TODO
+                <Route path="/books/:bookId" element={<Book />} />
+                <Route path="/bicycles/:bicycleId" element={<Bicycle />} />
                 <Route path="/users" element={<Users />} />
                 <Route path="/users/:userId" element={<Users />} /> TODO
                 <Route path="/categories" element={<Categories />} />
@@ -45,14 +49,16 @@ const router = createBrowserRouter(
                 <Route path="/box" element={<div>box</div>} /> TODO
             </Route>
             <Route path='/admin' element={<AdminLayout />}>
-                <Route path='categories' element={<div>categories</div>} /> TODO
+                <Route path='categories' element={<AdminCategories />} />
                 <Route path='categories/create' element={<div>create category</div>} /> TODO
                 <Route path='categories/:categoryId/update' element={<div>update category</div>} /> TODO
 
-                <Route path='users' element={<AdminUsers />} /> TODO
-                <Route path='users/create' element={<AdminCreateUser />} /> TODO
-                <Route path='users/:userId/update' element={<AdminUpdateUser />} /> TODO
-                <Route path='users/:userId/view' element={<AdminViewUser />} /> TODO
+                <Route path='users' element={<AdminUsers />} />
+                <Route path='users/create' element={<AdminCreateUser />} />
+                <Route path='users/:userId/update' element={<AdminUpdateUser />} />
+                <Route path='users/:userId/view' element={<AdminViewUser />} />
+
+                <Route path='products' element={<AdminProducts />} />
 
                 <Route path='books' element={<AdminBooks />} />
                 <Route path='books/create' element={<AdminCreateBook />} />

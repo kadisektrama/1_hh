@@ -10,5 +10,8 @@ export const categoryApi = {
     },
     create(body: TCategory): Promise<any> {
         return instance.post(`categories`, body)
+    },
+    delete(categoryId: string): Promise<any> {
+        return instance.delete(`categories/${categoryId}`)
     }
 }

@@ -8,7 +8,7 @@ type TMapStateToProps = {
     isLoaded: boolean,
 }
 
-const viewBook: React.FC<TMapStateToProps> = (props) => {
+const view: React.FC<TMapStateToProps> = (props) => {
     return (
         <>
             {props.isLoaded ? (
@@ -37,4 +37,4 @@ const viewBook: React.FC<TMapStateToProps> = (props) => {
     )
 }
 
-export default viewBook
+export default view

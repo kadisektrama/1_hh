@@ -31,6 +31,9 @@ export type TUser = {
 export type TUserData = {
     data: TUser[]
 }
+export type TUserDataSingle = {
+    data: TUser
+}
 
 export type TCategory = {
     _id: string,
@@ -40,6 +43,9 @@ export type TCategory = {
 }
 export type TCategoryData = {
     data: TCategory[]
+}
+export type TCategoryDataSingle = {
+    data: TCategory
 }
 
 export type TProduct = TBook

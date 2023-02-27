@@ -9,27 +9,19 @@ import {
     InputNumber,
 } from 'antd'
 
-import { TBook, TBookDataSingle } from '../../../../types/types'
+import { TBook } from '../../../../types/types'
 
 const { TextArea } = Input
 
 type TDispatchProps = {
-    updateBook: (bookId: string, body: TBook) => void
+    createBook: (body: TBook) => void
 }
 
-type TMapProps = {
-    bookId: string,
-    isLoaded: boolean,
-    book: TBookDataSingle
-}
-
-const UpdateBook: React.FC<TDispatchProps & TMapProps> = (props) => {
-    const { handleSubmit, control, formState: { errors } } = useForm<TBook>({
-        defaultValues: { ...props.book.data }
-    })
+const Create: React.FC<TDispatchProps> = (props) => {
+    const { handleSubmit, control, formState: { errors } } = useForm<TBook>()
 
     const onSubmit = handleSubmit(data => {
-        props.updateBook(props.bookId, data)
+        props.createBook(data)
     })
 
     return (
@@ -45,7 +37,7 @@ const UpdateBook: React.FC<TDispatchProps & TMapProps> = (props) => {
                     <Controller
                         name="title"
                         control={control}
-                        rules={{ required: true, minLength: 6, maxLength: 100 }}
+                        rules={{ required: true, minLength: 6, maxLength: 16 }}
                         render={({ field }) => <Input {...field} />}
                     />
                     {errors.title && <p className="error">title is required</p>}
@@ -59,6 +51,16 @@ const UpdateBook: React.FC<TDispatchProps & TMapProps> = (props) => {
                         render={({ field }) => <TextArea rows={4} {...field} />}
                     />
                     {errors.description ? <p className="error">description is required</p> : null}
+                </Form.Item>
+
+                <Form.Item label="author">
+                    <Controller
+                        name="author"
+                        control={control}
+                        rules={{ required: true, minLength: 10, maxLength: 200 }}
+                        render={({ field }) => <TextArea rows={4} {...field} />}
+                    />
+                    {errors.author ? <p className="error">author is required</p> : null}
                 </Form.Item>
 
                 <Form.Item label="rating">
@@ -114,4 +116,4 @@ const UpdateBook: React.FC<TDispatchProps & TMapProps> = (props) => {
     )
 }
 
-export default UpdateBook
+export default Create

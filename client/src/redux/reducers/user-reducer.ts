@@ -1,12 +1,12 @@
 import { BaseThunkType, InferActionsTypes } from '../redux-store'
-import { TUser, TUserData } from '../../types/types'
+import { TUser, TUserData, TUserDataSingle } from '../../types/types'
 import { userApi } from '../../api/user-api'
 
 const initialState = {
     users: {
         data: [] as TUser[]
     },
-    user: null,
+    user: {} as TUserDataSingle
 }
 
 export type InitialStateType = typeof initialState
@@ -20,13 +20,19 @@ const userReducer = (state = initialState, action: ActionsType): InitialStateTyp
                 ...state,
                 users: action.payload
             }
+        case 'APP/GET_USER':
+            return {
+                ...state,
+                user: action.payload
+            }
         default:
             return state
     }
 }
 
 export const actions = {
-    getUsers: (users: TUserData) => ({ type: 'APP/GET_USERS', payload: users } as const)
+    getUsers: (users: TUserData) => ({ type: 'APP/GET_USERS', payload: users } as const),
+    getUser: (user: TUserDataSingle) => ({ type: 'APP/GET_USER', payload: user } as const)
 }
 
 export const getUsers = (): ThunkType => async (dispatch) => {
@@ -34,8 +40,18 @@ export const getUsers = (): ThunkType => async (dispatch) => {
     dispatch(actions.getUsers(users))
 }
 
+export const getUser = (userId: string): ThunkType => async (dispatch) => {
+    const user = await userApi.getById(userId)
+    dispatch(actions.getUser(user))
+}
+
 export const createUser = (body: TUser): ThunkType => async(dispatch) => {
     await userApi.create(body)
+}
+
+export const updateUser = (userId: string, body: TUser): ThunkType => async (dispatch) => {
+    const users = await userApi.update(userId, body)
+    dispatch(actions.getUsers(users))
 }
 
 export const deleteUser = (userId: string): ThunkType => async (dispatch) => {
