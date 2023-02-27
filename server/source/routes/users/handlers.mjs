@@ -1,6 +1,6 @@
 import { Users } from "../../controllers/index.mjs"
 
-export const get = async (req, res) => {
+export const getUsers = async (req, res) => {
     try {
         const user = new Users()
         const data = await user.get()
@@ -11,10 +11,10 @@ export const get = async (req, res) => {
     }
 }
 
-export const post = async (req, res) => {
+export const createUser = async (req, res) => {
     try {
-        const user = new Users(req.body)
-        const data = await user.create()
+        const user = new Users()
+        const data = await user.create(req.body)
 
         return res.status(201).json({ data: data })
     } catch (e) {

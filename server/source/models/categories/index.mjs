@@ -5,8 +5,8 @@ export class Categories {
         this.data = data
     }
 
-    async create() {
-        const data = await categories.create(this.data)
+    async create(body) {
+        const data = await categories.create(body)
 
         return data
     }

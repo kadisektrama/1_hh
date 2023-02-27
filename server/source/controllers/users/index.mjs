@@ -19,8 +19,20 @@ export class Users {
         return data
     }
 
-    async create() {
-        const data = this.models.users.create()
+    async create(body) {
+        const data = this.models.users.create(body)
+
+        return data
+    }
+
+    async update(body) {
+        const data = this.models.users.update(body)
+
+        return data
+    }
+
+    async delete() {
+        const data = this.models.users.delete()
 
         return data
     }

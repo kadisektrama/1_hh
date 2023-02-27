@@ -1,8 +1,8 @@
 import { Currencies } from '../../controllers/index.mjs'
 
-export const get = async (req, res) => {
+export const getCurrencies = async (req, res) => {
     try {
-        const currency = new Currencies(req.body)
+        const currency = new Currencies()
         const data = await currency.get()
 
         return res.status(200).json({ data })
@@ -11,10 +11,10 @@ export const get = async (req, res) => {
     }
 }
 
-export const post = async (req, res) => {
+export const createCurrency = async (req, res) => {
     try {
-        const currency = new Currencies(req.body)
-        const data = await currency.create()
+        const currency = new Currencies()
+        const data = await currency.create(req.body)
 
         return res.status(201).json({ data: data })
     } catch ({ message }) {

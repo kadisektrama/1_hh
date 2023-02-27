@@ -1,4 +1,4 @@
-export const createUser = {
+export const createUserSchema = {
     'type': 'object',
     'properties': {
         'first_name': {

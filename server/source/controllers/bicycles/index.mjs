@@ -7,8 +7,8 @@ class Bicycles {
         }
     }
 
-    async update() {
-        const data = this.models.bicycles.update()
+    async update(body) {
+        const data = this.models.bicycles.update(body)
 
         return data
     }
@@ -31,8 +31,8 @@ class Bicycles {
         return data
     }
 
-    async create() {
-        const data = await this.models.bicycles.create()
+    async create(body) {
+        const data = await this.models.bicycles.create(body)
 
         return data
     }

@@ -1,8 +1,8 @@
 import { Books } from '../../controllers/index.mjs'
 
-export const get = async (req, res) => {
+export const getBooks = async (req, res) => {
     try {
-        const book = new Books(req.body)
+        const book = new Books()
         const data = await book.get()
 
         return res.status(200).json({ data })
@@ -11,10 +11,10 @@ export const get = async (req, res) => {
     }
 }
 
-export const create = async (req, res) => {
+export const createBook = async (req, res) => {
     try {
-        const book = new Books(req.body)
-        const data = await book.create()
+        const book = new Books()
+        const data = await book.create(req.body)
 
         return res.status(201).json({ data: data })
     } catch ({ message }) {
@@ -35,8 +35,8 @@ export const getByBookId = async (req, res) => {
 
 export const updateByBookId = async (req, res) => {
     try {
-        const book = new Books({ ...{id: req.params.bookId}, ...req.body })
-        await book.update()
+        const book = new Books(req.params.bookId)
+        await book.update(req.body)
 
         return res.sendStatus(201)
     } catch ({ message }) {

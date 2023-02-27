@@ -19,8 +19,8 @@ export class Categories {
         return data
     }
 
-    async create() {
-        const data = this.models.categories.create()
+    async create(body) {
+        const data = this.models.categories.create(body)
 
         return data
     }

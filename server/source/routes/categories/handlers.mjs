@@ -1,8 +1,8 @@
 import { Categories } from '../../controllers/index.mjs'
 
-export const get = async (req, res) => {
+export const getCategories = async (req, res) => {
     try {
-        const categories = new Categories(req.body)
+        const categories = new Categories()
         const data = await categories.get()
 
         return res.status(200).json({ data })
@@ -11,10 +11,10 @@ export const get = async (req, res) => {
     }
 }
 
-export const post = async (req, res) => {
+export const createCategory = async (req, res) => {
     try {
-        const categories = new Categories(req.body)
-        const data = await categories.create()
+        const categories = new Categories()
+        const data = await categories.create(req.body)
 
         return res.status(201).json({ data: data })
     } catch ({ message }) {
@@ -24,7 +24,7 @@ export const post = async (req, res) => {
 
 export const getByCategoryId = async (req, res) => {
     try {
-        const categories = new Categories(req.params.currencyId)
+        const categories = new Categories(req.params.categoryId)
         const data = await categories.getById()
 
         return res.status(200).json({ data: data })

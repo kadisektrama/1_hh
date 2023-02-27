@@ -5,9 +5,8 @@ export class Bicycles {
         this.data = data
     }
 
-    async update() {
-        const { id, ...rest } = this.data
-        const data = await bicycles.findByIdAndUpdate(id, rest)
+    async update(body) {
+        const data = await bicycles.findByIdAndUpdate(this.data, body)
 
         return data
     }
@@ -18,8 +17,8 @@ export class Bicycles {
         return data
     }
 
-    async create() {
-        const data = await bicycles.create(this.data)
+    async create(body) {
+        const data = await bicycles.create(body)
 
         return data
     }

@@ -7,8 +7,8 @@ class Books {
         }
     }
 
-    async update() {
-        const data = this.models.books.update()
+    async update(body) {
+        const data = this.models.books.update(body)
 
         return data
     }
@@ -31,8 +31,8 @@ class Books {
         return data
     }
 
-    async create() {
-        const data = await this.models.books.create()
+    async create(body) {
+        const data = await this.models.books.create(body)
 
         return data
     }

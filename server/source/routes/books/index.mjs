@@ -2,12 +2,12 @@
 import express from 'express'
 
 // Tools
-import { get, create, getByBookId, updateByBookId, deleteByBookId } from './handlers.mjs'
+import { getBooks, createBook, getByBookId, updateByBookId, deleteByBookId } from './handlers.mjs'
 
 const routes = express.Router()
 
-routes.get('/', get)
-routes.post('/', create)
+routes.get('/', getBooks)
+routes.post('/', createBook)
 routes.get('/:bookId', getByBookId)
 routes.put('/:bookId', updateByBookId)
 routes.delete('/:bookId', deleteByBookId)

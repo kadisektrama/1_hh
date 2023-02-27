@@ -2,12 +2,12 @@
 import express from 'express'
 
 // Tools
-import { get, post, getByCurrencyId } from './handlers.mjs'
+import { getCurrencies, createCurrency, getByCurrencyId } from './handlers.mjs'
 
 const routes = express.Router()
 
-routes.get('/', get)
-routes.post('/', post)
-routes.get('/:bookId', getByCurrencyId)
+routes.get('/', getCurrencies)
+routes.post('/', createCurrency)
+routes.get('/:currencyId', getByCurrencyId)
 
 export { routes as currencies }

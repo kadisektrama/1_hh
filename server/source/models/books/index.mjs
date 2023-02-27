@@ -5,9 +5,8 @@ export class Books {
         this.data = data
     }
 
-    async update() {
-        const { id, ...rest } = this.data
-        const data = await books.findByIdAndUpdate(id, rest)
+    async update(body) {
+        const data = await books.findByIdAndUpdate(this.data, body)
 
         return data
     }
@@ -18,8 +17,8 @@ export class Books {
         return data
     }
 
-    async create() {
-        const data = await books.create(this.data)
+    async create(body) {
+        const data = await books.create(body)
 
         return data
     }

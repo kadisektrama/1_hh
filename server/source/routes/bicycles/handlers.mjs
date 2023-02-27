@@ -3,7 +3,7 @@ import { Bicycles } from '../../controllers/index.mjs'
 
 export const getBicycles = async (req, res) => {
     try {
-        const bicycle = new Bicycles(req.body)
+        const bicycle = new Bicycles()
         const data = await bicycle.get()
 
         return res.status(200).json({ data })
@@ -14,8 +14,8 @@ export const getBicycles = async (req, res) => {
 
 export const createBicycle = async (req, res) => {
     try {
-        const bicycle = new Bicycles(req.body)
-        await bicycle.create()
+        const bicycle = new Bicycles()
+        await bicycle.create(req.body)
 
         return res.sendStatus(201)
     } catch ({ message }) {
@@ -36,8 +36,8 @@ export const getByBicycleId = async (req, res) => {
 
 export const updateByBicycleId = async (req, res) => {
     try {
-        const bicycle = new Bicycles({ ...{id: req.params.bicycleId}, ...req.body })
-        await bicycle.update()
+        const bicycle = new Bicycles(req.params.bicycleId)
+        await bicycle.update(req.body)
 
         return res.sendStatus(204)
     } catch ({ message }) {
