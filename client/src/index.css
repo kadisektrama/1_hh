@@ -47,3 +47,8 @@ html {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.admin-view {
+  display: grid;
+  grid-template-columns: 300px 1fr
+}

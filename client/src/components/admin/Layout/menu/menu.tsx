@@ -2,33 +2,43 @@ import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
 import { Menu } from 'antd'
-import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons'
+import { UnorderedListOutlined, UserOutlined, BookOutlined, HeartOutlined, PoundCircleOutlined } from '@ant-design/icons'
 
 const App: React.FC = () => {
     const location = useLocation()
 
     return (
         <>
-            <div className="logo" />
+            <Link to={'/'}><div className="logo" /></Link>
             <Menu
                 theme="dark"
                 mode="inline"
                 defaultSelectedKeys={[location.pathname.split('/')[2]]}
                 items={[
                     {
-                        key: 'categories',
-                        icon: <UploadOutlined />,
-                        label: <Link to={'/admin/categories'}>Categories</Link>,
-                    },
-                    {
                         key: 'users',
                         icon: <UserOutlined />,
                         label: <Link to={'/admin/users'}>Users</Link>,
                     },
                     {
+                        key: 'categories',
+                        icon: <UnorderedListOutlined />,
+                        label: <Link to={'/admin/categories'}>Categories</Link>,
+                    },
+                    {
                         key: 'books',
-                        icon: <VideoCameraOutlined />,
+                        icon: <BookOutlined />,
                         label: <Link to={'/admin/books'}>Books</Link>,
+                    },
+                    {
+                        key: 'bicycles',
+                        icon: <HeartOutlined />,
+                        label: <Link to={'/admin/bicycles'}>Bicycles</Link>,
+                    },
+                    {
+                        key: 'currencies',
+                        icon: <PoundCircleOutlined />,
+                        label: <Link to={'/admin/currencies'}>Currencies</Link>,
                     },
                 ]}
             />

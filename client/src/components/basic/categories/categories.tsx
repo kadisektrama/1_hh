@@ -4,12 +4,12 @@ import SimpleLoader from '../../common/loader'
 import { TCategoryData } from '../../../types/types'
 import Cards from './cards/cards'
 
-type TMapProps = {
+type TMapStateProps = {
     isLoaded: boolean,
     categories: TCategoryData
 }
 
-const Categories: React.FC<TMapProps> = (props) => {
+const Categories: React.FC<TMapStateProps> = (props) => {
     return (
         <div>
             {props.isLoaded ? <Cards categories={props.categories} /> : <SimpleLoader />}

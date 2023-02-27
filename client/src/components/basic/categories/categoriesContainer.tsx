@@ -7,15 +7,15 @@ import Categories from './categories'
 import { TCategoryData } from '../../../types/types'
 import { getCategories } from '../../../redux/reducers/category-reducer'
 
-type TMapProps = {
+type TMapStateProps = {
     categories: TCategoryData
 }
 
-export type TDispatchProps = {
+export type TMapDispatchToProps = {
     getCategories: () => void
 }
 
-const CategoriesContainer: React.FC<TMapProps & TDispatchProps> = (props) => {
+const CategoriesContainer: React.FC<TMapStateProps & TMapDispatchToProps> = (props) => {
     const [isLoaded, setIsLoaded] = useState<boolean>(false)
 
     useEffect(() => {

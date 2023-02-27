@@ -24,7 +24,13 @@ const books: React.FC<TMapProps & TDispatchProps> = (props) => {
     const columns: ColumnsType<TBook> = [
         {
             title: 'Title',
-            dataIndex: 'title',
+            dataIndex: '',
+            key: 'title',
+            render: (data) => <>
+                <Link to={`/admin/books/${data._id}/view`}>
+                    {data.title}
+                </Link>
+            </>,
         },
         {
             title: 'description',

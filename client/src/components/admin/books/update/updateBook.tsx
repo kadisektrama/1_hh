@@ -10,7 +10,6 @@ import {
 } from 'antd'
 
 import { TBook, TBookDataSingle } from '../../../../types/types'
-import SimpleLoader from '../../../common/loader'
 
 const { TextArea } = Input
 

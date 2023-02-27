@@ -1,7 +1,40 @@
 import React from 'react'
 
-const ViewBook: React.FC = () => {
-    return <div>view book</div>
+import { TBookDataSingle } from '../../../../types/types'
+import SimpleLoader from '../../../common/loader'
+
+type TMapStateToProps = {
+    book: TBookDataSingle,
+    isLoaded: boolean,
 }
 
-export default ViewBook
+const viewBook: React.FC<TMapStateToProps> = (props) => {
+    return (
+        <>
+            {props.isLoaded ? (
+                <div className="admin-view">
+                    <div>Id</div>
+                    <div>{props.book.data._id}</div>
+                    <div>Title</div>
+                    <div>{props.book.data.title}</div>
+                    <div>Description</div>
+                    <div>{props.book.data.description}</div>
+                    <div>Author</div>
+                    <div>{props.book.data.author}</div>
+                    <div>Price</div>
+                    <div>{props.book.data.price}</div>
+                    <div>Currency</div>
+                    <div>{props.book.data.currency}</div>
+                    <div>Reviews count</div>
+                    <div>{props.book.data.reviews_count}</div>
+                    <div>Rating</div>
+                    <div>{props.book.data.rating}</div>
+                </div>
+            ) : (
+                <SimpleLoader />
+            )}
+        </>
+    )
+}
+
+export default viewBook
