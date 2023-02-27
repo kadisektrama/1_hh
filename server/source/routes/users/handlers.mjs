@@ -1,4 +1,4 @@
-import { Users } from "../../controllers/index.mjs"
+import {Books, Users} from "../../controllers/index.mjs"
 
 export const getUsers = async (req, res) => {
     try {
@@ -30,5 +30,27 @@ export const getByUserId = async (req, res) => {
         res.status(200).json({ data: data })
     } catch (e) {
         res.status(400).json({ message: e.message })
+    }
+}
+
+export const updateByUserId = async (req, res) => {
+    try {
+        const user = new Users(req.params.userId)
+        await user.update(req.body)
+
+        return res.sendStatus(201)
+    } catch ({ message }) {
+        return res.status(400).json({ message })
+    }
+}
+
+export const deleteByUserId = async (req, res) => {
+    try {
+        const user = new Users(req.params.userId)
+        await user.delete()
+
+        return res.sendStatus(202)
+    } catch ({ message }) {
+        return res.status(400).json({ message })
     }
 }

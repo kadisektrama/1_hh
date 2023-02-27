@@ -10,5 +10,8 @@ export const userApi = {
     },
     create(body: TUser): Promise<any> {
         return instance.post(`users`, body)
+    },
+    delete(userId: string) {
+        return instance.delete(`users/${userId}`)
     }
 }

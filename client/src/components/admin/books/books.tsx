@@ -65,7 +65,7 @@ const books: React.FC<TMapProps & TDispatchProps> = (props) => {
                 <Popconfirm
                     placement="top"
                     title={'Deleting'}
-                    description={"Are you sure that you want to delete a book?"}
+                    description={"Are you sure that you want to delete book?"}
                     onConfirm={() => props.deleteBook(data._id)}
                     okText="Yes"
                     cancelText="No"
@@ -78,13 +78,19 @@ const books: React.FC<TMapProps & TDispatchProps> = (props) => {
 
     return (
         <div>
-            <Link to={'/admin/books/create'}>
-                <Button type="primary" style={{ marginBottom: 16 }}>
-                    Add a book
-                </Button>
-            </Link>
+            {props.isLoaded ? (
+                <>
+                    <Link to={'/admin/books/create'}>
+                        <Button type="primary" style={{ marginBottom: 16 }}>
+                            Add book
+                        </Button>
+                    </Link>
 
-            {props.isLoaded ? <Table columns={columns} dataSource={props.books.data} onChange={onChange} /> : <SimpleLoader />}
+                    <Table columns={columns} dataSource={props.books.data} onChange={onChange} />
+                </>
+            ) :
+                <SimpleLoader />
+            }
         </div>
     )
 }

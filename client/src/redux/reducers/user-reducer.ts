@@ -34,5 +34,14 @@ export const getUsers = (): ThunkType => async (dispatch) => {
     dispatch(actions.getUsers(users))
 }
 
+export const createUser = (body: TUser): ThunkType => async(dispatch) => {
+    await userApi.create(body)
+}
+
+export const deleteUser = (userId: string): ThunkType => async (dispatch) => {
+    await userApi.delete(userId)
+    const users = await userApi.get()
+    dispatch(actions.getUsers(users))
+}
 
 export default userReducer

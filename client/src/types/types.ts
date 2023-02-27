@@ -21,9 +21,12 @@ export type TBookDataSingle = {
 }
 
 export type TUser = {
-    _id: string,
+    _id?: string,
     first_name: string,
     last_name: string,
+    roles: string,
+    email?: string,
+    phone?: string,
 }
 export type TUserData = {
     data: TUser[]
