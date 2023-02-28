@@ -1,9 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import { TUser, TUserData } from '../../../types/types'
 import SimpleLoader from '../../common/loader'
 import { Button, Popconfirm, Table } from 'antd'
-import { Link } from 'react-router-dom'
 import { ColumnsType } from 'antd/es/table'
 
 type TMapStateToProps = {

@@ -22,4 +22,16 @@ export class Categories {
 
         return data
     }
+
+    async update(body) {
+        const data = await categories.findByIdAndUpdate(this.data, body)
+
+        return data
+    }
+
+    async delete() {
+        const data = await categories.findByIdAndDelete(this.data)
+
+        return data
+    }
 }

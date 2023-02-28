@@ -19,6 +19,9 @@ import Book from './components/basic/book/bookContainer'
 
 // Admin
 import AdminCategories from './components/admin/categories/categoriesContainer'
+import AdminCreateCategory from './components/admin/categories/create/createContainer'
+import AdminUpdateCategory from './components/admin/categories/update/updateContainer'
+import AdminViewCategory from './components/admin/categories/view/viewContainer'
 
 import AdminBooks from './components/admin/books/booksContainer'
 import AdminCreateBook from './components/admin/books/create/createContainer'
@@ -50,8 +53,9 @@ const router = createBrowserRouter(
             </Route>
             <Route path='/admin' element={<AdminLayout />}>
                 <Route path='categories' element={<AdminCategories />} />
-                <Route path='categories/create' element={<div>create category</div>} /> TODO
-                <Route path='categories/:categoryId/update' element={<div>update category</div>} /> TODO
+                <Route path='categories/create' element={<AdminCreateCategory />} />
+                <Route path='categories/:categoryId/update' element={<AdminUpdateCategory />} /> TODO
+                <Route path='categories/:categoryId/view' element={<AdminViewCategory />} />
 
                 <Route path='users' element={<AdminUsers />} />
                 <Route path='users/create' element={<AdminCreateUser />} />

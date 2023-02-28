@@ -24,11 +24,11 @@ const books: React.FC<TMapProps & TMapDispatchToProps> = (props) => {
     const columns: ColumnsType<TCategory> = [
         {
             title: 'title',
-            dataIndex: 'title',
-            /*sorter: {
-                compare: (a, b) => a.chinese - b.chinese,
-                multiple: 3,
-            },*/
+            dataIndex: '',
+            key: 'title',
+            render: (data: TCategory) => <>
+                <Link to={`/admin/categories/${data._id}/view`}>{data.title}</Link>
+            </>
         },
         {
             title: 'description',
@@ -74,7 +74,7 @@ const books: React.FC<TMapProps & TMapDispatchToProps> = (props) => {
         <div>
             {props.isLoaded ? (
                     <>
-                        <Link to={'/admin/books/create'}>
+                        <Link to={'/admin/categories/create'}>
                             <Button type="primary" style={{ marginBottom: 16 }}>
                                 Add category
                             </Button>

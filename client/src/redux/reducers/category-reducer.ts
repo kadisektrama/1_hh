@@ -40,6 +40,19 @@ export const getCategories = (): ThunkType => async (dispatch) => {
     dispatch(actions.getCategories(categories))
 }
 
+export const getCategory = (categoryId: string): ThunkType => async (dispatch) => {
+    const category = await categoryApi.getById(categoryId)
+    dispatch(actions.getCategory(category))
+}
+
+export const createCategory = (body: TCategory): ThunkType => async (dispatch) => {
+    await categoryApi.create(body)
+}
+
+export const updateCategory = (categoryId: string, body: TCategory): ThunkType => async (dispatch) => {
+    await categoryApi.update(categoryId, body)
+}
+
 export const deleteCategory = (categoryId: string): ThunkType => async (dispatch) => {
     await categoryApi.delete(categoryId)
     const categories = await categoryApi.get()

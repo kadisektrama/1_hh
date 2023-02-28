@@ -24,4 +24,16 @@ export class Categories {
 
         return data
     }
+
+    async update(body) {
+        const data = this.models.categories.update(body)
+
+        return data
+    }
+
+    async delete() {
+        const data = this.models.categories.delete()
+
+        return data
+    }
 }

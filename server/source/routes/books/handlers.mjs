@@ -38,7 +38,7 @@ export const updateByBookId = async (req, res) => {
         const book = new Books(req.params.bookId)
         await book.update(req.body)
 
-        return res.sendStatus(201)
+        return res.sendStatus(204)
     } catch ({ message }) {
         return res.status(400).json({ message })
     }
