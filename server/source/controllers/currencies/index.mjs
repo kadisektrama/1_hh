@@ -19,8 +19,20 @@ export class Currencies {
         return data
     }
 
-    async create() {
-        const data = this.models.currencies.create()
+    async create(body) {
+        const data = this.models.currencies.create(body)
+
+        return data
+    }
+
+    async update(body) {
+        const data = this.models.currencies.create(body)
+
+        return data
+    }
+
+    async delete() {
+        const data = this.models.currencies.delete()
 
         return data
     }

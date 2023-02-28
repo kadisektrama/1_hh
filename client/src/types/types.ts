@@ -69,3 +69,14 @@ export type TBicycleData = {
 export type TBicycleDataSingle = {
     data: TBicycle
 }
+
+export type TCurrency = {
+    _id?: string,
+    name: string,
+}
+export type TCurrencyData = {
+    data: TCurrency[]
+}
+export type TCurrencyDataSingle = {
+    data: TCurrency
+}

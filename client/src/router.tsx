@@ -35,6 +35,16 @@ import AdminCreateUser from './components/admin/users/create/createContainer'
 import AdminUpdateUser from './components/admin/users/update/updateContainer'
 import AdminViewUser from './components/admin/users/view/viewContainer'
 
+import AdminCurrencies from './components/admin/currencies/currenciesContainer'
+import AdminCreateCurrency from './components/admin/currencies/create/createContainer'
+import AdminUpdateCurrency from './components/admin/currencies/update/updateContainer'
+import AdminViewCurrency from './components/admin/currencies/view/viewContainer'
+
+import AdminBicycles from './components/admin/bicycles/bicyclesContainer'
+import AdminCreateBicycle from './components/admin/bicycles/create/createContainer'
+import AdminUpdateBicycle from './components/admin/bicycles/update/updateContainer'
+import AdminViewBicycle from './components/admin/bicycles/view/viewContainer'
+
 const router = createBrowserRouter(
     createRoutesFromElements(
         <Route>
@@ -54,7 +64,7 @@ const router = createBrowserRouter(
             <Route path='/admin' element={<AdminLayout />}>
                 <Route path='categories' element={<AdminCategories />} />
                 <Route path='categories/create' element={<AdminCreateCategory />} />
-                <Route path='categories/:categoryId/update' element={<AdminUpdateCategory />} /> TODO
+                <Route path='categories/:categoryId/update' element={<AdminUpdateCategory />} />
                 <Route path='categories/:categoryId/view' element={<AdminViewCategory />} />
 
                 <Route path='users' element={<AdminUsers />} />
@@ -69,15 +79,15 @@ const router = createBrowserRouter(
                 <Route path='books/:bookId/update' element={<AdminUpdateBook />} />
                 <Route path='books/:bookId/view' element={<AdminViewBook />} />
 
-                <Route path='bicycles' element={<div>bicycles</div>} /> TODO
-                <Route path='bicycles/create' element={<div>create bicycle</div>} /> TODO
-                <Route path='bicycles/:bicycleId/update' element={<div>update bicycle</div>} /> TODO
-                <Route path='bicycles/:bicycleId/view' element={<div>view bicycle</div>} /> TODO
+                <Route path='bicycles' element={<AdminBicycles />} />
+                <Route path='bicycles/create' element={<AdminCreateBicycle />} />
+                <Route path='bicycles/:bicycleId/update' element={<AdminUpdateBicycle />} /> TODO
+                <Route path='bicycles/:bicycleId/view' element={<AdminViewBicycle />} />
 
-                <Route path='currencies' element={<div>currencies</div>} /> TODO
-                <Route path='currencies/create' element={<div>create currency</div>} /> TODO
-                <Route path='currencies/:currencyId/update' element={<div>update currency</div>} /> TODO
-                <Route path='currencies/:currencyId/view' element={<div>view currency</div>} /> TODO
+                <Route path='currencies' element={<AdminCurrencies />} />
+                <Route path='currencies/create' element={<AdminCreateCurrency />} /> TODO
+                <Route path='currencies/:currencyId/update' element={<AdminUpdateCurrency />} /> TODO
+                <Route path='currencies/:currencyId/view' element={<AdminViewCurrency />} /> TODO
             </Route>
 
         </Route>

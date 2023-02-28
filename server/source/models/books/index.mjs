@@ -5,18 +5,6 @@ export class Books {
         this.data = data
     }
 
-    async update(body) {
-        const data = await books.findByIdAndUpdate(this.data, body)
-
-        return data
-    }
-
-    async delete() {
-        const data = await books.findByIdAndDelete(this.data)
-
-        return data
-    }
-
     async create(body) {
         const data = await books.create(body)
 
@@ -31,6 +19,18 @@ export class Books {
 
     async getById() {
         const data = await books.findById(this.data)
+
+        return data
+    }
+
+    async update(body) {
+        const data = await books.findByIdAndUpdate(this.data, body)
+
+        return data
+    }
+
+    async delete() {
+        const data = await books.findByIdAndDelete(this.data)
 
         return data
     }

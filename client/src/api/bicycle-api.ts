@@ -9,12 +9,12 @@ export const bicycleApi = {
         return instance.get(`/bicycles/${bicycleId}`).then(res => res.data)
     },
     create(body: TBicycle) {
-        return instance.post('/bicycles').then(res => res.data)
+        return instance.post('/bicycles', body)
     },
-    update(bicycleId: string, body: any) {
-        return instance.put('/bicycles').then(res => res.data)
+    update(bicycleId: string, body: TBicycle) {
+        return instance.put(`/bicycles/${bicycleId}`, body)
     },
     delete(bicycleId: string) {
-        return instance.delete('/bicycles').then(res => res.data)
+        return instance.delete(`/bicycles/${bicycleId}`)
     }
 }
