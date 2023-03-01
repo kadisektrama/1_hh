@@ -6,6 +6,7 @@ export class Bicycles {
     }
 
     async update(body) {
+        console.log(body)
         const data = await bicycles.findByIdAndUpdate(this.data, body)
 
         return data

@@ -80,8 +80,8 @@ const router = createBrowserRouter(
                 <Route path='books/:bookId/view' element={<AdminViewBook />} />
 
                 <Route path='bicycles' element={<AdminBicycles />} />
-                <Route path='bicycles/create' element={<AdminCreateBicycle />} /> TODO
-                <Route path='bicycles/:bicycleId/update' element={<AdminUpdateBicycle />} /> TODO
+                <Route path='bicycles/create' element={<AdminCreateBicycle />} />
+                <Route path='bicycles/:bicycleId/update' element={<AdminUpdateBicycle />} />
                 <Route path='bicycles/:bicycleId/view' element={<AdminViewBicycle />} /> TODO
 
                 <Route path='currencies' element={<AdminCurrencies />} />

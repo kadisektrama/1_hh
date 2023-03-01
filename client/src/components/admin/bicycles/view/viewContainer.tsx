@@ -4,45 +4,45 @@ import { compose } from 'redux'
 import { useParams } from 'react-router-dom'
 
 import { AppStateType } from '../../../../redux/redux-store'
-import { getCategory } from '../../../../redux/reducers/category-reducer'
-import { TCategoryDataSingle } from '../../../../types/types'
+import { getBicycle } from '../../../../redux/reducers/bicycle-reducer'
+import { TBicycleDataSingle } from '../../../../types/types'
 import View from './view'
 
 type TMapStateToProps = {
-    category: TCategoryDataSingle
+    bicycle: TBicycleDataSingle
 }
 
 type TMapDispatchToProps = {
-    getCategory: (categoryId: string) => void
+    getBicycle: (categoryId: string) => void
 }
 
 type TUseParams = {
-    categoryId: string
+    bicycleId: string
 }
 
 const ViewContainer: React.FC<TMapStateToProps & TMapDispatchToProps> = (props) => {
     const [isLoaded, setIsLoaded] = useState<boolean>(false)
-    const { categoryId } = useParams<TUseParams>()
+    const { bicycleId } = useParams<TUseParams>()
 
     useEffect(() => {
-        Promise.all([props.getCategory(categoryId!)])
+        Promise.all([props.getBicycle(bicycleId!)])
             .then(() => setIsLoaded(true))
     }, [])
 
     return (
         <View
             isLoaded={isLoaded}
-            category={props.category}
+            bicycle={props.bicycle}
         />
     )
 }
 
 const mapStateToProps = (state: AppStateType) => {
     return ({
-        category: state.category.category
+        bicycle: state.bicycle.bicycle
     })
 }
 
 export default compose<React.ComponentType>(
-    connect(mapStateToProps, { getCategory })
+    connect(mapStateToProps, { getBicycle })
 )(ViewContainer)

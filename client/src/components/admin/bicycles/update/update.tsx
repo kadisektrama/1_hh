@@ -5,6 +5,7 @@ import {
     Form,
     Input,
     Button, InputNumber, Select,
+    Checkbox,
 } from 'antd'
 
 import { TBicycle, TBicycleDataSingle } from '../../../../types/types'
@@ -32,20 +33,6 @@ const Update: React.FC<TDispatchProps & TMapProps> = (props) => {
 
     return (
         <>
-            title: string,
-            description: string,
-            price: number,
-            currency: number,
-            reviews_count: number,
-            rating: number,
-            color: string,
-            speeds_count: number,
-            pedals: string,
-            brakes: string,
-            shock_absorber: boolean,
-            wheel: number,
-            frame_size: number,
-            rider_height: number,
             <Form
                 labelCol={{ span: 4 }}
                 wrapperCol={{ span: 14 }}
@@ -63,7 +50,7 @@ const Update: React.FC<TDispatchProps & TMapProps> = (props) => {
                     {errors.title && <p className="error">title is required</p>}
                 </Form.Item>
 
-                <Form.Item label="description">
+                <Form.Item label="Description">
                     <Controller
                         name="description"
                         control={control}
@@ -73,7 +60,7 @@ const Update: React.FC<TDispatchProps & TMapProps> = (props) => {
                     {errors.description ? <p className="error">description is required</p> : null}
                 </Form.Item>
 
-                <Form.Item label="rating">
+                <Form.Item label="Rating">
                     <Controller
                         name="rating"
                         control={control}
@@ -83,7 +70,7 @@ const Update: React.FC<TDispatchProps & TMapProps> = (props) => {
                     {errors.rating ? <p className="error">rating is required</p> : null}
                 </Form.Item>
 
-                <Form.Item label="reviews_count">
+                <Form.Item label="Reviews_count">
                     <Controller
                         name="reviews_count"
                         control={control}
@@ -93,7 +80,7 @@ const Update: React.FC<TDispatchProps & TMapProps> = (props) => {
                     {errors.reviews_count ? <p className="error">reviews_count is required</p> : null}
                 </Form.Item>
 
-                <Form.Item label="price">
+                <Form.Item label="Price">
                     <Controller
                         name="price"
                         control={control}
@@ -103,7 +90,7 @@ const Update: React.FC<TDispatchProps & TMapProps> = (props) => {
                     {errors.price ? <p className="error">price is required</p> : null}
                 </Form.Item>
 
-                <Form.Item label='currency'>
+                <Form.Item label='Currency'>
                     <Controller
                         name="currency"
                         control={control}
@@ -116,6 +103,86 @@ const Update: React.FC<TDispatchProps & TMapProps> = (props) => {
                     />
 
                     {errors.price ? <p className="error">currency is required</p> : null}
+                </Form.Item>
+
+                <Form.Item label='Color'>
+                    <Controller
+                        name="color"
+                        control={control}
+                        rules={{ required: true, minLength: 2, maxLength: 32 }}
+                        render={({ field }) => <Input {...field} />}
+                    />
+                    {errors.color && <p className="error">color is required</p>}
+                </Form.Item>
+
+                <Form.Item label="Speeds count">
+                    <Controller
+                        name="speeds_count"
+                        control={control}
+                        rules={{ required: true, min: 0, max: 100 }}
+                        render={({ field }) => <InputNumber {...field} />}
+                    />
+                    {errors.speeds_count ? <p className="error">speeds count is required</p> : null}
+                </Form.Item>
+
+                <Form.Item label='Pedals'>
+                    <Controller
+                        name="pedals"
+                        control={control}
+                        rules={{ required: true, minLength: 0, maxLength: 100 }}
+                        render={({ field }) => <Input {...field} />}
+                    />
+                    {errors.pedals && <p className="error">pedals is required</p>}
+                </Form.Item>
+
+                <Form.Item label='Brakes'>
+                    <Controller
+                        name="brakes"
+                        control={control}
+                        rules={{ required: true, minLength: 6, maxLength: 100 }}
+                        render={({ field }) => <Input {...field} />}
+                    />
+                    {errors.brakes && <p className="error">brakes is required</p>}
+                </Form.Item>
+
+                <Form.Item label="Shock absorber" name="shock_absorber" valuePropName="checked">
+                    <Controller
+                        name="shock_absorber"
+                        control={control}
+                        //rules={{ required: true, min: 0 }}
+                        render={({ field }) => <Checkbox checked={field.value} {...field} />}
+                    />
+                    {errors.shock_absorber ? <p className="error">shock absorber is required</p> : null}
+                </Form.Item>
+
+                <Form.Item label="Wheel">
+                    <Controller
+                        name="wheel"
+                        control={control}
+                        rules={{ required: true, min: 0 }}
+                        render={({ field }) => <InputNumber {...field} />}
+                    />
+                    {errors.wheel ? <p className="error">wheel is required</p> : null}
+                </Form.Item>
+
+                <Form.Item label="Frame size">
+                    <Controller
+                        name="frame_size"
+                        control={control}
+                        rules={{ required: true, min: 0 }}
+                        render={({ field }) => <InputNumber {...field} />}
+                    />
+                    {errors.frame_size ? <p className="error">frame_size is required</p> : null}
+                </Form.Item>
+
+                <Form.Item label="Rider height">
+                    <Controller
+                        name="rider_height"
+                        control={control}
+                        rules={{ required: true, min: 0 }}
+                        render={({ field }) => <InputNumber {...field} />}
+                    />
+                    {errors.rider_height ? <p className="error">rider height is required</p> : null}
                 </Form.Item>
 
                 <Button type="primary" htmlType="submit">

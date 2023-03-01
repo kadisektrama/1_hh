@@ -4,28 +4,28 @@ import { connect } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import Create from './create'
-import { TCategory } from '../../../../types/types'
-import { createCategory } from '../../../../redux/reducers/category-reducer'
+import { TBicycle } from '../../../../types/types'
+import { createBicycle } from '../../../../redux/reducers/bicycle-reducer'
 
 type TDispatchProps = {
-    createCategory: (body: TCategory) => void
+    createBicycle: (body: TBicycle) => void
 }
 
 const CreateContainer: React.FC<TDispatchProps> = (props) => {
     const navigate = useNavigate()
-    const createCategory = async (body: TCategory) => {
-        Promise.all([props.createCategory(body)])
-            .then(() => navigate('/admin/categories'))
+    const createBicycle = async (body: TBicycle) => {
+        Promise.all([props.createBicycle(body)])
+            .then(() => navigate('/admin/bicycles'))
     }
 
     return (
         <Create
-            createCategory={(body: TCategory) => createCategory(body)}
+            createBicycle={(body: TBicycle) => createBicycle(body)}
         />
     )
 }
 
 export default compose(
-    connect(null, { createCategory })
+    connect(null, { createBicycle })
 )(CreateContainer)
 
