@@ -4,36 +4,36 @@ import { connect } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import Update from './update'
-import { TCategory, TCategoryDataSingle } from '../../../../types/types'
+import { TCurrency, TCurrencyDataSingle } from '../../../../types/types'
 import { AppStateType } from '../../../../redux/redux-store'
-import { updateCategory, getCategory } from '../../../../redux/reducers/category-reducer'
+import { updateCurrency, getCurrency } from '../../../../redux/reducers/currency-reducer'
 
 type TDispatchProps = {
-    getCategory: (categoryId: string) => void,
-    updateCategory: (categoryId: string, body: TCategory) => void
+    getCurrency: (currencyId: string) => void,
+    updateCurrency: (currencyId: string, body: TCurrency) => void
 }
 
 type TMapProps = {
     isLoaded: boolean,
-    category: TCategoryDataSingle
+    currency: TCurrencyDataSingle
 }
 
 type TUseParams = {
-    categoryId: string
+    currencyId: string
 }
 
 const CreateBookContainer: React.FC<TMapProps & TDispatchProps> = (props) => {
     const [isLoaded, setIsLoaded] = useState<boolean>(false)
     const navigate = useNavigate()
-    const { categoryId } = useParams<TUseParams>()
+    const { currencyId } = useParams<TUseParams>()
 
-    const updateBook = async (categoryId: string, body: TCategory) => {
-        await props.updateCategory(categoryId, body)
-        navigate('/admin/categories')
+    const updateCurrency = async (currencyId: string, body: TCurrency) => {
+        await props.updateCurrency(currencyId, body)
+        navigate('/admin/currencies')
     }
 
     useEffect(() => {
-        Promise.all([props.getCategory(categoryId!)])
+        Promise.all([props.getCurrency(currencyId!)])
             .then(() => setIsLoaded(true))
     }, [])
 
@@ -41,10 +41,10 @@ const CreateBookContainer: React.FC<TMapProps & TDispatchProps> = (props) => {
         <>
             {isLoaded && (
                 <Update
-                    categoryId={categoryId!}
-                    updateCategory={(categoryId: string, body: TCategory) => updateBook(categoryId, body)}
+                    currencyId={currencyId!}
+                    updateCurrency={(categoryId: string, body: TCurrency) => updateCurrency(categoryId, body)}
                     isLoaded={isLoaded}
-                    category={props.category}
+                    currency={props.currency}
                 />
             )}
         </>
@@ -53,11 +53,11 @@ const CreateBookContainer: React.FC<TMapProps & TDispatchProps> = (props) => {
 
 const mapStateToProps = (state: AppStateType) => {
     return ({
-        category: state.category.category,
+        currency: state.currency.currency,
     })
 }
 
 export default compose<ComponentType>(
-    connect(mapStateToProps, { getCategory, updateCategory })
+    connect(mapStateToProps, { getCurrency, updateCurrency })
 )(CreateBookContainer)
 

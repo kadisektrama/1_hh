@@ -7,27 +7,25 @@ import {
     Button,
 } from 'antd'
 
-import { TCategory, TCategoryDataSingle } from '../../../../types/types'
-
-const { TextArea } = Input
+import { TCurrencyDataSingle, TCurrency } from '../../../../types/types'
 
 type TDispatchProps = {
-    updateCategory: (categoryId: string, body: TCategory) => void
+    updateCurrency: (currencyId: string, body: TCurrency) => void
 }
 
 type TMapProps = {
-    categoryId: string,
+    currencyId: string,
     isLoaded: boolean,
-    category: TCategoryDataSingle
+    currency: TCurrencyDataSingle
 }
 
 const update: React.FC<TDispatchProps & TMapProps> = (props) => {
-    const { handleSubmit, control, formState: { errors } } = useForm<TCategory>({
-        defaultValues: { ...props.category.data }
+    const { handleSubmit, control, formState: { errors } } = useForm<TCurrency>({
+        defaultValues: { ...props.currency.data }
     })
 
     const onSubmit = handleSubmit(data => {
-        props.updateCategory(props.categoryId, data)
+        props.updateCurrency(props.currencyId, data)
     })
 
     return (
@@ -39,34 +37,14 @@ const update: React.FC<TDispatchProps & TMapProps> = (props) => {
                 layout='horizontal'
                 style={{ maxWidth: 600 }}
             >
-                <Form.Item label='Title'>
+                <Form.Item label='name'>
                     <Controller
-                        name="title"
+                        name="name"
                         control={control}
-                        rules={{ required: true, minLength: 6, maxLength: 16 }}
+                        rules={{ required: true, minLength: 2, maxLength: 4 }}
                         render={({ field }) => <Input {...field} />}
                     />
-                    {errors.title && <p className="error">title is required</p>}
-                </Form.Item>
-
-                <Form.Item label="description">
-                    <Controller
-                        name="description"
-                        control={control}
-                        rules={{ required: true, minLength: 10, maxLength: 200 }}
-                        render={({ field }) => <TextArea rows={4} {...field} />}
-                    />
-                    {errors.description ? <p className="error">description is required</p> : null}
-                </Form.Item>
-
-                <Form.Item label="DB name">
-                    <Controller
-                        name="db_name"
-                        control={control}
-                        rules={{ required: true, minLength: 3, maxLength: 32 }}
-                        render={({ field }) => <Input {...field} />}
-                    />
-                    {errors.db_name ? <p className="error">DB name is required</p> : null}
+                    {errors.name && <p className="error">name is required</p>}
                 </Form.Item>
 
                 <Button type="primary" htmlType="submit">

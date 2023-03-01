@@ -11,8 +11,8 @@ export const currencyApi = {
     create(body: TCurrency) {
         return instance.post(`/currencies`, body)
     },
-    update(currencyId: string, body: any) {
-        return instance.put(`/currencies/${currencyId}`)
+    update(currencyId: string, body: TCurrency) {
+        return instance.put(`/currencies/${currencyId}`, body)
     },
     delete(currencyId: string) {
         return instance.delete(`/currencies/${currencyId}`)

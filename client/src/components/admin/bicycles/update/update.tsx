@@ -4,34 +4,48 @@ import { useForm, Controller } from 'react-hook-form'
 import {
     Form,
     Input,
-    Button,
+    Button, InputNumber, Select,
 } from 'antd'
 
-import { TCategory, TCategoryDataSingle } from '../../../../types/types'
+import { TBicycle, TBicycleDataSingle } from '../../../../types/types'
 
 const { TextArea } = Input
 
 type TDispatchProps = {
-    updateCategory: (categoryId: string, body: TCategory) => void
+    updateBicycle: (bicycleId: string, body: TBicycle) => void
 }
 
 type TMapProps = {
-    categoryId: string,
+    bicycleId: string,
     isLoaded: boolean,
-    category: TCategoryDataSingle
+    bicycle: TBicycleDataSingle
 }
 
 const Update: React.FC<TDispatchProps & TMapProps> = (props) => {
-    const { handleSubmit, control, formState: { errors } } = useForm<TCategory>({
-        defaultValues: { ...props.category.data }
+    const { handleSubmit, control, formState: { errors } } = useForm<TBicycle>({
+        defaultValues: { ...props.bicycle.data }
     })
 
     const onSubmit = handleSubmit(data => {
-        props.updateCategory(props.categoryId, data)
+        props.updateBicycle(props.bicycleId, data)
     })
 
     return (
         <>
+            title: string,
+            description: string,
+            price: number,
+            currency: number,
+            reviews_count: number,
+            rating: number,
+            color: string,
+            speeds_count: number,
+            pedals: string,
+            brakes: string,
+            shock_absorber: boolean,
+            wheel: number,
+            frame_size: number,
+            rider_height: number,
             <Form
                 labelCol={{ span: 4 }}
                 wrapperCol={{ span: 14 }}
@@ -43,7 +57,7 @@ const Update: React.FC<TDispatchProps & TMapProps> = (props) => {
                     <Controller
                         name="title"
                         control={control}
-                        rules={{ required: true, minLength: 6, maxLength: 16 }}
+                        rules={{ required: true, minLength: 6, maxLength: 100 }}
                         render={({ field }) => <Input {...field} />}
                     />
                     {errors.title && <p className="error">title is required</p>}
@@ -59,14 +73,49 @@ const Update: React.FC<TDispatchProps & TMapProps> = (props) => {
                     {errors.description ? <p className="error">description is required</p> : null}
                 </Form.Item>
 
-                <Form.Item label="DB name">
+                <Form.Item label="rating">
                     <Controller
-                        name="db_name"
+                        name="rating"
                         control={control}
-                        rules={{ required: true, minLength: 3, maxLength: 32 }}
-                        render={({ field }) => <Input {...field} />}
+                        rules={{ required: true, min: 0, max: 5 }}
+                        render={({ field }) => <InputNumber {...field} />}
                     />
-                    {errors.db_name ? <p className="error">DB name is required</p> : null}
+                    {errors.rating ? <p className="error">rating is required</p> : null}
+                </Form.Item>
+
+                <Form.Item label="reviews_count">
+                    <Controller
+                        name="reviews_count"
+                        control={control}
+                        rules={{ required: true, min: 0 }}
+                        render={({ field }) => <InputNumber {...field} />}
+                    />
+                    {errors.reviews_count ? <p className="error">reviews_count is required</p> : null}
+                </Form.Item>
+
+                <Form.Item label="price">
+                    <Controller
+                        name="price"
+                        control={control}
+                        rules={{ required: true, min: 0 }}
+                        render={({ field }) => <InputNumber {...field} />}
+                    />
+                    {errors.price ? <p className="error">price is required</p> : null}
+                </Form.Item>
+
+                <Form.Item label='currency'>
+                    <Controller
+                        name="currency"
+                        control={control}
+                        rules={{ required: true }}
+                        render={({ field }) =>
+                            <Select {...field}>
+                                <Select.Option value={1}>BYN</Select.Option>
+                            </Select>
+                        }
+                    />
+
+                    {errors.price ? <p className="error">currency is required</p> : null}
                 </Form.Item>
 
                 <Button type="primary" htmlType="submit">

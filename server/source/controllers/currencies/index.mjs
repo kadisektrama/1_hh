@@ -26,7 +26,7 @@ export class Currencies {
     }
 
     async update(body) {
-        const data = this.models.currencies.create(body)
+        const data = this.models.currencies.update(body)
 
         return data
     }

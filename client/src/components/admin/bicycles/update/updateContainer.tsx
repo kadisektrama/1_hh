@@ -4,36 +4,36 @@ import { connect } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import Update from './update'
-import { TCategory, TCategoryDataSingle } from '../../../../types/types'
+import { TBicycle, TBicycleDataSingle } from '../../../../types/types'
 import { AppStateType } from '../../../../redux/redux-store'
-import { updateCategory, getCategory } from '../../../../redux/reducers/category-reducer'
+import { updateBicycle, getBicycle } from '../../../../redux/reducers/bicycle-reducer'
 
 type TDispatchProps = {
-    getCategory: (categoryId: string) => void,
-    updateCategory: (categoryId: string, body: TCategory) => void
+    getBicycle: (bicycleId: string) => void,
+    updateBicycle: (bicycleId: string, body: TBicycle) => void
 }
 
 type TMapProps = {
     isLoaded: boolean,
-    category: TCategoryDataSingle
+    bicycle: TBicycleDataSingle
 }
 
 type TUseParams = {
-    categoryId: string
+    bicycleId: string
 }
 
 const CreateBookContainer: React.FC<TMapProps & TDispatchProps> = (props) => {
     const [isLoaded, setIsLoaded] = useState<boolean>(false)
     const navigate = useNavigate()
-    const { categoryId } = useParams<TUseParams>()
+    const { bicycleId } = useParams<TUseParams>()
 
-    const updateBook = async (categoryId: string, body: TCategory) => {
-        await props.updateCategory(categoryId, body)
-        navigate('/admin/categories')
+    const updateBicycle = async (bicycleId: string, body: TBicycle) => {
+        await props.updateBicycle(bicycleId, body)
+        navigate('/admin/bicycles')
     }
 
     useEffect(() => {
-        Promise.all([props.getCategory(categoryId!)])
+        Promise.all([props.getBicycle(bicycleId!)])
             .then(() => setIsLoaded(true))
     }, [])
 
@@ -41,10 +41,10 @@ const CreateBookContainer: React.FC<TMapProps & TDispatchProps> = (props) => {
         <>
             {isLoaded && (
                 <Update
-                    categoryId={categoryId!}
-                    updateCategory={(categoryId: string, body: TCategory) => updateBook(categoryId, body)}
+                    bicycleId={bicycleId!}
+                    updateBicycle={(bicycleId: string, body: TBicycle) => updateBicycle(bicycleId, body)}
                     isLoaded={isLoaded}
-                    category={props.category}
+                    bicycle={props.bicycle}
                 />
             )}
         </>
@@ -53,11 +53,11 @@ const CreateBookContainer: React.FC<TMapProps & TDispatchProps> = (props) => {
 
 const mapStateToProps = (state: AppStateType) => {
     return ({
-        category: state.category.category,
+        bicycle: state.bicycle.bicycle,
     })
 }
 
 export default compose<ComponentType>(
-    connect(mapStateToProps, { getCategory, updateCategory })
+    connect(mapStateToProps, { getBicycle, updateBicycle })
 )(CreateBookContainer)
 
