@@ -19,6 +19,12 @@ export class Users {
         return data
     }
 
+    async getByUserName() {
+        const data = this.models.users.getByUserName()
+
+        return data
+    }
+
     async create(body) {
         const data = this.models.users.create(body)
 

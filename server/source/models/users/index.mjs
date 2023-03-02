@@ -1,4 +1,4 @@
-import {books, users} from "../../odm/index.mjs"
+import { users } from "../../odm/index.mjs"
 
 export class Users {
     constructor(data) {
@@ -20,6 +20,12 @@ export class Users {
     async getById() {
         const data = await users.findById(this.data)
 
+        return data
+    }
+
+    async getByUserName() {
+        const data = await users.findOne({ 'user_name': this.data }).exec()//.populate('roles')
+        console.log('data: ', data)
         return data
     }
 

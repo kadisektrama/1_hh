@@ -12,6 +12,7 @@ import { authorization } from "./utils/index.mjs"
 
 //Logger
 import { logger, errorLogger, notFoundLogger, validationLogger } from "./utils/index.mjs";
+import { adminMiddleware } from "./middlewares/index.mjs";
 
 export const app = express();
 
@@ -29,10 +30,11 @@ app.use(function(req, res, next) {
 app.use('/auth', routes.auth)
 app.use('/products', routes.products)
 app.use('/books', routes.books)
-app.use('/users', routes.users)
+app.use('/users', [adminMiddleware], routes.users)
 app.use('/categories', routes.categories)
 app.use('/currencies', routes.currencies)
 app.use('/bicycles', routes.bicycles)
+app.use('/roles', routes.roles)
 //app.use('/lessons', [authorization], routes.lessons)
 app.get('/test', [authorization], (req, res) => {
     res.status(200).json({ data: [] })

@@ -1,10 +1,9 @@
 import express from "express";
-import { authentication } from "../../utils/index.mjs";
+import { registration, authentication } from "./hadlers.mjs"
 
 const routes = express.Router()
 
-routes.get('/login', [authentication], (req, res) => {
-    res.status(200).json({ message: 'Токен получен' })
-})
+routes.post('/authenticate', authentication)
+routes.post('/register', registration)
 
 export { routes as auth }

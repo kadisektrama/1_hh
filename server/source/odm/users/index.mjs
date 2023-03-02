@@ -4,8 +4,8 @@ const UserSchema = mongoose.Schema({
     first_name: String,
     last_name: String,
     roles: {
-        type: String,
-        enum: ['admin', 'guest', 'host'],
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Roles',
     },
     email: {
         type: String,
@@ -14,9 +14,14 @@ const UserSchema = mongoose.Schema({
     phone: {
         type: String,
         required: false,
+    },
+    password: String,
+    user_name: {
+        type: String,
+        unique: true,
     }
 })
 
 const users = mongoose.model('user', UserSchema)
 
-export  { users }
+export { users }

@@ -1,0 +1,1 @@
+export { adminMiddleware } from './admin/index.mjs'
