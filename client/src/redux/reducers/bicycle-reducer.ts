@@ -1,6 +1,6 @@
 import { InferActionsTypes, BaseThunkType } from '../redux-store'
 import { TBicycle, TBicycleData, TBicycleDataSingle } from '../../types/types'
-import { bicycleApi } from '../../api/bicycle-api'
+import { bicycleApi } from '../../api/admin/bicycle-api'
 
 const initialState = {
     bicycles: {

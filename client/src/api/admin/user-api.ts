@@ -1,7 +1,7 @@
 import lodash from 'lodash'
 
-import { instance } from './api'
-import { TUserData, TUser } from '../types/types'
+import { instance } from '../api'
+import { TUserData, TUser } from '../../types/types'
 
 export const userApi = {
     getById(userId: string): Promise<any> {

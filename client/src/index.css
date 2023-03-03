@@ -52,3 +52,9 @@ html {
   display: grid;
   grid-template-columns: 300px 1fr
 }
+
+.flex-justify-content-space-between {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0 10px 0;
+}

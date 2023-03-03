@@ -9,9 +9,9 @@ import {
 // Layouts
 import BasicLayout from './components/basic/Layout/layout'
 import AdminLayout from './components/admin/Layout/layout'
+import AuthLayout from './components/auth/layout/layout'
 
 // Basic
-import Login from './components/basic/login/loginContainer'
 import Products from './components/basic/Products/productsContainer'
 import Users from './components/basic/users/usersConteiner'
 import Categories from './components/basic/categories/categoriesContainer'
@@ -45,6 +45,10 @@ import AdminBicycles from './components/admin/bicycles/bicyclesContainer'
 import AdminCreateBicycle from './components/admin/bicycles/create/createContainer'
 import AdminUpdateBicycle from './components/admin/bicycles/update/updateContainer'
 import AdminViewBicycle from './components/admin/bicycles/view/viewContainer'
+
+// Auth
+import Login from './components/auth/login/loginContainer'
+import Registration from './components/auth/registration/registrationContainer'
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -90,7 +94,10 @@ const router = createBrowserRouter(
                 <Route path='currencies/:currencyId/update' element={<AdminUpdateCurrency />} />
                 <Route path='currencies/:currencyId/view' element={<AdminViewCurrency />} />
             </Route>
-
+            <Route path='/auth' element={<AuthLayout />}>
+                <Route path='login' element={<Login />} />
+                <Route path='registration' element={<Registration />} />
+            </Route>
         </Route>
     )
 )

@@ -23,22 +23,18 @@ app.use(bodyParser.json({ limit: '10kb' }))
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Methods", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
     next();
 });
 
 app.use('/auth', routes.auth)
 app.use('/products', routes.products)
-app.use('/books', routes.books)
+app.use('/books', [adminMiddleware], routes.books)
 app.use('/users', [adminMiddleware], routes.users)
-app.use('/categories', routes.categories)
-app.use('/currencies', routes.currencies)
-app.use('/bicycles', routes.bicycles)
-app.use('/roles', routes.roles)
-//app.use('/lessons', [authorization], routes.lessons)
-app.get('/test', [authorization], (req, res) => {
-    res.status(200).json({ data: [] })
-})
+app.use('/categories', [adminMiddleware], routes.categories)
+app.use('/currencies', [adminMiddleware], routes.currencies)
+app.use('/bicycles', [adminMiddleware], routes.bicycles)
+app.use('/roles', [adminMiddleware], routes.roles)
 
 //errors
 app.get('/error', (req, res) => {

@@ -1,7 +1,7 @@
 import lodash from 'lodash'
 
-import { instance } from './api'
-import { TCategoryData, TCategory } from '../types/types'
+import { instance } from '../api'
+import { TCategoryData, TCategory } from '../../types/types'
 
 export const categoryApi = {
     getById(categoryId: string): Promise<any> { // TODO

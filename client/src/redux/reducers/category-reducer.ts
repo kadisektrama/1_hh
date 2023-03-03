@@ -1,6 +1,6 @@
 import { BaseThunkType, InferActionsTypes } from '../redux-store'
 import { TCategory, TCategoryData, TCategoryDataSingle } from '../../types/types'
-import { categoryApi } from '../../api/category-api'
+import { categoryApi } from '../../api/admin/category-api'
 
 const initialState = {
     categories: {

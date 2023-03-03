@@ -1,6 +1,6 @@
 import { InferActionsTypes, BaseThunkType } from '../redux-store'
 import { TBook, TBookData, TBookDataSingle } from '../../types/types'
-import { bookApi } from '../../api/book-api'
+import { bookApi } from '../../api/admin/book-api'
 
 const initialState = {
     books: {

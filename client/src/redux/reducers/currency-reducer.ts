@@ -1,6 +1,6 @@
 import { InferActionsTypes, BaseThunkType } from '../redux-store'
 import { TCurrency, TCurrencyData, TCurrencyDataSingle } from '../../types/types'
-import { currencyApi } from '../../api/currency-api'
+import { currencyApi } from '../../api/admin/currency-api'
 
 const initialState = {
     currencies: {

@@ -1,6 +1,6 @@
 import { InferActionsTypes, BaseThunkType } from '../redux-store'
 import { TProductData, TProduct } from '../../types/types'
-import { productApi } from '../../api/product-api'
+import { productApi } from '../../api/admin/product-api'
 
 const initialState = {
     products: {

@@ -17,7 +17,7 @@ const header = () => {
         },
         {
             key: 'login',
-            label: <Link to={'/login'}>login</Link>,
+            label: <Link to={'/auth/login'}>login</Link>,
         },
         {
             key: 'favourites',

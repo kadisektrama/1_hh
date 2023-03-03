@@ -80,3 +80,16 @@ export type TCurrencyData = {
 export type TCurrencyDataSingle = {
     data: TCurrency
 }
+
+export type TLogin = {
+    user_name: string,
+    password: string,
+}
+export type TRegistration = {
+    first_name: string,
+    last_name: string
+    user_name: string,
+    password: string,
+    email: string,
+    phone: string,
+}

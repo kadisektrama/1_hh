@@ -1,6 +1,6 @@
 import { BaseThunkType, InferActionsTypes } from '../redux-store'
 import { TUser, TUserData, TUserDataSingle } from '../../types/types'
-import { userApi } from '../../api/user-api'
+import { userApi } from '../../api/admin/user-api'
 
 const initialState = {
     users: {

@@ -1,5 +1,5 @@
-import { instance } from './api'
-import { TProductData } from '../types/types'
+import { instance } from '../api'
+import { TProductData } from '../../types/types'
 
 export const productApi = {
     get() {
