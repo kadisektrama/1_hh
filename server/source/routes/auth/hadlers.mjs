@@ -10,7 +10,7 @@ export const authentication = async (req, res) => {
         const { user_name, password } = req.body
         const user = new Users(user_name)
         const candidate = await user.getByUserName()
-        console.log('candidate: ', candidate)
+
         if (!candidate) {
             return res.status(403).json({ message: `Пользователя с именем ${user_name} не существует` })
         }

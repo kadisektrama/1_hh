@@ -1,6 +1,7 @@
 import { decodeAccessToken } from "../../utils/accessToken.mjs";
+import { Roles } from "../../controllers/index.mjs"
 
-export const adminMiddleware = (req, res, next) => {
+export const adminMiddleware = async (req, res, next) => {
     if (req.method === 'OPTIONS') {
         next()
     }
@@ -12,8 +13,11 @@ export const adminMiddleware = (req, res, next) => {
         }
 
         const decodedData = decodeAccessToken(token)
-        console.log(decodedData, token)
-        if (decodedData.roles !== 'admin') {
+
+        const roles = new Roles(decodedData.roles)
+        const role = await roles.getById()
+
+        if (role.name !== 'admin') {
             res.status(401).json({ message: 'Неправильный токен' })
         }
 

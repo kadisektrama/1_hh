@@ -24,7 +24,8 @@ export class Users {
     }
 
     async getByUserName() {
-        const data = await users.findOne({ 'user_name': this.data }).exec()//.populate('roles')
+        console.log(this.data)
+        const data = await users.findOne({ user_name: this.data }).exec()//.populate('roles')
         console.log('data: ', data)
         return data
     }
