@@ -30,9 +30,9 @@ const login: React.FC<TMapDispatchToProps> = (props) => {
                     name="user_name"
                     control={control}
                     rules={{ required: true, minLength: 4, maxLength: 20 }}
-                    render={({ field }) => <Input {...field} prefix={<UserOutlined />} placeholder="Username" />}
+                    render={({ field }) => <Input {...field} prefix={<UserOutlined />} placeholder="User name" />}
                 />
-                {errors.user_name?.type === 'required' && <p className="error">title is required</p>}
+                {errors.user_name?.type === 'required' && <p className="error">user name is required</p>}
                 {errors.user_name?.type === 'minLength' && <p className="error">min length is 4 symbols</p>}
                 {errors.user_name?.type === 'maxLength' && <p className="error">max length is 20 symbols</p>}
             </FormItem>
@@ -44,7 +44,7 @@ const login: React.FC<TMapDispatchToProps> = (props) => {
                     rules={{ required: true, minLength: 4, maxLength: 20 }}
                     render={({ field }) => <Input {...field} prefix={<UserOutlined />} type="password" placeholder="Password" />}
                 />
-                {errors.password?.type === 'required' && <p className="error">title is required</p>}
+                {errors.password?.type === 'required' && <p className="error">password is required</p>}
                 {errors.password?.type === 'minLength' && <p className="error">min length is 4 symbols</p>}
                 {errors.password?.type === 'maxLength' && <p className="error">max length is 20 symbols</p>}
             </FormItem>
