@@ -8,20 +8,23 @@ import {
     Select,
 } from 'antd'
 
-import { TUser } from '../../../../types/types'
+import { TCurrencyData, TUser } from '../../../../types/types'
 
 type TMapDispatchToProps = {
     createUser: (body: TUser) => void
 }
 
-const createUser: React.FC<TMapDispatchToProps> = (props) => {
+type TMapStateToProps = {
+    roles: TCurrencyData,
+}
+
+const createUser: React.FC<TMapDispatchToProps & TMapStateToProps> = (props) => {
     const { handleSubmit, control, formState: { errors } } = useForm<TUser>()
 
     const onSubmit = handleSubmit(data => {
-        console.log(data)
         props.createUser(data)
     })
-
+    console.log(props)
     return (
         <>
             <Form
@@ -31,24 +34,34 @@ const createUser: React.FC<TMapDispatchToProps> = (props) => {
                 layout='horizontal'
                 style={{ maxWidth: 600 }}
             >
-                <Form.Item label='First_name'>
+                <Form.Item label='First name'>
                     <Controller
                         name="first_name"
                         control={control}
                         rules={{ required: true, minLength: 6, maxLength: 16 }}
                         render={({ field }) => <Input {...field} />}
                     />
-                    {errors.first_name && <p className="error">first_name is required</p>}
+                    {errors.first_name && <p className="error">first name is required</p>}
                 </Form.Item>
 
-                <Form.Item label='Last_name'>
+                <Form.Item label='Last name'>
                     <Controller
                         name="last_name"
                         control={control}
                         rules={{ required: true, minLength: 6, maxLength: 16 }}
                         render={({ field }) => <Input {...field} />}
                     />
-                    {errors.last_name && <p className="error">last_name is required</p>}
+                    {errors.last_name && <p className="error">last name is required</p>}
+                </Form.Item>
+
+                <Form.Item label='User name'>
+                    <Controller
+                        name="user_name"
+                        control={control}
+                        rules={{ required: true, minLength: 6, maxLength: 16 }}
+                        render={({ field }) => <Input {...field} />}
+                    />
+                    {errors.user_name && <p className="error">user name is required</p>}
                 </Form.Item>
 
                 <Form.Item label='Roles'>
@@ -58,9 +71,7 @@ const createUser: React.FC<TMapDispatchToProps> = (props) => {
                         rules={{ required: true }}
                         render={({ field }) =>
                             <Select {...field}>
-                                <Select.Option value={'guest'}>guest</Select.Option>
-                                <Select.Option value={'host'}>host</Select.Option>
-                                <Select.Option value={'admin'}>admin</Select.Option>
+                                {props.roles.data.map(role => <Select.Option key={role._id} value={role._id}>{role.name}</Select.Option>)}
                             </Select>
                         }
                     />

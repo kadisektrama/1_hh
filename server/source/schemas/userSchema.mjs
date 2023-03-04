@@ -10,8 +10,12 @@ export const createUserSchema = {
             'minLength': 6,
         },
         'roles': {
-            'enum': ['guest', 'host', 'admin'],
+            //'enum': ['guest', 'host', 'admin'],
             'type': 'string',
+        },
+        'user_name': {
+            'type': 'string',
+            'minLength': 6,
         },
         'email': {
             //'format': 'email',

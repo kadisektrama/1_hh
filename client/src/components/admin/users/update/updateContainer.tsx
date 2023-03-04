@@ -4,18 +4,21 @@ import { connect } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import Update from './update'
-import { TUser, TUserDataSingle } from '../../../../types/types'
+import { TRoleData, TUser, TUserDataSingle } from '../../../../types/types'
 import { AppStateType } from '../../../../redux/redux-store'
 import { updateUser, getUser } from '../../../../redux/reducers/user-reducer'
+import { getRoles } from '../../../../redux/reducers/role-reducer'
 
 type TDispatchProps = {
     getUser: (userId: string) => void,
-    updateUser: (userId: string, body: TUser) => void
+    updateUser: (userId: string, body: TUser) => void,
+    getRoles: () => void,
 }
 
 type TMapProps = {
     isLoaded: boolean,
-    user: TUserDataSingle
+    user: TUserDataSingle,
+    roles: TRoleData
 }
 
 type TUseParams = {
@@ -33,7 +36,7 @@ const CreateBookContainer: React.FC<TMapProps & TDispatchProps> = (props) => {
     }
 
     useEffect(() => {
-        Promise.all([props.getUser(userId!)])
+        Promise.all([props.getUser(userId!), props.getRoles()])
             .then(() => setIsLoaded(true))
     }, [])
 
@@ -45,6 +48,7 @@ const CreateBookContainer: React.FC<TMapProps & TDispatchProps> = (props) => {
                     updateUser={(userId: string, body: TUser) => updateUser(userId, body)}
                     isLoaded={isLoaded}
                     user={props.user}
+                    roles={props.roles}
                 />
             )}
         </>
@@ -54,10 +58,11 @@ const CreateBookContainer: React.FC<TMapProps & TDispatchProps> = (props) => {
 const mapStateToProps = (state: AppStateType) => {
     return ({
         user: state.user.user,
+        roles: state.role.roles,
     })
 }
 
 export default compose<ComponentType>(
-    connect(mapStateToProps, { getUser, updateUser })
+    connect(mapStateToProps, { getUser, updateUser, getRoles })
 )(CreateBookContainer)
 

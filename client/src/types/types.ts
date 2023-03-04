@@ -24,6 +24,7 @@ export type TUser = {
     _id?: string,
     first_name: string,
     last_name: string,
+    user_name: string,
     roles: string,
     email?: string,
     phone?: string,
@@ -79,6 +80,17 @@ export type TCurrencyData = {
 }
 export type TCurrencyDataSingle = {
     data: TCurrency
+}
+
+export type TRole = {
+    _id?: string,
+    name: string,
+}
+export type TRoleData = {
+    data: TRole[]
+}
+export type TRoleDataSingle = {
+    data: TRole
 }
 
 export type TLogin = {
