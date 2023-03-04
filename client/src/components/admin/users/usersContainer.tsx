@@ -19,6 +19,8 @@ type TMapDispatchToProps = {
 const UsersContainer: React.FC<TMapStateToProps & TMapDispatchToProps> = (props) => {
     const [isLoaded, setIsLoaded] = useState<boolean>(false)
 
+    console.log('reload')
+
     useEffect(() => {
         Promise.all([props.getUsers()])
             .then(() => setIsLoaded(true))

@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom'
 
 // Layouts
+import Layout from './components/common/layout'
 import BasicLayout from './components/basic/Layout/layout'
 import AdminLayout from './components/admin/Layout/layout'
 import AuthLayout from './components/auth/layout/layout'
@@ -52,7 +53,7 @@ import Registration from './components/auth/registration/registrationContainer'
 
 const router = createBrowserRouter(
     createRoutesFromElements(
-        <Route>
+        <Route element={<Layout />}>
             <Route path="/" element={<BasicLayout />}>
                 <Route path="/" element={<Products />} />
                 <Route path="/products" element={<Products />} />
