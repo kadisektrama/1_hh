@@ -5,7 +5,7 @@ const { Footer } = Layout
 
 const footer = () => {
     return (
-        <Footer>footer</Footer>
+        <Footer style={{ background: '#edeaea' }}>footer</Footer>
     )
 }
 
