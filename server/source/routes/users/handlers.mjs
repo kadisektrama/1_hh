@@ -1,4 +1,4 @@
-import {Books, Users} from "../../controllers/index.mjs"
+import { Users } from "../../controllers/index.mjs"
 
 export const getUsers = async (req, res) => {
     try {

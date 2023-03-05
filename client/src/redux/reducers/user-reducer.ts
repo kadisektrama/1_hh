@@ -1,6 +1,7 @@
 import { BaseThunkType, InferActionsTypes } from '../redux-store'
 import { TUser, TUserData, TUserDataSingle } from '../../types/types'
 import { userApi } from '../../api/admin/user-api'
+import { appApi } from '../../api/app-api'
 
 const initialState = {
     users: {
@@ -42,6 +43,12 @@ export const getUsers = (): ThunkType => async (dispatch) => {
 
 export const getUser = (userId: string): ThunkType => async (dispatch) => {
     const user = await userApi.getById(userId)
+    dispatch(actions.getUser(user))
+}
+
+export const identify = (): ThunkType => async (dispatch) => {
+    const user = await appApi.identify()
+    console.log(user)
     dispatch(actions.getUser(user))
 }
 

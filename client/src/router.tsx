@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom'
 
 // Layouts
-import Layout from './components/common/layout'
+import Layout from './components/common/layout/layoutContainer'
 import BasicLayout from './components/basic/Layout/layout'
 import AdminLayout from './components/admin/Layout/layout'
 import AuthLayout from './components/auth/layout/layout'
