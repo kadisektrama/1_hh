@@ -7,9 +7,6 @@ dotenv.config()
 //Routes
 import * as routes from "./routes/index.mjs"
 
-//Middlewares
-import { authorization } from "./utils/index.mjs"
-
 //Logger
 import { logger, errorLogger, notFoundLogger, validationLogger } from "./utils/index.mjs";
 import { adminMiddleware, userMiddleware } from "./middlewares/index.mjs";
@@ -28,11 +25,9 @@ app.use(function(req, res, next) {
 });
 
 app.use('/auth', routes.auth)
-
-app.use('/', [userMiddleware], routes.common)
-
 app.use('/products', routes.products)
 
+app.use('/', [userMiddleware], routes.common)
 
 app.use('/books', [adminMiddleware], routes.books)
 app.use('/users', [adminMiddleware], routes.users)

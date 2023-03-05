@@ -48,7 +48,6 @@ export const getUser = (userId: string): ThunkType => async (dispatch) => {
 
 export const identify = (): ThunkType => async (dispatch) => {
     const user = await appApi.identify()
-    console.log(user)
     dispatch(actions.getUser(user))
 }
 

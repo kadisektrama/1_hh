@@ -10,9 +10,11 @@ type TMapDispatchToProps = {
     identify: () => void
 }
 
+const { token } = cookie.parse(document.cookie)
+
 const LayoutContainer: React.FC<TMapDispatchToProps> = (props) => {
     useEffect(() => {
-        Promise.all([props.identify()])
+        Promise.all([token && props.identify()])
     }, [])
 
     return (

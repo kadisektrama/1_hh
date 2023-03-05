@@ -27,7 +27,10 @@ const items: MenuProps['items'] = [
         type: 'divider',
     },
     {
-        label: <Link to={'/'}><Button type="text">logout</Button></Link>,
+        label: <div onClick={() => {
+            document.cookie = 'token=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/'
+            document.location.reload()
+        }}>logout</div>,
         key: 'logout',
     },
 ]
