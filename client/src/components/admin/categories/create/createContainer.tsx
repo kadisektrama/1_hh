@@ -5,7 +5,9 @@ import { useNavigate } from 'react-router-dom'
 
 import Create from './create'
 import { TCategory } from '../../../../types/types'
-import { createCategory } from '../../../../redux/reducers/category-reducer'
+import { admin } from '../../../../redux/reducers/category-reducer'
+
+const { createCategory } = admin
 
 type TDispatchProps = {
     createCategory: (body: TCategory) => void

@@ -5,7 +5,9 @@ import { useNavigate } from 'react-router-dom'
 
 import Create from './create'
 import { TCurrency } from '../../../../types/types'
-import { createCurrency } from '../../../../redux/reducers/currency-reducer'
+import { admin } from '../../../../redux/reducers/currency-reducer'
+
+const { createCurrency } = admin
 
 type TDispatchProps = {
     createCurrency: (body: TCurrency) => void

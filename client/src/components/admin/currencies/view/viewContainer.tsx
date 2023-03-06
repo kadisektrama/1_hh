@@ -4,9 +4,11 @@ import { compose } from 'redux'
 import { useParams } from 'react-router-dom'
 
 import { AppStateType } from '../../../../redux/redux-store'
-import { getCurrency } from '../../../../redux/reducers/currency-reducer'
+import { admin } from '../../../../redux/reducers/currency-reducer'
 import { TCurrencyDataSingle } from '../../../../types/types'
 import View from './view'
+
+const { getCurrency } = admin
 
 type TMapStateToProps = {
     currency: TCurrencyDataSingle

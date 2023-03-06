@@ -4,7 +4,9 @@ import { connect } from 'react-redux'
 
 import { AppStateType } from '../../../redux/redux-store'
 import Products from './products'
-import { getProducts } from '../../../redux/reducers/product-reducer'
+import { common } from '../../../redux/reducers/product-reducer'
+
+const { getProducts } = common
 
 type TMapProps = ReturnType<typeof mapStateToProps>
 

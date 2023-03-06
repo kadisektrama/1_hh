@@ -35,28 +35,26 @@ export const actions = {
     getCurrency: (currency: TCurrencyDataSingle) => ({ type: 'BICYCLE/GET_BICYCLE', payload: currency } as const)
 }
 
-export const getCurrencies = (): ThunkType => async (dispatch) => {
-    const currencies = await currencyApi.get()
-    dispatch(actions.getCurrencies(currencies))
-}
-
-export const getCurrency = (currencyId: string): ThunkType => async (dispatch) => {
-    const currency = await currencyApi.getById(currencyId)
-    dispatch(actions.getCurrency(currency))
-}
-
-export const createCurrency = (body: TCurrency): ThunkType => async () => {
-    await currencyApi.create(body)
-}
-
-export const updateCurrency = (currencyId: string, body: TCurrency): ThunkType => async () => {
-    await currencyApi.update(currencyId, body)
-}
-
-export const deleteCurrency = (currencyId: string): ThunkType => async (dispatch) => {
-    await currencyApi.delete(currencyId)
-    const currencies = await currencyApi.get()
-    dispatch(actions.getCurrencies(currencies))
+export const admin = {
+    getCurrencies: (): ThunkType => async (dispatch) => {
+        const currencies = await currencyApi.get()
+        dispatch(actions.getCurrencies(currencies))
+    },
+    getCurrency: (currencyId: string): ThunkType => async (dispatch) => {
+        const currency = await currencyApi.getById(currencyId)
+        dispatch(actions.getCurrency(currency))
+    },
+    createCurrency: (body: TCurrency): ThunkType => async () => {
+        await currencyApi.create(body)
+    },
+    updateCurrency: (currencyId: string, body: TCurrency): ThunkType => async () => {
+        await currencyApi.update(currencyId, body)
+    },
+    deleteCurrency: (currencyId: string): ThunkType => async (dispatch) => {
+        await currencyApi.delete(currencyId)
+        const currencies = await currencyApi.get()
+        dispatch(actions.getCurrencies(currencies))
+    }
 }
 
 export default bicycleReducer

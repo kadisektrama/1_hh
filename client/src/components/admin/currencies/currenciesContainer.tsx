@@ -4,8 +4,10 @@ import { compose } from 'redux'
 
 import { AppStateType } from '../../../redux/redux-store'
 import { TCurrencyData } from '../../../types/types'
-import { getCurrencies, deleteCurrency } from '../../../redux/reducers/currency-reducer'
+import { admin } from '../../../redux/reducers/currency-reducer'
 import Currencies from './currencies'
+
+const { getCurrencies, deleteCurrency } = admin
 
 type TMapProps = {
     currencies: TCurrencyData

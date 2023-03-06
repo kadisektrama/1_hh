@@ -5,7 +5,9 @@ import { compose } from 'redux'
 import Categories from './categories'
 import { AppStateType } from '../../../redux/redux-store'
 import { TCategoryData } from '../../../types/types'
-import { getCategories, deleteCategory } from '../../../redux/reducers/category-reducer'
+import { admin } from '../../../redux/reducers/category-reducer'
+
+const { getCategories, deleteCategory } = admin
 
 type TMapProps = {
     categories: TCategoryData

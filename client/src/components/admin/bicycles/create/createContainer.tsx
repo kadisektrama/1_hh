@@ -5,7 +5,9 @@ import { useNavigate } from 'react-router-dom'
 
 import Create from './create'
 import { TBicycle } from '../../../../types/types'
-import { createBicycle } from '../../../../redux/reducers/bicycle-reducer'
+import { admin } from '../../../../redux/reducers/bicycle-reducer'
+
+const { createBicycle } = admin
 
 type TDispatchProps = {
     createBicycle: (body: TBicycle) => void

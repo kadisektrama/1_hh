@@ -6,7 +6,9 @@ import { useNavigate, useParams } from 'react-router-dom'
 import Update from './update'
 import { TCurrency, TCurrencyDataSingle } from '../../../../types/types'
 import { AppStateType } from '../../../../redux/redux-store'
-import { updateCurrency, getCurrency } from '../../../../redux/reducers/currency-reducer'
+import { admin } from '../../../../redux/reducers/currency-reducer'
+
+const { updateCurrency, getCurrency } = admin
 
 type TDispatchProps = {
     getCurrency: (currencyId: string) => void,

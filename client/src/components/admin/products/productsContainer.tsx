@@ -5,7 +5,9 @@ import { compose } from 'redux'
 import Products from './products'
 import { TProductData } from '../../../types/types'
 import { AppStateType } from '../../../redux/redux-store'
-import { getProducts } from '../../../redux/reducers/product-reducer'
+import { admin } from '../../../redux/reducers/product-reducer'
+
+const { getProducts } = admin
 
 type TMapStateToProps = {
     products: TProductData

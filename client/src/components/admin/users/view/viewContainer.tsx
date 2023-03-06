@@ -4,9 +4,11 @@ import { compose } from 'redux'
 import { useParams } from 'react-router-dom'
 
 import { AppStateType } from '../../../../redux/redux-store'
-import { getUser } from '../../../../redux/reducers/user-reducer'
+import { admin } from '../../../../redux/reducers/user-reducer'
 import { TUserDataSingle } from '../../../../types/types'
 import ViewUser from './view'
+
+const { getUser } = admin
 
 type TMapStateToProps = {
     user: TUserDataSingle

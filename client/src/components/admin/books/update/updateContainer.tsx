@@ -6,7 +6,9 @@ import { useNavigate, useParams } from 'react-router-dom'
 import Update from './update'
 import { TBook, TBookDataSingle } from '../../../../types/types'
 import { AppStateType } from '../../../../redux/redux-store'
-import { updateBook, getBook } from '../../../../redux/reducers/book-reducer'
+import { admin } from '../../../../redux/reducers/book-reducer'
+
+const { updateBook, getBook } = admin
 
 type TDispatchProps = {
     getBook: (bookId: string) => void,

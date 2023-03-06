@@ -1,4 +1,4 @@
-import { instance } from '../api'
+import { instance } from '../common/api'
 import { TCurrency } from '../../types/types'
 
 export const currencyApi = {

@@ -1,6 +1,7 @@
 import { BaseThunkType, InferActionsTypes } from '../redux-store'
 import { TCategory, TCategoryData, TCategoryDataSingle } from '../../types/types'
-import { categoryApi } from '../../api/admin/category-api'
+import { categoryApi as adminCategoryApi } from '../../api/admin/category-api'
+import { categoryApi as commonCategoryApi } from '../../api/common/category-api'
 
 const initialState = {
     categories: {
@@ -35,28 +36,33 @@ export const actions = {
     getCategory: (category: TCategoryDataSingle) => ({ type: 'APP/GET_CATEGORY', payload: category } as const)
 }
 
-export const getCategories = (): ThunkType => async (dispatch) => {
-    const categories = await categoryApi.get()
-    dispatch(actions.getCategories(categories))
+export const common = {
+    getCategories: (): ThunkType => async (dispatch) => {
+        const categories = await commonCategoryApi.get()
+        dispatch(actions.getCategories(categories))
+    }
 }
 
-export const getCategory = (categoryId: string): ThunkType => async (dispatch) => {
-    const category = await categoryApi.getById(categoryId)
-    dispatch(actions.getCategory(category))
-}
-
-export const createCategory = (body: TCategory): ThunkType => async (dispatch) => {
-    await categoryApi.create(body)
-}
-
-export const updateCategory = (categoryId: string, body: TCategory): ThunkType => async (dispatch) => {
-    await categoryApi.update(categoryId, body)
-}
-
-export const deleteCategory = (categoryId: string): ThunkType => async (dispatch) => {
-    await categoryApi.delete(categoryId)
-    const categories = await categoryApi.get()
-    dispatch(actions.getCategories(categories))
+export const admin = {
+    getCategories: (): ThunkType => async (dispatch) => {
+        const categories = await adminCategoryApi.get()
+        dispatch(actions.getCategories(categories))
+    },
+    getCategory: (categoryId: string): ThunkType => async (dispatch) => {
+        const category = await adminCategoryApi.getById(categoryId)
+        dispatch(actions.getCategory(category))
+    },
+    createCategory: (body: TCategory): ThunkType => async (dispatch) => {
+        await adminCategoryApi.create(body)
+    },
+    updateCategory: (categoryId: string, body: TCategory): ThunkType => async (dispatch) => {
+        await adminCategoryApi.update(categoryId, body)
+    },
+    deleteCategory: (categoryId: string): ThunkType => async (dispatch) => {
+        await adminCategoryApi.delete(categoryId)
+        const categories = await adminCategoryApi.get()
+        dispatch(actions.getCategories(categories))
+    }
 }
 
 export default categoryReducer

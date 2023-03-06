@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import Registration from './registration'
 
 import { TRegistration } from '../../../types/types'
-import { authApi } from '../../../api/auth-api'
+import { authApi } from '../../../api/common/auth-api'
 
 const BookContainer: React.FC = () => {
     const [error, setError] = useState<boolean>(false)

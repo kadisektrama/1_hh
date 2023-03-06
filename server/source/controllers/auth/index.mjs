@@ -1,5 +1,3 @@
-
-
 export class Auth {
     constructor(data) {
         this.models = {

@@ -5,7 +5,9 @@ import { compose } from 'redux'
 import Users from './users'
 import { TUserData } from '../../../types/types'
 import { AppStateType } from '../../../redux/redux-store'
-import { getUsers, deleteUser } from '../../../redux/reducers/user-reducer'
+import { admin } from '../../../redux/reducers/user-reducer'
+
+const { getUsers, deleteUser } = admin
 
 type TMapStateToProps = {
     users: TUserData

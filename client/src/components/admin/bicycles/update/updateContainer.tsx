@@ -6,7 +6,9 @@ import { useNavigate, useParams } from 'react-router-dom'
 import Update from './update'
 import { TBicycle, TBicycleDataSingle } from '../../../../types/types'
 import { AppStateType } from '../../../../redux/redux-store'
-import { updateBicycle, getBicycle } from '../../../../redux/reducers/bicycle-reducer'
+import { admin } from '../../../../redux/reducers/bicycle-reducer'
+
+const { updateBicycle, getBicycle } = admin
 
 type TDispatchProps = {
     getBicycle: (bicycleId: string) => void,

@@ -35,9 +35,11 @@ export const actions = {
     getRole: (role: TRoleDataSingle) => ({ type: 'ROLE/GET_ROLE', payload: role } as const)
 }
 
-export const getRoles = (): ThunkType => async (dispatch) => {
-    const roles = await roleApi.get()
-    dispatch(actions.getRoles(roles))
+export const admin = {
+    getRoles: (): ThunkType => async (dispatch) => {
+        const roles = await roleApi.get()
+        dispatch(actions.getRoles(roles))
+    }
 }
 
 export default bookReducer

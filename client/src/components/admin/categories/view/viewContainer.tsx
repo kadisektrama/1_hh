@@ -4,9 +4,11 @@ import { compose } from 'redux'
 import { useParams } from 'react-router-dom'
 
 import { AppStateType } from '../../../../redux/redux-store'
-import { getCategory } from '../../../../redux/reducers/category-reducer'
+import { admin } from '../../../../redux/reducers/category-reducer'
 import { TCategoryDataSingle } from '../../../../types/types'
 import View from './view'
+
+const { getCategory } = admin
 
 type TMapStateToProps = {
     category: TCategoryDataSingle

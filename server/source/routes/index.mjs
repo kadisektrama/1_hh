@@ -1,9 +1,3 @@
-export { auth } from './auth/index.mjs'
-export { users } from './users/index.mjs'
-export { books } from './books/index.mjs'
-export { categories } from './categories/index.mjs'
-export { currencies } from './currencies/index.mjs'
-export { bicycles } from './bicycles/index.mjs'
-export { products } from './products/index.mjs'
-export { roles } from './roles/index.mjs'
-export { common } from './common/index.mjs'
+export * as admin  from './admin/index.mjs'
+export * as common  from './common/index.mjs'
+

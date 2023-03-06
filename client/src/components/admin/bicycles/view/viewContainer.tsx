@@ -4,9 +4,11 @@ import { compose } from 'redux'
 import { useParams } from 'react-router-dom'
 
 import { AppStateType } from '../../../../redux/redux-store'
-import { getBicycle } from '../../../../redux/reducers/bicycle-reducer'
+import { admin } from '../../../../redux/reducers/bicycle-reducer'
 import { TBicycleDataSingle } from '../../../../types/types'
 import View from './view'
+
+const { getBicycle } = admin
 
 type TMapStateToProps = {
     bicycle: TBicycleDataSingle

@@ -5,7 +5,9 @@ import { useParams } from 'react-router-dom'
 
 import { AppStateType } from '../../../redux/redux-store'
 import Bicycle from './bicycle'
-import { getBicycle } from '../../../redux/reducers/bicycle-reducer'
+import { common } from '../../../redux/reducers/bicycle-reducer'
+
+const { getBicycle } = common
 
 type TMapStateProps = ReturnType<typeof mapStateToProps>
 

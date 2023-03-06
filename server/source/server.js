@@ -24,17 +24,23 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.use('/auth', routes.auth)
-app.use('/products', routes.products)
+app.use('/auth', routes.common.auth)
+app.use('/products', routes.common.products)
+app.use('/categories', routes.common.categories)
+app.use('/books', routes.common.books)
+app.use('/bicycles', routes.common.bicycles)
+app.use('/users', routes.common.users)
 
-app.use('/', [userMiddleware], routes.common)
+app.use('/', userMiddleware, routes.common.identify)
 
-app.use('/books', [adminMiddleware], routes.books)
-app.use('/users', [adminMiddleware], routes.users)
-app.use('/categories', [adminMiddleware], routes.categories)
-app.use('/currencies', [adminMiddleware], routes.currencies)
-app.use('/bicycles', [adminMiddleware], routes.bicycles)
-app.use('/roles', [adminMiddleware], routes.roles)
+app.use('/admin', adminMiddleware);
+app.use('/admin/books', routes.admin.books)
+app.use('/admin/products', routes.admin.products)
+app.use('/admin/users', routes.admin.users)
+app.use('/admin/categories', routes.admin.categories)
+app.use('/admin/currencies', routes.admin.currencies)
+app.use('/admin/bicycles', routes.admin.bicycles)
+app.use('/admin/roles', routes.admin.roles)
 
 //errors
 app.get('/error', (req, res) => {

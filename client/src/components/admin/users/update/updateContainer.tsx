@@ -6,8 +6,11 @@ import { useNavigate, useParams } from 'react-router-dom'
 import Update from './update'
 import { TRoleData, TUser, TUserDataSingle } from '../../../../types/types'
 import { AppStateType } from '../../../../redux/redux-store'
-import { updateUser, getUser } from '../../../../redux/reducers/user-reducer'
-import { getRoles } from '../../../../redux/reducers/role-reducer'
+import { admin as adminUsers } from '../../../../redux/reducers/user-reducer'
+import { admin as adminRoles } from '../../../../redux/reducers/role-reducer'
+
+const { updateUser, getUser } = adminUsers
+const { getRoles } = adminRoles
 
 type TDispatchProps = {
     getUser: (userId: string) => void,

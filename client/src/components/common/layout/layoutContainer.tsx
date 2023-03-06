@@ -4,7 +4,9 @@ import { connect } from 'react-redux'
 import cookie from 'cookie'
 
 import Layout from './layout'
-import { identify } from '../../../redux/reducers/user-reducer'
+import { common } from '../../../redux/reducers/user-reducer'
+
+const { identify } = common
 
 type TMapDispatchToProps = {
     identify: () => void

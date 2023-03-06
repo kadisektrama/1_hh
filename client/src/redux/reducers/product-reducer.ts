@@ -1,6 +1,7 @@
 import { InferActionsTypes, BaseThunkType } from '../redux-store'
 import { TProductData, TProduct } from '../../types/types'
-import { productApi } from '../../api/admin/product-api'
+import { productApi as adminProductApi } from '../../api/admin/product-api'
+import { productApi as commonProductApi } from '../../api/common/product-api'
 
 const initialState = {
     products: {
@@ -29,9 +30,18 @@ export const actions = {
     getProducts: (products: TProductData) => ({ type: 'PRODUCT/GET_PRODUCTS', payload: products } as const)
 }
 
-export const getProducts = (): ThunkType => async (dispatch) => {
-    const products = await productApi.get()
-    dispatch(actions.getProducts(products))
+export const common = {
+    getProducts: (): ThunkType => async (dispatch) => {
+        const products = await commonProductApi.get()
+        dispatch(actions.getProducts(products))
+    }
+}
+
+export const admin = {
+    getProducts: (): ThunkType => async (dispatch) => {
+        const products = await adminProductApi.get()
+        dispatch(actions.getProducts(products))
+    }
 }
 
 export default productReducer

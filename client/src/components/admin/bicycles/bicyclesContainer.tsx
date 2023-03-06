@@ -5,7 +5,9 @@ import { compose } from 'redux'
 import Bicycles from './bicycles'
 import { AppStateType } from '../../../redux/redux-store'
 import { TBicycleData } from '../../../types/types'
-import { getBicycles, deleteBicycle } from '../../../redux/reducers/bicycle-reducer'
+import { admin } from '../../../redux/reducers/bicycle-reducer'
+
+const { getBicycles, deleteBicycle } = admin
 
 type TMapProps = {
     bicycles: TBicycleData

@@ -6,7 +6,9 @@ import { useNavigate, useParams } from 'react-router-dom'
 import Update from './update'
 import { TCategory, TCategoryDataSingle } from '../../../../types/types'
 import { AppStateType } from '../../../../redux/redux-store'
-import { updateCategory, getCategory } from '../../../../redux/reducers/category-reducer'
+import { admin } from '../../../../redux/reducers/category-reducer'
+
+const { updateCategory, getCategory } = admin
 
 type TDispatchProps = {
     getCategory: (categoryId: string) => void,

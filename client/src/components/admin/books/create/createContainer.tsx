@@ -5,7 +5,9 @@ import { useNavigate } from 'react-router-dom'
 
 import Create from './create'
 import { TBook } from '../../../../types/types'
-import { createBook } from '../../../../redux/reducers/book-reducer'
+import { admin } from '../../../../redux/reducers/book-reducer'
+
+const { createBook } = admin
 
 type TDispatchProps = {
     createBook: (body: TBook) => void

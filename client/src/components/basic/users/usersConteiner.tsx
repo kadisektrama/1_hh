@@ -4,7 +4,9 @@ import { connect } from 'react-redux'
 
 import { AppStateType } from '../../../redux/redux-store'
 import Users from './users'
-import { getUsers } from '../../../redux/reducers/user-reducer'
+import { common } from '../../../redux/reducers/user-reducer'
+
+const { getUsers } = common
 
 type MapPropsType = ReturnType<typeof mapStateToProps>
 

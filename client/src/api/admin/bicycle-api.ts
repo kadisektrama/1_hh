@@ -1,4 +1,4 @@
-import { instance } from '../api'
+import { instance } from './api'
 import { TBicycle } from '../../types/types'
 
 export const bicycleApi = {

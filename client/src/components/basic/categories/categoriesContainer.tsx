@@ -5,7 +5,9 @@ import React, { useState, useEffect } from 'react'
 import { AppStateType } from '../../../redux/redux-store'
 import Categories from './categories'
 import { TCategoryData } from '../../../types/types'
-import { getCategories } from '../../../redux/reducers/category-reducer'
+import { common } from '../../../redux/reducers/category-reducer'
+
+const { getCategories } = common
 
 type TMapStateProps = {
     categories: TCategoryData

@@ -1,5 +1,4 @@
-import { BaseThunkType, InferActionsTypes } from '../redux-store'
-import { appApi } from '../../api/app-api'
+import { InferActionsTypes } from '../redux-store'
 
 const initialState = {
     initialized: false
@@ -7,7 +6,6 @@ const initialState = {
 
 export type InitialStateType = typeof initialState
 type ActionsType = InferActionsTypes<typeof actions>
-type ThunkType = BaseThunkType<ActionsType>
 
 const appReducer = (state = initialState, action: ActionsType): InitialStateType => {
     switch (action.type) {

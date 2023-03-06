@@ -4,9 +4,11 @@ import { compose } from 'redux'
 import { useParams } from 'react-router-dom'
 
 import { AppStateType } from '../../../../redux/redux-store'
-import { getBook } from '../../../../redux/reducers/book-reducer'
+import { admin } from '../../../../redux/reducers/book-reducer'
 import { TBookDataSingle } from '../../../../types/types'
 import ViewBook from './view'
+
+const { getBook } = admin
 
 type TMapStateToProps = {
     book: TBookDataSingle

@@ -5,7 +5,9 @@ import { compose } from 'redux'
 import Books from './books'
 import { AppStateType } from '../../../redux/redux-store'
 import { TBookData } from '../../../types/types'
-import { getBooks, deleteBook } from '../../../redux/reducers/book-reducer'
+import { admin } from '../../../redux/reducers/book-reducer'
+
+const { getBooks, deleteBook } = admin
 
 type TMapProps = {
     books: TBookData

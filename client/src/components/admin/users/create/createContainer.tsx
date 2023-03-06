@@ -5,10 +5,13 @@ import { useNavigate } from 'react-router-dom'
 
 import CreateUser from './create'
 import { TRoleData, TUser } from '../../../../types/types'
-import { createUser } from '../../../../redux/reducers/user-reducer'
+import { admin as adminUsers } from '../../../../redux/reducers/user-reducer'
 import SimpleLoader from '../../../common/loader'
 import { AppStateType } from '../../../../redux/redux-store'
-import { getRoles } from '../../../../redux/reducers/role-reducer'
+import { admin as adminRoles } from '../../../../redux/reducers/role-reducer'
+
+const { createUser } = adminUsers
+const { getRoles } = adminRoles
 
 type TMapDispatchToProps = {
     createUser: (body: TUser) => void

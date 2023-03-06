@@ -1,7 +1,8 @@
 import { BaseThunkType, InferActionsTypes } from '../redux-store'
 import { TUser, TUserData, TUserDataSingle } from '../../types/types'
-import { userApi } from '../../api/admin/user-api'
-import { appApi } from '../../api/app-api'
+import { userApi as adminUserApi } from '../../api/admin/user-api'
+import { userApi as commonUserApi } from '../../api/common/user-api'
+import { commonApi } from '../../api/common/common-api'
 
 const initialState = {
     users: {
@@ -36,34 +37,38 @@ export const actions = {
     getUser: (user: TUserDataSingle) => ({ type: 'APP/GET_USER', payload: user } as const)
 }
 
-export const getUsers = (): ThunkType => async (dispatch) => {
-    const users = await userApi.get()
-    dispatch(actions.getUsers(users))
+export const common = {
+    identify: (): ThunkType => async (dispatch) => {
+        const user = await commonApi.identify()
+        dispatch(actions.getUser(user))
+    },
+    getUsers: (): ThunkType => async (dispatch) => {
+        const users = await commonUserApi.get()
+        dispatch(actions.getUsers(users))
+    },
 }
 
-export const getUser = (userId: string): ThunkType => async (dispatch) => {
-    const user = await userApi.getById(userId)
-    dispatch(actions.getUser(user))
-}
-
-export const identify = (): ThunkType => async (dispatch) => {
-    const user = await appApi.identify()
-    dispatch(actions.getUser(user))
-}
-
-export const createUser = (body: TUser): ThunkType => async(dispatch) => {
-    await userApi.create(body)
-}
-
-export const updateUser = (userId: string, body: TUser): ThunkType => async (dispatch) => {
-    const users = await userApi.update(userId, body)
-    dispatch(actions.getUsers(users))
-}
-
-export const deleteUser = (userId: string): ThunkType => async (dispatch) => {
-    await userApi.delete(userId)
-    const users = await userApi.get()
-    dispatch(actions.getUsers(users))
+export const admin = {
+    getUsers: (): ThunkType => async (dispatch) => {
+        const users = await adminUserApi.get()
+        dispatch(actions.getUsers(users))
+    },
+    getUser: (userId: string): ThunkType => async (dispatch) => {
+        const user = await adminUserApi.getById(userId)
+        dispatch(actions.getUser(user))
+    },
+    createUser: (body: TUser): ThunkType => async(dispatch) => {
+        await adminUserApi.create(body)
+    },
+    updateUser: (userId: string, body: TUser): ThunkType => async (dispatch) => {
+        const users = await adminUserApi.update(userId, body)
+        dispatch(actions.getUsers(users))
+    },
+    deleteUser: (userId: string): ThunkType => async (dispatch) => {
+        await adminUserApi.delete(userId)
+        const users = await adminUserApi.get()
+        dispatch(actions.getUsers(users))
+    }
 }
 
 export default userReducer

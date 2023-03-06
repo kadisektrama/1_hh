@@ -1,6 +1,7 @@
 import { InferActionsTypes, BaseThunkType } from '../redux-store'
 import { TBicycle, TBicycleData, TBicycleDataSingle } from '../../types/types'
-import { bicycleApi } from '../../api/admin/bicycle-api'
+import { bicycleApi as adminBicycleApi } from '../../api/admin/bicycle-api'
+import { bicycleApi as commonBicycleApi } from '../../api/common/bicycle-api'
 
 const initialState = {
     bicycles: {
@@ -35,28 +36,33 @@ export const actions = {
     getBicycle: (bicycle: TBicycleDataSingle) => ({ type: 'BICYCLE/GET_BICYCLE', payload: bicycle } as const)
 }
 
-export const getBicycles = (): ThunkType => async (dispatch) => {
-    const bicycles = await bicycleApi.get()
-    dispatch(actions.getBicycles(bicycles))
+export const admin = {
+    getBicycles: (): ThunkType => async (dispatch) => {
+        const bicycles = await adminBicycleApi.get()
+        dispatch(actions.getBicycles(bicycles))
+    },
+    getBicycle: (bicycleId: string): ThunkType => async (dispatch) => {
+        const bicycle = await adminBicycleApi.getById(bicycleId)
+        dispatch(actions.getBicycle(bicycle))
+    },
+    createBicycle: (body: TBicycle): ThunkType => async () => {
+        await adminBicycleApi.create(body)
+    },
+    updateBicycle: (bicycleId: string, body: TBicycle): ThunkType => async () => {
+        await adminBicycleApi.update(bicycleId, body)
+    },
+    deleteBicycle: (bicycleId: string): ThunkType => async (dispatch) => {
+        await adminBicycleApi.delete(bicycleId)
+        const bicycles = await adminBicycleApi.get()
+        dispatch(actions.getBicycles(bicycles))
+    }
 }
 
-export const getBicycle = (bicycleId: string): ThunkType => async (dispatch) => {
-    const bicycle = await bicycleApi.getById(bicycleId)
-    dispatch(actions.getBicycle(bicycle))
-}
-
-export const createBicycle = (body: TBicycle): ThunkType => async () => {
-    await bicycleApi.create(body)
-}
-
-export const updateBicycle = (bicycleId: string, body: TBicycle): ThunkType => async () => {
-    await bicycleApi.update(bicycleId, body)
-}
-
-export const deleteBicycle = (bicycleId: string): ThunkType => async (dispatch) => {
-    await bicycleApi.delete(bicycleId)
-    const bicycles = await bicycleApi.get()
-    dispatch(actions.getBicycles(bicycles))
+export const common = {
+    getBicycle: (bicycleId: string): ThunkType => async (dispatch) => {
+        const bicycle = await commonBicycleApi.getById(bicycleId)
+        dispatch(actions.getBicycle(bicycle))
+    },
 }
 
 export default bicycleReducer
