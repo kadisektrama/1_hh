@@ -13,8 +13,14 @@ export class Orders {
         return data
     }
 
-    async getByUserId() {
-        const data = this.models.orders.getByUserId()
+    async getByGuestId() {
+        const data = this.models.orders.getByGuestId()
+
+        return data
+    }
+
+    async getByHostId() {
+        const data = this.models.orders.getByHostId()
 
         return data
     }

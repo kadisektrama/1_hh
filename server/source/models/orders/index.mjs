@@ -17,8 +17,19 @@ export class Orders {
         return data
     }
 
-    async getByUserId() {
+    async getByGuestId() {
         const data = await orders.find({ user_id: this.data })
+
+        return data
+    }
+
+    async getByHostId() {
+        const data = await orders.find()
+            .populate({
+                path: 'product_id',
+                match: { user_id: { $eq: this.data } },
+            })
+            .populate({ path: 'user_id' })
 
         return data
     }

@@ -4,14 +4,14 @@ const OrderSchema = mongoose.Schema({
     status: String,
     product_id: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Products',
+        ref: 'Product',
     },
     user_id: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Users',
+        ref: 'User',
     },
 })
 
-const orders = mongoose.model('orders', OrderSchema)
+const orders = mongoose.model('Order', OrderSchema)
 
 export { orders }

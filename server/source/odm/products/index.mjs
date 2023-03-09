@@ -13,6 +13,6 @@ const productSchema = mongoose.Schema({
     user_id: mongoose.Schema.Types.ObjectId,
 })
 
-const products = mongoose.model('product', productSchema)
+const products = mongoose.model('Product', productSchema)
 
 export { products }

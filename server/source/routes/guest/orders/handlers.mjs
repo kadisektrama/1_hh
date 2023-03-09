@@ -21,7 +21,7 @@ export const createOrder = async (req, res) => {
 export const getOrders = async (req, res) => {
     try {
         const products = new Orders(req.data.userId)
-        const data = await products.getByUserId()
+        const data = await products.getByGuestId()
 
         return res.status(200).json({ data: data })
     } catch ({ message }) {

@@ -5,7 +5,7 @@ const UserSchema = mongoose.Schema({
     last_name: String,
     roles: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Roles',
+        ref: 'Role',
     },
     email: {
         type: String,
@@ -22,6 +22,6 @@ const UserSchema = mongoose.Schema({
     }
 })
 
-const users = mongoose.model('user', UserSchema)
+const users = mongoose.model('User', UserSchema)
 
 export { users }

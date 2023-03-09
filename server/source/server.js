@@ -36,6 +36,7 @@ app.use('/', userMiddleware, routes.common.identify)
 
 app.use('/host', hostMiddleware);
 app.use('/host/products', routes.host.products);
+app.use('/host/orders', routes.host.orders);
 
 app.use('/guest', guestMiddleware)
 app.use('/guest/orders', routes.guest.orders)
