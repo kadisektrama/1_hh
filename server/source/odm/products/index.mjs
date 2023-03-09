@@ -10,6 +10,7 @@ const productSchema = mongoose.Schema({
     },
     reviews_count: Number,
     rating: Number,
+    user_id: mongoose.Schema.Types.ObjectId,
 })
 
 const products = mongoose.model('product', productSchema)

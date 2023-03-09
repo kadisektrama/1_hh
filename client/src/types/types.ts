@@ -6,6 +6,7 @@ type TPartEachProduct = {
     currency: number,
     reviews_count: number,
     rating: number,
+    user_id: string,
     __t: string,
     __v: number,
 }

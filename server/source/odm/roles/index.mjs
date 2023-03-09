@@ -4,7 +4,6 @@ const RoleSchema = mongoose.Schema({
     name: {
         type: String,
         unique: true,
-        default: 'guest'
     }
 })
 

@@ -1,6 +1,6 @@
 import lodash from 'lodash'
 
-import { instance } from '../common/api'
+import { instance } from './api'
 import { TCategoryData, TCategory } from '../../types/types'
 
 export const categoryApi = {

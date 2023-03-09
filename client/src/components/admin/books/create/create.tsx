@@ -37,7 +37,7 @@ const Create: React.FC<TDispatchProps> = (props) => {
                     <Controller
                         name="title"
                         control={control}
-                        rules={{ required: true, minLength: 6, maxLength: 16 }}
+                        rules={{ required: true, minLength: 6, maxLength: 100 }}
                         render={({ field }) => <Input {...field} />}
                     />
                     {errors.title && <p className="error">title is required</p>}
@@ -53,12 +53,22 @@ const Create: React.FC<TDispatchProps> = (props) => {
                     {errors.description ? <p className="error">description is required</p> : null}
                 </Form.Item>
 
+                <Form.Item label="User id">
+                    <Controller
+                        name="user_id"
+                        control={control}
+                        rules={{ required: true }}
+                        render={({ field }) => <Input {...field} />}
+                    />
+                    {errors.user_id ? <p className="error">user id is required</p> : null}
+                </Form.Item>
+
                 <Form.Item label="author">
                     <Controller
                         name="author"
                         control={control}
                         rules={{ required: true, minLength: 10, maxLength: 200 }}
-                        render={({ field }) => <TextArea rows={4} {...field} />}
+                        render={({ field }) => <Input {...field} />}
                     />
                     {errors.author ? <p className="error">author is required</p> : null}
                 </Form.Item>

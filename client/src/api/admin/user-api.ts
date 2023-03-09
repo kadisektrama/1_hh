@@ -1,6 +1,6 @@
 import lodash from 'lodash'
 
-import { instance } from '../common/api'
+import { instance } from './api'
 import { TUserData, TUser } from '../../types/types'
 
 export const userApi = {

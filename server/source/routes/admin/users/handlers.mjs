@@ -1,3 +1,5 @@
+import lodash from "lodash"
+
 import { Users } from "../../../controllers/index.mjs"
 
 export const getUsers = async (req, res) => {
@@ -27,7 +29,7 @@ export const getByUserId = async (req, res) => {
         const user = new Users(req.params.userId)
         const data = await user.getById()
 
-        res.status(200).json({ data: data })
+        res.status(200).json({ data: lodash.pick(data, ['email', 'first_name', 'last_name', 'phone', 'roles', 'user_name', '_id']) })
     } catch (e) {
         res.status(400).json({ message: e.message })
     }

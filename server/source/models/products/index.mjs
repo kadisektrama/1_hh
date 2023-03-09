@@ -6,7 +6,7 @@ export class Products {
     }
 
     async get() {
-        const data = await products.find()
+        const data = await products.find(this.data)
 
         return data
     }

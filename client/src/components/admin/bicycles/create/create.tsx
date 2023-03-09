@@ -51,6 +51,16 @@ const Create: React.FC<TDispatchProps> = (props) => {
                     {errors.description ? <p className="error">description is required</p> : null}
                 </Form.Item>
 
+                <Form.Item label="User id">
+                    <Controller
+                        name="user_id"
+                        control={control}
+                        rules={{ required: true }}
+                        render={({ field }) => <Input {...field} />}
+                    />
+                    {errors.user_id ? <p className="error">user id is required</p> : null}
+                </Form.Item>
+
                 <Form.Item label="Rating">
                     <Controller
                         name="rating"
