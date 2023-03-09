@@ -12,16 +12,16 @@ const cookies = cookie.parse(document.cookie)
 
 const items: MenuProps['items'] = [
     {
-        label: <Link to={'/favourites'}><Button type="text">favourites</Button></Link>,
+        label: <Link to={'/guest/favourites'}><Button type="text">favourites</Button></Link>,
         key: 'favourites',
     },
     {
-        label: <Link to={'/orders'}><Button type="text">orders</Button></Link>,
+        label: <Link to={'/guest/orders'}><Button type="text">orders</Button></Link>,
         key: 'orders',
     },
     {
-        label: <Link to={'/box'}><Button type="text">box</Button></Link>,
-        key: 'box',
+        label: <Link to={'/guest/settings'}><Button type="text">settings</Button></Link>,
+        key: 'settings',
     },
     {
         type: 'divider',

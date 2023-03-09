@@ -12,6 +12,7 @@ import BasicLayout from './components/basic/Layout/layout'
 import AdminLayout from './components/admin/Layout/layout'
 import AuthLayout from './components/auth/layout/layout'
 import HostLayout from './components/host/layout/layout'
+import GuestLayout from './components/guest/layout/layout'
 
 // Basic
 import Products from './components/basic/Products/productsContainer'
@@ -54,6 +55,10 @@ import Registration from './components/auth/registration/registrationContainer'
 
 // Host
 import HostProducts from './components/host/products/productsContainer'
+import HostOrders from './components/host/orders/ordersContainer'
+
+// Guest
+import GuestOrders from './components/guest/orders/ordersContainer'
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -102,6 +107,11 @@ const router = createBrowserRouter(
             <Route path={'/host'} element={<HostLayout />}>
                 <Route index element={<HostProducts />} />
                 <Route path='products' element={<HostProducts />} />
+                <Route path='orders' element={<HostOrders />} />
+            </Route>
+            <Route path={'/guest'} element={<GuestLayout />}>
+                <Route index element={<GuestOrders />} />
+                <Route path='orders' element={<GuestOrders />} />
             </Route>
             <Route path='/auth' element={<AuthLayout />}>
                 <Route path='login' element={<Login />} />

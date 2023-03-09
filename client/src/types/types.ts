@@ -106,3 +106,15 @@ export type TRegistration = {
     email: string,
     phone: string,
 }
+
+export type TOrder = {
+    status: string,
+    product_id: TProduct | string,
+    user_id: TUser | string,
+}
+export type TOrderData = {
+    data: TOrder[]
+}
+export type TOrderDataSingle = {
+    data: TOrder
+}

@@ -10,15 +10,15 @@ const cookies = cookie.parse(document.cookie)
 
 const items: MenuProps['items'] = [
     {
-        label: <Link to={'/host/products'}><Button type="text">products</Button></Link>,
-        key: 'products',
+        label: <Link to={'/guest/favourites'}><Button type="text">favourites</Button></Link>,
+        key: 'favourites',
     },
     {
-        label: <Link to={'/host/orders'}><Button type="text">orders</Button></Link>,
+        label: <Link to={'/guest/orders'}><Button type="text">orders</Button></Link>,
         key: 'orders',
     },
     {
-        label: <Link to={'/host/settings'}><Button type="text">settings</Button></Link>,
+        label: <Link to={'/guest/settings'}><Button type="text">settings</Button></Link>,
         key: 'settings',
     },
     {
@@ -41,9 +41,13 @@ const header = () => {
             <div className='flex-justify-content-flex-end' style={{ width: '100%', margin: 0 }}>
                 <div>
                     {cookies.token ? (
-                        <Dropdown menu={{ items }} trigger={['click']}>
-                            <Avatar style={{ cursor: 'pointer' }} icon={<UserOutlined />} />
-                        </Dropdown>
+                        <>
+                            <Link style={{ marginRight: '24px' }} to={'/host'}><Button type="text">manage</Button></Link>
+
+                            <Dropdown menu={{ items }} trigger={['click']}>
+                                <Avatar style={{ cursor: 'pointer' }} icon={<UserOutlined />} />
+                            </Dropdown>
+                        </>
                     ) : (
                         <Link to={'/auth/login'}>login</Link>
                     )}
