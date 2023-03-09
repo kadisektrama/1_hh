@@ -10,7 +10,7 @@ import * as routes from "./routes/index.mjs"
 //Logger
 import { logger, errorLogger, notFoundLogger, validationLogger } from "./utils/index.mjs";
 
-import { adminMiddleware, hostMiddleware, userMiddleware } from "./middlewares/index.mjs";
+import {adminMiddleware, guestMiddleware, hostMiddleware, userMiddleware} from "./middlewares/index.mjs";
 
 export const app = express();
 
@@ -36,6 +36,9 @@ app.use('/', userMiddleware, routes.common.identify)
 
 app.use('/host', hostMiddleware);
 app.use('/host/products', routes.host.products);
+
+app.use('/guest', guestMiddleware)
+app.use('/guest/orders', routes.guest.orders)
 
 app.use('/admin', adminMiddleware);
 app.use('/admin/books', routes.admin.books)

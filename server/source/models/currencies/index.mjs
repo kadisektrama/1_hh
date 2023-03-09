@@ -1,4 +1,4 @@
-import {books, currencies} from "../../odm/index.mjs"
+import { currencies } from "../../odm/index.mjs"
 
 export class Currencies {
     constructor(data) {

@@ -18,8 +18,12 @@ export const guestMiddleware = async (req, res, next) => {
         const roles = new Roles(decodedData.roles)
         const role = await roles.getById()
 
-        if (role.name !== 'admin') {
+        if (!(role.name === 'host' || role.name === 'admin' || role.name === 'guest')) {
             res.status(401).json({ message: 'Неправильный токен' })
+        }
+
+        req.data = {
+            userId: decodedData.id
         }
 
         next()
