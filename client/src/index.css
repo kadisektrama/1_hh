@@ -58,3 +58,24 @@ html {
   justify-content: space-between;
   margin: 10px 0 10px 0;
 }
+
+.flex-justify-content-flex-end {
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px 0 10px 0;
+}
+
+.main-flex {
+  flex: 1 0 auto;
+  background-color: #fbfbfb
+}
+
+.footer-flex {
+  flex: 0 0 auto;
+  background-color: #f5f5f5;
+}
+
+.header-flex {
+  flex: 0 0 auto;
+  background-color: #f5f5f5;
+}
