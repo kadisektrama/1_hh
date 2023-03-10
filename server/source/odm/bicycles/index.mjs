@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 import { products } from '../products/index.mjs'
 
 const bicycles = products.discriminator(
-    'Bicycle',
+    'bicycles',
     new mongoose.Schema({
         color: String,
         speeds_count: Number,

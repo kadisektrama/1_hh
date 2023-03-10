@@ -8,10 +8,6 @@ type TMapStateProps = {
     bicycle: TBicycleDataSingle
 }
 
-type TMapDispatchToProps = {
-    get: () => void
-}
-
 const bicycle: React.FC<TMapStateProps> = (props) => {
     return (
         <div>
