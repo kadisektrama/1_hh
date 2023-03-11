@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom'
 import { Card } from 'antd'
 import { Typography } from 'antd'
 
-import { TProduct } from '../../../types/types'
+import { TOrder } from '../../../../types/types'
 
 const { Title, Paragraph } = Typography
 
-const card: React.FC<TProduct> = (props) => {
+const card: React.FC<TOrder> = (props) => {
     return (
-        <Link to={`/${props.__t}/${props._id}`}>
+        <Link to={`/guest/${props._id}`}>
             <Card
                 style={{ width: '250px' }}
                 className='card_cell'
@@ -21,8 +21,8 @@ const card: React.FC<TProduct> = (props) => {
                     />
                 }
             >
-                <Title className='text-inline' level={4}>{props.title}</Title>
-                <Paragraph>{props.description}</Paragraph>
+                <Title className='text-inline' level={4}>{props.product_id.title}</Title>
+                <Paragraph>{props.product_id.price / 1000 + '' + props.product_id.currency.name}</Paragraph>
             </Card>
         </Link>
     )

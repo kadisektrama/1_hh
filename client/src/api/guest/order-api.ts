@@ -7,7 +7,7 @@ export const orderApi = {
     get() {
         return instance.get<TOrderData>('orders').then(res => res.data)
     },
-    create(body: TOrder) {
-        return instance.post('orders', body)
+    create(product_id: string) {
+        return instance.post('orders', { product_id: product_id })
     },
 }

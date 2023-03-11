@@ -54,7 +54,9 @@ const books: React.FC<TMapProps & TDispatchProps> = (props) => {
         },
         {
             title: 'currency',
-            dataIndex: 'currency',
+            dataIndex: '',
+            key: 'currency',
+            render: (data) => <>{data.currency.name}</>,
         },
         {
             title: 'author',

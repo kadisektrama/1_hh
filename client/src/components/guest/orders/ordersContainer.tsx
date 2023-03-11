@@ -4,11 +4,41 @@ import { connect } from 'react-redux'
 
 import { AppStateType } from '../../../redux/redux-store'
 import Orders from './orders'
+import { TOrderData } from '../../../types/types'
+import { guest } from '../../../redux/reducers/order-reducer'
 
-const OrdersContainer: React.FC = (props) => {
-    return <Orders />
+const { getOrders } = guest
+
+type TMapStateToProps = {
+    orders: TOrderData
+}
+
+type TDispatchToProps = {
+    getOrders: () => void
+}
+
+const OrdersContainer: React.FC<TMapStateToProps & TDispatchToProps> = (props) => {
+    const [isLoaded, setIsLoaded] = useState(false)
+
+    useEffect(() => {
+        Promise.all([props.getOrders()])
+            .then(() => setIsLoaded(true))
+    }, [])
+
+    return (
+        <Orders
+            orders={props.orders}
+            isLoaded={isLoaded}
+        />
+    )
+}
+
+const MapStateToProps = (state: AppStateType) => {
+    return ({
+        orders: state.order.orders
+    })
 }
 
 export default compose<React.ComponentType>(
-    connect(null, null)
+    connect(MapStateToProps, { getOrders })
 )(OrdersContainer)

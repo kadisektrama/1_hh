@@ -9,6 +9,7 @@ import bookReducer from './reducers/book-reducer'
 import bicycleReducer from './reducers/bicycle-reducer'
 import currencyReducer from './reducers/currency-reducer'
 import roleReducer from './reducers/role-reducer'
+import orderReducer from './reducers/order-reducer'
 
 const rootReducer = combineReducers({
     app: appReducer,
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
     bicycle: bicycleReducer,
     currency: currencyReducer,
     role: roleReducer,
+    order: orderReducer,
 })
 
 type RootReducerType = typeof rootReducer; // (globalstate: AppStateType) => AppStateType

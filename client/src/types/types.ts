@@ -1,9 +1,9 @@
 type TPartEachProduct = {
-    _id?: string,
+    _id: string,
     title: string,
     description: string,
     price: number,
-    currency: number,
+    currency: TCurrency,
     reviews_count: number,
     rating: number,
     user_id: string,
@@ -50,7 +50,7 @@ export type TCategoryDataSingle = {
     data: TCategory
 }
 
-export type TProduct = TBook
+export type TProduct = TBook | TBicycle
 export type TProductData = {
     data: TProduct[]
 }
@@ -109,8 +109,10 @@ export type TRegistration = {
 
 export type TOrder = {
     status: string,
-    product_id: TProduct | string,
-    user_id: TUser | string,
+    product_id: TProduct,
+    user_id: TUser,
+    _id?: string,
+    __v?: string,
 }
 export type TOrderData = {
     data: TOrder[]

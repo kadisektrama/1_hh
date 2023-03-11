@@ -7,7 +7,7 @@ import {
     Button, InputNumber, Select, Checkbox,
 } from 'antd'
 
-import { TBicycle } from '../../../../types/types'
+import {TBicycle, TCurrencyData} from '../../../../types/types'
 
 const { TextArea } = Input
 
@@ -15,7 +15,11 @@ type TDispatchProps = {
     createBicycle: (body: TBicycle) => void
 }
 
-const Create: React.FC<TDispatchProps> = (props) => {
+type TMapStateToProps = {
+    currencies: TCurrencyData
+}
+
+const Create: React.FC<TDispatchProps & TMapStateToProps> = (props) => {
     const { handleSubmit, control, formState: { errors } } = useForm<TBicycle>()
 
     const onSubmit = handleSubmit(data => {
@@ -98,7 +102,7 @@ const Create: React.FC<TDispatchProps> = (props) => {
                         rules={{ required: true }}
                         render={({ field }) =>
                             <Select {...field}>
-                                <Select.Option value={1}>BYN</Select.Option>
+                                {props.currencies.data.map(currency => <Select.Option key={currency._id} value={currency._id}>{currency.name}</Select.Option>)}
                             </Select>
                         }
                     />

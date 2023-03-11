@@ -50,8 +50,9 @@ const products: React.FC<TMapStateToProps> = (props) => {
         },
         {
             title: 'currency',
-            dataIndex: 'currency',
+            dataIndex: '',
             key: 'currency',
+            render: (data) => <>{data.currency.name}</>,
         },
     ]
 

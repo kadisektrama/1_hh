@@ -24,7 +24,7 @@ const createUser: React.FC<TMapDispatchToProps & TMapStateToProps> = (props) => 
     const onSubmit = handleSubmit(data => {
         props.createUser(data)
     })
-    console.log(props)
+
     return (
         <>
             <Form

@@ -25,13 +25,13 @@ export class Bicycles {
     }
 
     async get() {
-        const data = await bicycles.find()
+        const data = await bicycles.find().populate('currency')
 
         return data
     }
 
     async getById() {
-        const data = await bicycles.findById(this.data)
+        const data = await bicycles.findById(this.data).populate('currency')
 
         return data
     }

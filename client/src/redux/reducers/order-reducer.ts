@@ -4,10 +4,10 @@ import { orderApi as hostOrderApi } from '../../api/host/order-api'
 import { orderApi as guestOrderApi } from '../../api/guest/order-api'
 
 const initialState = {
-    roles: {
+    orders: {
         data: [] as TOrder[]
     },
-    role: {} as TOrderDataSingle,
+    order: {} as TOrderDataSingle,
 }
 
 export type InitialStateType = typeof initialState
@@ -19,12 +19,12 @@ const bookReducer = (state = initialState, action: ActionsType): InitialStateTyp
         case 'ORDER/GET_ORDERS':
             return {
                 ...state,
-                roles: action.payload
+                orders: action.payload
             }
         case 'ORDER/GET_ORDER':
             return {
                 ...state,
-                role: action.payload
+                order: action.payload
             }
         default:
             return state
@@ -48,8 +48,10 @@ export const guest = {
         const orders = await guestOrderApi.get()
         dispatch(actions.getOrders(orders))
     },
-    createOrder: (body: TOrder): ThunkType => async () => {
-        await guestOrderApi.create(body)
+    createOrder: (product_id: string): ThunkType => async () => {
+        console.log(product_id)
+
+        await guestOrderApi.create(product_id)
     }
 }
 

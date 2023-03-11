@@ -19,6 +19,13 @@ export class Orders {
 
     async getByGuestId() {
         const data = await orders.find({ user_id: this.data })
+            .populate({
+                path: 'product_id',
+                populate: {
+                    path: 'currency'
+                },
+            })
+            .populate({ path: 'user_id' })
 
         return data
     }
@@ -28,6 +35,9 @@ export class Orders {
             .populate({
                 path: 'product_id',
                 match: { user_id: { $eq: this.data } },
+                populate: {
+                    path: 'currency'
+                },
             })
             .populate({ path: 'user_id' })
 

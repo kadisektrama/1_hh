@@ -12,13 +12,13 @@ export class Books {
     }
 
     async get() {
-        const data = await books.find()
+        const data = await books.find().populate('currency')
 
         return data
     }
 
     async getById() {
-        const data = await books.findById(this.data)
+        const data = await books.findById(this.data).populate('currency')
 
         return data
     }

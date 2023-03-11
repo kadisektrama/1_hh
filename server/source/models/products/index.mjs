@@ -6,7 +6,7 @@ export class Products {
     }
 
     async get() {
-        const data = await products.find(this.data)
+        const data = await products.find(this.data).populate('currency')
 
         return data
     }

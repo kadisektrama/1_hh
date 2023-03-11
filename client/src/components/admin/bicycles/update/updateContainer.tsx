@@ -4,20 +4,24 @@ import { connect } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import Update from './update'
-import { TBicycle, TBicycleDataSingle } from '../../../../types/types'
+import { TBicycle, TBicycleDataSingle, TCurrencyData } from '../../../../types/types'
 import { AppStateType } from '../../../../redux/redux-store'
 import { admin } from '../../../../redux/reducers/bicycle-reducer'
+import { admin as adminCurrency } from '../../../../redux/reducers/currency-reducer'
 
 const { updateBicycle, getBicycle } = admin
+const { getCurrencies } = adminCurrency
 
 type TDispatchProps = {
     getBicycle: (bicycleId: string) => void,
-    updateBicycle: (bicycleId: string, body: TBicycle) => void
+    updateBicycle: (bicycleId: string, body: TBicycle) => void,
+    getCurrencies: () => void,
 }
 
 type TMapProps = {
     isLoaded: boolean,
-    bicycle: TBicycleDataSingle
+    bicycle: TBicycleDataSingle,
+    currencies: TCurrencyData,
 }
 
 type TUseParams = {
@@ -35,7 +39,7 @@ const CreateBookContainer: React.FC<TMapProps & TDispatchProps> = (props) => {
     }
 
     useEffect(() => {
-        Promise.all([props.getBicycle(bicycleId!)])
+        Promise.all([props.getBicycle(bicycleId!), props.getCurrencies()])
             .then(() => setIsLoaded(true))
     }, [])
 
@@ -47,6 +51,7 @@ const CreateBookContainer: React.FC<TMapProps & TDispatchProps> = (props) => {
                     updateBicycle={(bicycleId: string, body: TBicycle) => updateBicycle(bicycleId, body)}
                     isLoaded={isLoaded}
                     bicycle={props.bicycle}
+                    currencies={props.currencies}
                 />
             )}
         </>
@@ -56,10 +61,11 @@ const CreateBookContainer: React.FC<TMapProps & TDispatchProps> = (props) => {
 const mapStateToProps = (state: AppStateType) => {
     return ({
         bicycle: state.bicycle.bicycle,
+        currencies: state.currency.currencies
     })
 }
 
 export default compose<ComponentType>(
-    connect(mapStateToProps, { getBicycle, updateBicycle })
+    connect(mapStateToProps, { getBicycle, updateBicycle, getCurrencies })
 )(CreateBookContainer)
 

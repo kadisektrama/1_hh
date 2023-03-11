@@ -26,7 +26,7 @@ const view: React.FC<TMapStateToProps> = (props) => {
                     <div>Price</div>
                     <div>{props.bicycle.data.price}</div>
                     <div>Currency</div>
-                    <div>{props.bicycle.data.currency}</div>
+                    <div>{props.bicycle.data.currency.name}</div>
                     <div>Reviews count</div>
                     <div>{props.bicycle.data.reviews_count}</div>
                     <div>Rating</div>

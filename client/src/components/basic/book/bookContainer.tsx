@@ -6,13 +6,16 @@ import { useParams } from 'react-router-dom'
 import { AppStateType } from '../../../redux/redux-store'
 import Book from './book'
 import { common } from '../../../redux/reducers/book-reducer'
+import { guest as guestOrder } from '../../../redux/reducers/order-reducer'
 
 const { getBook } = common
+const { createOrder } = guestOrder
 
 type TMapStateProps = ReturnType<typeof mapStateToProps>
 
 export type TMapDispatchToProps = {
     getBook: (bookId: string) => void
+    createOrder: (bicycleId: string) => void,
 }
 
 type TUseParams = {
@@ -28,9 +31,15 @@ const BookContainer: React.FC<TMapStateProps & TMapDispatchToProps> = (props) =>
             .then(() => setIsLoaded(true))
     }, [])
 
+    const createOrder = (bookId: string) => {
+        Promise.all([props.createOrder(bookId)])
+            .then(() => document.location = document.location.origin)
+    }
+
     return <Book
         isLoaded={isLoaded}
         book={props.book}
+        createOrder={createOrder}
     />
 }
 
@@ -41,5 +50,5 @@ const mapStateToProps = (state: AppStateType) => {
 }
 
 export default compose<React.ComponentType>(
-    connect(mapStateToProps, { getBook })
+    connect(mapStateToProps, { getBook, createOrder })
 )(BookContainer)

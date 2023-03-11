@@ -5,8 +5,8 @@ const productSchema = mongoose.Schema({
     description: String,
     price: Number,
     currency: {
-        type: Number,
-        max: 1,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'currencies',
     },
     reviews_count: Number,
     rating: Number,

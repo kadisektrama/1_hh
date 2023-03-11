@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { TProductData } from '../../../../types/types'
-import Card from '../../../common/card/card'
+import Card from '../../../common/cards/product/product'
 
 type PropsType = {
     products: TProductData,
