@@ -9,7 +9,7 @@ import {
     InputNumber,
 } from 'antd'
 
-import { TBook } from '../../../../types/types'
+import { TBook, TCurrencyData } from '../../../../types/types'
 
 const { TextArea } = Input
 
@@ -17,7 +17,11 @@ type TDispatchProps = {
     createBook: (body: TBook) => void
 }
 
-const Create: React.FC<TDispatchProps> = (props) => {
+type TMapStateToProps = {
+    currencies: TCurrencyData
+}
+
+const Create: React.FC<TDispatchProps & TMapStateToProps> = (props) => {
     const { handleSubmit, control, formState: { errors } } = useForm<TBook>()
 
     const onSubmit = handleSubmit(data => {
@@ -110,7 +114,7 @@ const Create: React.FC<TDispatchProps> = (props) => {
                         rules={{ required: true }}
                         render={({ field }) =>
                             <Select {...field}>
-                                <Select.Option value={1}>BYN</Select.Option>
+                                {props.currencies.data.map(currency => <Select.Option key={currency._id} value={currency._id}>{currency.name}</Select.Option>)}
                             </Select>
                         }
                     />

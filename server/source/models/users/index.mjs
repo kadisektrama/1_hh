@@ -12,13 +12,13 @@ export class Users {
     }
 
     async get() {
-        const data = await users.find()
+        const data = await users.find().populate('role')
 
         return data
     }
 
     async getById() {
-        const data = await users.findById(this.data)
+        const data = await users.findById(this.data).populate('role')
 
         return data
     }

@@ -26,7 +26,7 @@ export type TUser = {
     first_name: string,
     last_name: string,
     user_name: string,
-    roles: string,
+    role: TRole,
     email?: string,
     phone?: string,
 }

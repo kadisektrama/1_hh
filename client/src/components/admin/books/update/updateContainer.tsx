@@ -4,20 +4,24 @@ import { connect } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import Update from './update'
-import { TBook, TBookDataSingle } from '../../../../types/types'
+import { TBook, TBookDataSingle, TCurrencyData } from '../../../../types/types'
 import { AppStateType } from '../../../../redux/redux-store'
 import { admin } from '../../../../redux/reducers/book-reducer'
+import { admin as adminCurrency } from '../../../../redux/reducers/currency-reducer'
 
 const { updateBook, getBook } = admin
+const { getCurrencies } = adminCurrency
 
 type TDispatchProps = {
     getBook: (bookId: string) => void,
-    updateBook: (bookId: string, body: TBook) => void
+    updateBook: (bookId: string, body: TBook) => void,
+    getCurrencies: () => void,
 }
 
 type TMapProps = {
     isLoaded: boolean,
-    book: TBookDataSingle
+    book: TBookDataSingle,
+    currencies: TCurrencyData,
 }
 
 type TUseParams = {
@@ -35,7 +39,7 @@ const CreateBookContainer: React.FC<TMapProps & TDispatchProps> = (props) => {
     }
 
     useEffect(() => {
-        Promise.all([props.getBook(bookId!)])
+        Promise.all([props.getBook(bookId!), props.getCurrencies()])
             .then(() => setIsLoaded(true))
     }, [])
 
@@ -47,6 +51,7 @@ const CreateBookContainer: React.FC<TMapProps & TDispatchProps> = (props) => {
                     updateBook={(bookId: string, body: TBook) => updateBook(bookId, body)}
                     isLoaded={isLoaded}
                     book={props.book}
+                    currencies={props.currencies}
                 />
             )}
         </>
@@ -56,10 +61,11 @@ const CreateBookContainer: React.FC<TMapProps & TDispatchProps> = (props) => {
 const mapStateToProps = (state: AppStateType) => {
     return ({
         book: state.book.book,
+        currencies: state.currency.currencies,
     })
 }
 
 export default compose<ComponentType>(
-    connect(mapStateToProps, {getBook, updateBook})
+    connect(mapStateToProps, { getBook, updateBook, getCurrencies })
 )(CreateBookContainer)
 

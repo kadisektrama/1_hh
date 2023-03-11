@@ -20,7 +20,7 @@ export const authentication = async (req, res) => {
             return res.status(403).json({ message: `Неправильный пароль` })
         }
 
-        const jwt = accessToken(candidate._id, candidate.roles)
+        const jwt = accessToken(candidate._id, candidate.role)
 
         return res.status(200).json({ token: jwt })
     } catch ({ message }) {
@@ -42,7 +42,7 @@ export const registration = async (req, res) => {
         const role = new Roles('guest')
         const roles = await role.getByName()
 
-        await user.create({ ...req.body, password: hashedPassword, roles: roles._id })
+        await user.create({ ...req.body, password: hashedPassword, role: roles._id })
         return res.status(201).json({ message: 'Пользователь успешно создан' })
     } catch ({ message }) {
         return res.status(400).json(message)

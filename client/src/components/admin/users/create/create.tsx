@@ -64,9 +64,9 @@ const createUser: React.FC<TMapDispatchToProps & TMapStateToProps> = (props) => 
                     {errors.user_name && <p className="error">user name is required</p>}
                 </Form.Item>
 
-                <Form.Item label='Roles'>
+                <Form.Item label='Role'>
                     <Controller
-                        name="roles"
+                        name="role._id"
                         control={control}
                         rules={{ required: true }}
                         render={({ field }) =>
@@ -76,7 +76,7 @@ const createUser: React.FC<TMapDispatchToProps & TMapStateToProps> = (props) => 
                         }
                     />
 
-                    {errors.roles ? <p className="error">roles is required</p> : null}
+                    {errors.role ? <p className="error">roles is required</p> : null}
                 </Form.Item>
 
                 <Form.Item label='Email'>

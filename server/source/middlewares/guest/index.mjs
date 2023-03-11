@@ -15,7 +15,7 @@ export const guestMiddleware = async (req, res, next) => {
 
         const decodedData = decodeAccessToken(token)
 
-        const roles = new Roles(decodedData.roles)
+        const roles = new Roles(decodedData.role)
         const role = await roles.getById()
 
         if (!(role.name === 'host' || role.name === 'admin' || role.name === 'guest')) {

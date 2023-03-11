@@ -5,8 +5,7 @@ import cookie from 'cookie'
 import type { MenuProps } from 'antd'
 import { Layout, Button, Space, Avatar, Dropdown } from 'antd'
 import { UserOutlined } from '@ant-design/icons'
-
-const { Header } = Layout
+import { TUserDataSingle } from '../../../../types/types'
 
 const cookies = cookie.parse(document.cookie)
 
@@ -35,7 +34,11 @@ const items: MenuProps['items'] = [
     },
 ]
 
-const header = () => {
+type TMapStateToProps = {
+    user: TUserDataSingle
+}
+
+const header: React.FC<TMapStateToProps> = (props) => {
     return (
         <div style={{ display: 'flex', height: '64px', alignItems: 'center', margin: '0 30px 0 30px' }}>
             <Link to={'/'}><span style={{ fontSize: '30px' }} >SLAANESh</span></Link>
@@ -49,6 +52,7 @@ const header = () => {
                 <div>
                     {cookies.token ? (
                         <>
+                            {props.user?.data?.role?.name === 'admin' && <Link style={{ marginRight: '24px' }} to={'/admin'}><Button type="text">admin</Button></Link>}
                             <Link style={{ marginRight: '24px' }} to={'/host'}><Button type="text">manage</Button></Link>
 
                             <Dropdown menu={{ items }} trigger={['click']}>

@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom'
 import { Layout } from 'antd'
 
 // Tools
-import Header from './header/header'
+import Header from './header/headerContainer'
 import Footer from './footer/footer'
 import './layout.scss'
 

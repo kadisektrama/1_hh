@@ -23,7 +23,6 @@ export const actions = {
     setInitialize: (isInitialized: boolean) => ({ type: 'APP/SET_INITIALIZED', payload: isInitialized } as const)
 }
 
-
 export const setInitialize = (isInitialize: boolean) => (dispatch: any) => {
     dispatch(actions.setInitialize(isInitialize))
 }

@@ -21,8 +21,8 @@ const view: React.FC<TMapStateToProps> = (props) => {
                     <div>{props.user.data.last_name}</div>
                     <div>Email</div>
                     <div>{props.user.data.email}</div>
-                    <div>Roles</div>
-                    <div>{props.user.data.roles}</div>
+                    <div>Role</div>
+                    <div>{props.user.data.role.name}</div>
                     <div>Phone</div>
                     <div>{props.user.data.phone}</div>
                 </div>

@@ -3,9 +3,9 @@ import mongoose from "mongoose"
 const UserSchema = mongoose.Schema({
     first_name: String,
     last_name: String,
-    roles: {
+    role: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Role',
+        ref: 'roles',
     },
     email: {
         type: String,

@@ -18,7 +18,7 @@ type TMapDispatchToProps = {
 const users: React.FC<TMapStateToProps & TMapDispatchToProps> = (props) => {
     const columns: ColumnsType<TUser> = [
         {
-            title: 'First_name',
+            title: 'First name',
             dataIndex: '',
             key: 'first_name',
             render: (data) => <>
@@ -28,7 +28,7 @@ const users: React.FC<TMapStateToProps & TMapDispatchToProps> = (props) => {
             </>,
         },
         {
-            title: 'last_name',
+            title: 'last name',
             dataIndex: 'last_name',
             /*sorter: {
                 compare: (a, b) => a.chinese - b.chinese,
@@ -36,8 +36,10 @@ const users: React.FC<TMapStateToProps & TMapDispatchToProps> = (props) => {
             },*/
         },
         {
-            title: 'roles',
-            dataIndex: 'roles',
+            title: 'role',
+            dataIndex: '',
+            key: 'role',
+            render: (data) => <>{data.role.name}</>
         },
         {
             title: 'email',
