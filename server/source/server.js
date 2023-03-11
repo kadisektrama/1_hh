@@ -49,6 +49,7 @@ app.use('/admin/categories', routes.admin.categories)
 app.use('/admin/currencies', routes.admin.currencies)
 app.use('/admin/bicycles', routes.admin.bicycles)
 app.use('/admin/roles', routes.admin.roles)
+app.use('/admin/orders', routes.admin.orders)
 
 //errors
 app.get('/error', (req, res) => {

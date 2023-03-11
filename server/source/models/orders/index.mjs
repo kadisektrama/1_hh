@@ -13,6 +13,13 @@ export class Orders {
 
     async get() {
         const data = await orders.find()
+            .populate({
+                path: 'product_id',
+                populate: {
+                    path: 'currency',
+                }
+            })
+            .populate('user_id')
 
         return data
     }
@@ -45,7 +52,7 @@ export class Orders {
     }
 
     async getById() {
-        const data = await orders.findById(this.data)
+        const data = await orders.findById(this.data).populate('product_id user_id')
 
         return data
     }

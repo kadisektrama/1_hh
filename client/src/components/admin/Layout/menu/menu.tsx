@@ -41,6 +41,11 @@ const App: React.FC = () => {
                         label: <Link to={'/admin/bicycles'}>Bicycles</Link>,
                     },
                     {
+                        key: 'orders',
+                        icon: <HeartOutlined />,
+                        label: <Link to={'/admin/orders'}>Orders</Link>,
+                    },
+                    {
                         key: 'currencies',
                         icon: <PoundCircleOutlined />,
                         label: <Link to={'/admin/currencies'}>Currencies</Link>,

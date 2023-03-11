@@ -49,6 +49,10 @@ import AdminCreateBicycle from './components/admin/bicycles/create/createContain
 import AdminUpdateBicycle from './components/admin/bicycles/update/updateContainer'
 import AdminViewBicycle from './components/admin/bicycles/view/viewContainer'
 
+import AdminOrders from './components/admin/orders/ordersContainer'
+import AdminUpdateOrder from './components/admin/orders/update/updateContainer'
+import AdminViewOrder from './components/admin/orders/view/viewContainer'
+
 // Auth
 import Login from './components/auth/login/loginContainer'
 import Registration from './components/auth/registration/registrationContainer'
@@ -103,6 +107,10 @@ const router = createBrowserRouter(
                 <Route path='currencies/create' element={<AdminCreateCurrency />} />
                 <Route path='currencies/:currencyId/update' element={<AdminUpdateCurrency />} />
                 <Route path='currencies/:currencyId/view' element={<AdminViewCurrency />} />
+
+                <Route path='orders' element={<AdminOrders />} />
+                <Route path='orders/:orderId/update' element={<AdminUpdateOrder />} />
+                <Route path='orders/:orderId/view' element={<AdminViewOrder />} />
             </Route>
             <Route path={'/host'} element={<HostLayout />}>
                 <Route index element={<HostProducts />} />
