@@ -5,6 +5,7 @@ import cookie from 'cookie'
 
 import Layout from './layout'
 import { common } from '../../../redux/reducers/user-reducer'
+import ErrorBoundary from '../../common/errorBoundary'
 
 const { identify } = common
 
@@ -20,7 +21,9 @@ const LayoutContainer: React.FC<TMapDispatchToProps> = (props) => {
     }, [])
 
     return (
-        <Layout />
+        <ErrorBoundary>
+            <Layout />
+        </ErrorBoundary>
     )
 }
 

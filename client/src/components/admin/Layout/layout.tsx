@@ -10,6 +10,7 @@ import { Layout, theme } from 'antd'
 import Menu from './menu/menu'
 import './layout.scss'
 import SimpleLoader from '../../common/loader'
+import ErrorBoundary from '../../common/errorBoundary'
 
 const { Header, Sider, Content } = Layout
 
@@ -44,9 +45,13 @@ const App: React.FC = () => {
                         background: colorBgContainer,
                     }}
                 >
-                    <Suspense fallback={<SimpleLoader />}>
-                        <Outlet />
-                    </Suspense>
+                    <ErrorBoundary>
+                        <ErrorBoundary>
+                            <Suspense fallback={<SimpleLoader />}>
+                                <Outlet />
+                            </Suspense>
+                        </ErrorBoundary>
+                    </ErrorBoundary>
                 </Content>
             </Layout>
         </Layout>

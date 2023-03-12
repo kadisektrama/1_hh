@@ -8,6 +8,7 @@ import Header from './header/header'
 import Footer from './footer/footer'
 import './layout.scss'
 import SimpleLoader from '../../common/loader'
+import ErrorBoundary from '../../common/errorBoundary'
 
 const layout = () => {
     return (
@@ -17,9 +18,11 @@ const layout = () => {
             </header>
             <main className='main-flex'>
                 <div className='content'>
-                    <Suspense fallback={<SimpleLoader />}>
-                        <Outlet />
-                    </Suspense>
+                    <ErrorBoundary>
+                        <Suspense fallback={<SimpleLoader />}>
+                            <Outlet />
+                        </Suspense>
+                    </ErrorBoundary>
                 </div>
             </main>
             <footer className='footer-flex'>
