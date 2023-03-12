@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { lazy } from 'react'
 import {
     createBrowserRouter,
     createRoutesFromElements,
@@ -15,54 +15,54 @@ import HostLayout from './components/host/layout/layout'
 import GuestLayout from './components/guest/layout/layout'
 
 // Basic
-import Products from './components/basic/Products/productsContainer'
-import Users from './components/basic/users/usersConteiner'
-import Categories from './components/basic/categories/categoriesContainer'
-import Bicycle from './components/basic/bicycle/bicycleContainer'
-import Book from './components/basic/book/bookContainer'
+const Products = lazy(() => import('./components/basic/Products/productsContainer'))
+const Users = lazy(() => import('./components/basic/users/usersConteiner'))
+const Categories = lazy(() => import('./components/basic/categories/categoriesContainer'))
+const Bicycle = lazy(() => import('./components/basic/bicycle/bicycleContainer'))
+const Book = lazy(() => import('./components/basic/book/bookContainer'))
 
 // Admin
-import AdminCategories from './components/admin/categories/categoriesContainer'
-import AdminCreateCategory from './components/admin/categories/create/createContainer'
-import AdminUpdateCategory from './components/admin/categories/update/updateContainer'
-import AdminViewCategory from './components/admin/categories/view/viewContainer'
+const AdminCategories = lazy(() => import('./components/admin/categories/categoriesContainer'))
+const AdminCreateCategory = lazy(() => import('./components/admin/categories/create/createContainer'))
+const AdminUpdateCategory = lazy(() => import('./components/admin/categories/update/updateContainer'))
+const AdminViewCategory = lazy(() => import('./components/admin/categories/view/viewContainer'))
 
-import AdminBooks from './components/admin/books/booksContainer'
-import AdminCreateBook from './components/admin/books/create/createContainer'
-import AdminUpdateBook from './components/admin/books/update/updateContainer'
-import AdminViewBook from './components/admin/books/view/viewContainer'
+const AdminBooks = lazy(() => import('./components/admin/books/booksContainer'))
+const AdminCreateBook = lazy(() => import('./components/admin/books/create/createContainer'))
+const AdminUpdateBook = lazy(() => import('./components/admin/books/update/updateContainer'))
+const AdminViewBook = lazy(() => import('./components/admin/books/view/viewContainer'))
 
-import AdminProducts from './components/admin/products/productsContainer'
+const AdminProducts = lazy(() => import('./components/admin/products/productsContainer'))
 
-import AdminUsers from './components/admin/users/usersContainer'
-import AdminCreateUser from './components/admin/users/create/createContainer'
-import AdminUpdateUser from './components/admin/users/update/updateContainer'
-import AdminViewUser from './components/admin/users/view/viewContainer'
+const AdminUsers = lazy(() => import('./components/admin/users/usersContainer'))
+const AdminCreateUser = lazy(() => import('./components/admin/users/create/createContainer'))
+const AdminUpdateUser = lazy(() => import('./components/admin/users/update/updateContainer'))
+const AdminViewUser = lazy(() => import('./components/admin/users/view/viewContainer'))
 
-import AdminCurrencies from './components/admin/currencies/currenciesContainer'
-import AdminCreateCurrency from './components/admin/currencies/create/createContainer'
-import AdminUpdateCurrency from './components/admin/currencies/update/updateContainer'
-import AdminViewCurrency from './components/admin/currencies/view/viewContainer'
+const AdminCurrencies = lazy(() => import('./components/admin/currencies/currenciesContainer'))
+const AdminCreateCurrency = lazy(() => import('./components/admin/currencies/create/createContainer'))
+const AdminUpdateCurrency = lazy(() => import('./components/admin/currencies/update/updateContainer'))
+const AdminViewCurrency = lazy(() => import('./components/admin/currencies/view/viewContainer'))
 
-import AdminBicycles from './components/admin/bicycles/bicyclesContainer'
-import AdminCreateBicycle from './components/admin/bicycles/create/createContainer'
-import AdminUpdateBicycle from './components/admin/bicycles/update/updateContainer'
-import AdminViewBicycle from './components/admin/bicycles/view/viewContainer'
+const AdminBicycles = lazy(() => import('./components/admin/bicycles/bicyclesContainer'))
+const AdminCreateBicycle = lazy(() => import('./components/admin/bicycles/create/createContainer'))
+const AdminUpdateBicycle = lazy(() => import('./components/admin/bicycles/update/updateContainer'))
+const AdminViewBicycle = lazy(() => import('./components/admin/bicycles/view/viewContainer'))
 
-import AdminOrders from './components/admin/orders/ordersContainer'
-import AdminUpdateOrder from './components/admin/orders/update/updateContainer'
-import AdminViewOrder from './components/admin/orders/view/viewContainer'
+const AdminOrders = lazy(() => import('./components/admin/orders/ordersContainer'))
+const AdminUpdateOrder = lazy(() => import('./components/admin/orders/update/updateContainer'))
+const AdminViewOrder = lazy(() => import('./components/admin/orders/view/viewContainer'))
 
 // Auth
-import Login from './components/auth/login/loginContainer'
-import Registration from './components/auth/registration/registrationContainer'
+const Login = lazy(() => import('./components/auth/login/loginContainer'))
+const Registration = lazy(() => import('./components/auth/registration/registrationContainer'))
 
 // Host
-import HostProducts from './components/host/products/productsContainer'
-import HostOrders from './components/host/orders/ordersContainer'
+const HostProducts = lazy(() => import('./components/host/products/productsContainer'))
+const HostOrders = lazy(() => import('./components/host/orders/ordersContainer'))
 
 // Guest
-import GuestOrders from './components/guest/orders/ordersContainer'
+const GuestOrders = lazy(() => import('./components/guest/orders/ordersContainer'))
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -77,7 +77,6 @@ const router = createBrowserRouter(
                 <Route path="/categories" element={<Categories />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/favourites" element={<div>favourites</div>} /> TODO
-                <Route path="/routes" element={<div>routes</div>} /> TODO
                 <Route path="/box" element={<div>box</div>} /> TODO
             </Route>
             <Route path='/admin' element={<AdminLayout />}>

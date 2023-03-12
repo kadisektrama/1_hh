@@ -22,7 +22,8 @@ const card: React.FC<TOrder> = (props) => {
                 }
             >
                 <Title className='text-inline' level={4}>{props.product_id.title}</Title>
-                <Paragraph>{props.product_id.price / 1000 + '' + props.product_id.currency.name}</Paragraph>
+                <Paragraph>Price: {props.product_id.price / 1000 + '' + props.product_id.currency.name}</Paragraph>
+                <Paragraph>Status: {props.status}</Paragraph>
             </Card>
         </Link>
     )

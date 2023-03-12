@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { Outlet } from 'react-router-dom'
 
 import { Layout } from 'antd'
@@ -7,6 +7,7 @@ import { Layout } from 'antd'
 import Header from './header/header'
 import Footer from './footer/footer'
 import './layout.scss'
+import SimpleLoader from '../../common/loader'
 
 const layout = () => {
     return (
@@ -16,7 +17,9 @@ const layout = () => {
             </header>
             <main className='main-flex'>
                 <div className='content'>
-                    <Outlet />
+                    <Suspense fallback={<SimpleLoader />}>
+                        <Outlet />
+                    </Suspense>
                 </div>
             </main>
             <footer className='footer-flex'>

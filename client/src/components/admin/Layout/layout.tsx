@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, Suspense } from 'react'
 import { Outlet } from 'react-router-dom'
 
 import {
@@ -9,6 +9,7 @@ import { Layout, theme } from 'antd'
 
 import Menu from './menu/menu'
 import './layout.scss'
+import SimpleLoader from '../../common/loader'
 
 const { Header, Sider, Content } = Layout
 
@@ -43,7 +44,9 @@ const App: React.FC = () => {
                         background: colorBgContainer,
                     }}
                 >
-                    <Outlet />
+                    <Suspense fallback={<SimpleLoader />}>
+                        <Outlet />
+                    </Suspense>
                 </Content>
             </Layout>
         </Layout>
